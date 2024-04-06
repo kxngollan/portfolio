@@ -31,3 +31,12 @@
   text-decoration: none;
   color: inherit;
 }
+
+.nav-icon {
+  font-size: 2rem;
+}
+
+.bigNav ul li:hover,
+.nav-icon:hover {
+  color: aliceblue;
+}

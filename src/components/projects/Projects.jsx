@@ -71,17 +71,18 @@ const Projects = () => {
   return (
     <motion.div initial="initial" animate="animate" variants={parentVariants}>
       <main>
-        <motion.div
-          initial="initial"
-          animate="animate"
-          variants={childVariants}
-        >
-          <div id="project-cards">
-            {projects.map((project, index) => (
-              <ProjectPhotos key={index} project={project} index={index} />
-            ))}
-          </div>
-        </motion.div>
+        <div id="project-cards">
+          {projects.map((project, index) => (
+            <motion.div
+              initial="initial"
+              animate="animate"
+              variants={childVariants}
+              key={index}
+            >
+              <ProjectPhotos project={project} index={index} />
+            </motion.div>
+          ))}
+        </div>
       </main>
     </motion.div>
   );

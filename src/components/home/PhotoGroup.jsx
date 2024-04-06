@@ -1,8 +1,8 @@
-import React from 'react';
-import './PhotoGroup.css';
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
-import { useState } from 'react';
-import { PhotoArray } from './PhotoArray';
+import React from "react";
+import "./PhotoGroup.css";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { useState } from "react";
+import { PhotoArray } from "./PhotoArray";
 
 const PhotoGroup = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -30,20 +30,20 @@ const PhotoGroup = () => {
               <React.Fragment key={i}>
                 <div
                   className={`little-card card ${
-                    currentIndex === 0 ? '' : 'hidden'
+                    currentIndex === 0 ? "" : "hidden"
                   }`}
                   style={{
                     backgroundImage: `url(${photo.little})`,
-                    backgroundSize: '100% 100%',
+                    backgroundSize: "100% 100%",
                   }}
                 ></div>
                 <div
                   className={`big-card card ${
-                    currentIndex === 0 ? '' : 'hidden'
+                    currentIndex === 0 ? "" : "hidden"
                   }`}
                   style={{
                     backgroundImage: `url(${photo.big})`,
-                    backgroundSize: '100% 100%',
+                    backgroundSize: "100% 100%",
                   }}
                 ></div>
               </React.Fragment>
@@ -54,20 +54,20 @@ const PhotoGroup = () => {
               <React.Fragment key={i}>
                 <div
                   className={`little-card card ${
-                    currentIndex === 1 ? '' : 'hidden'
+                    currentIndex === 1 ? "" : "hidden"
                   }`}
                   style={{
                     backgroundImage: `url(${photo.little})`,
-                    backgroundSize: '100% 100%',
+                    backgroundSize: "100% 100%",
                   }}
                 ></div>
                 <div
                   className={`big-card card ${
-                    currentIndex === 1 ? '' : 'hidden'
+                    currentIndex === 1 ? "" : "hidden"
                   }`}
                   style={{
                     backgroundImage: `url(${photo.big})`,
-                    backgroundSize: '100% 100%',
+                    backgroundSize: "100% 100%",
                   }}
                 ></div>
               </React.Fragment>
@@ -78,20 +78,20 @@ const PhotoGroup = () => {
               <React.Fragment key={i}>
                 <div
                   className={`little-card card ${
-                    currentIndex === 2 ? '' : 'hidden'
+                    currentIndex === 2 ? "" : "hidden"
                   }`}
                   style={{
                     backgroundImage: `url(${photo.little})`,
-                    backgroundSize: '100% 100%',
+                    backgroundSize: "100% 100%",
                   }}
                 ></div>
                 <div
                   className={`big-card card ${
-                    currentIndex === 2 ? '' : 'hidden'
+                    currentIndex === 2 ? "" : "hidden"
                   }`}
                   style={{
                     backgroundImage: `url(${photo.big})`,
-                    backgroundSize: '100% 100%',
+                    backgroundSize: "100% 100%",
                   }}
                 ></div>
               </React.Fragment>
@@ -102,20 +102,20 @@ const PhotoGroup = () => {
               <React.Fragment key={i}>
                 <div
                   className={`little-card card ${
-                    currentIndex === 3 ? '' : 'hidden'
+                    currentIndex === 3 ? "" : "hidden"
                   }`}
                   style={{
                     backgroundImage: `url(${photo.little})`,
-                    backgroundSize: '100% 100%',
+                    backgroundSize: "100% 100%",
                   }}
                 ></div>
                 <div
                   className={`big-card card ${
-                    currentIndex === 3 ? '' : 'hidden'
+                    currentIndex === 3 ? "" : "hidden"
                   }`}
                   style={{
                     backgroundImage: `url(${photo.big})`,
-                    backgroundSize: '100% 100%',
+                    backgroundSize: "100% 100%",
                   }}
                 ></div>
               </React.Fragment>

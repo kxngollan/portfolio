@@ -1,8 +1,9 @@
 import "./Home.css";
-import PhotoGroup from "./PhotoGroup";
+// import PhotoGroup from "./PhotoGroup";
 import { IoMdDownload } from "react-icons/io";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { motion } from "framer-motion";
+import CardSwiper from "./CardSwiper";
 
 const Home = () => {
   const parentVariants = {
@@ -21,20 +22,15 @@ const Home = () => {
   };
 
   return (
-    <motion.div
-      initial="initial"
-      animate="animate"
-      variants={parentVariants}
-      className="home-hero"
-    >
-      <main>
+    <motion.div initial="initial" animate="animate" variants={parentVariants}>
+      <main className="home-hero">
         <motion.div
           initial="initial"
           animate="animate"
           variants={childVariants}
           className="home-title"
         >
-          <h1>Hi, I`m Ollan</h1>
+          <h1>Hi, I{`'`}m Ollan</h1>
           <h2> A full stack developer</h2>
           <motion.div
             initial="initial"
@@ -78,7 +74,7 @@ const Home = () => {
           variants={childVariants}
           className="home-display"
         >
-          <PhotoGroup />;
+          <CardSwiper />
         </motion.div>
       </main>
     </motion.div>
