@@ -1,0 +1,33 @@
+.bigNav {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  padding: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 90vw;
+  font-size: 2rem;
+}
+
+.navTitle {
+  text-decoration: none;
+  color: inherit;
+}
+
+.bigNav ul {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.bigNav ul li {
+  list-style: none;
+}
+
+.bigNav ul li a {
+  text-decoration: none;
+  color: inherit;
+}
