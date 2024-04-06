@@ -51,6 +51,9 @@ const MobileNav = ({ navLinks, name, socialLinks }) => {
           </ul>
         </div>
       </motion.div>
+      {show ? (
+        <div className="overlay" onClick={() => setShow(!show)}></div>
+      ) : null}
     </nav>
   );
 };

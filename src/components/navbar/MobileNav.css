@@ -28,6 +28,17 @@
   font-size: 2rem;
 }
 
+.overlay {
+  z-index: 5;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  height: 110vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 .side-nav {
   position: fixed;
   top: 0;
