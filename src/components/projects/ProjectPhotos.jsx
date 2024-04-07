@@ -1,6 +1,5 @@
 import { PropTypes } from "prop-types";
 import "./ProjectPhotos.css";
-
 import { Link } from "react-router-dom";
 
 const ProjectPhotos = ({ project, index }) => {
@@ -9,7 +8,7 @@ const ProjectPhotos = ({ project, index }) => {
       <div
         className="project-card"
         data-color={
-          index % 3 === 0 ? "brown" : index % 2 === 0 ? "green" : "blue"
+          index % 3 === 0 ? "brown" : index % 3 === 1 ? "green" : "blue"
         }
       >
         <img

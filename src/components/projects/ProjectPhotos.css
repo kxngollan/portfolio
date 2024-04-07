@@ -11,25 +11,21 @@ main {
 }
 
 main:has(.project-card[data-color="blue"]:hover) {
-  background-color: rgb(var(--blue-rgb) / 25%);
-}
-
-main:has(.project-card[data-color="blue"]:hover) {
-  background-color: rgb(var(--blue-rgb) / 25%);
-}
-
-main:has(.project-card[data-color="green"]:hover) {
-  background-color: rgb(var(--green-rgb) / 25%);
+  background-color: rgb(var(--blue-rgb) / 80%);
 }
 
 main:has(.project-card[data-color="brown"]:hover) {
-  background-color: rgb(var(--brown-rgb) / 25%);
+  background-color: rgb(var(--brown-rgb) / 80%);
+}
+
+main:has(.project-card[data-color="green"]:hover) {
+  background-color: rgb(var(--green-rgb) / 80%);
 }
 
 #project-cards {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2rem;
   padding: 2rem;
   justify-items: center;
@@ -50,7 +46,7 @@ main:has(.project-card[data-color="brown"]:hover) {
 }
 
 .project-card .project-card-image {
-  width: clamp(300px, 20vw, 500px);
+  width: clamp(300px, 20vw, 400px);
   aspect-ratio: 2 / 3;
   border-radius: clamp(0.5rem, 0.75vw, 2rem);
 }
@@ -102,11 +98,6 @@ main:has(.project-card[data-color="brown"]:hover) {
 }
 
 @media (max-width: 1200px) {
-  /* main {
-    justify-content: flex-start;
-    align-items: flex-start;
-  } */
-
   #project-cards {
     flex-direction: column;
     align-items: center;
