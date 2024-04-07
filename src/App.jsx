@@ -7,6 +7,7 @@ import Projects from "./components/projects/Projects";
 import Contact from "./components/contact/Contact";
 import Project from "./components/project/Project";
 import Home from "./components/home/Home";
+import Footer from "./components/navbar/Footer";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/projects/:id" element={<Project />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+      <Footer />
     </Router>
   );
 };
