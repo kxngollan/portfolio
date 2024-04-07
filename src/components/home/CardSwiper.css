@@ -55,6 +55,22 @@
   border-radius: 1vmin;
 }
 
+.big-card:nth-child(2) {
+  transform: translateX(-10%) rotate(-1deg);
+}
+
+.big-card:nth-child(4) {
+  transform: rotate(2deg);
+}
+
+.big-card:nth-child(6) {
+  transform: translateX(-6%) rotate(-3deg);
+}
+
+.big-card:nth-child(8) {
+  transform: translate(10%, 3%) rotate(5deg);
+}
+
 .little-card {
   width: 12vmin;
   border-radius: 2vmin;

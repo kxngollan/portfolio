@@ -79,6 +79,16 @@ const CardSwiper = () => {
           <div className="little-card card"></div>
           <div className="big-card card"></div>
         </div>
+        <div className="card-group" data-index="3" data-status="unknown">
+          <div className="little-card card"></div>
+          <div className="big-card card"></div>
+          <div className="little-card card"></div>
+          <div className="big-card card"></div>
+          <div className="little-card card"></div>
+          <div className="big-card card"></div>
+          <div className="little-card card"></div>
+          <div className="big-card card"></div>
+        </div>
       </div>
       <div className="card-swiper-buttons">
         <button id="hate-button" onClick={handleHateClick}>
