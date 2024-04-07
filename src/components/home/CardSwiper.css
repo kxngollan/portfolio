@@ -132,6 +132,8 @@
   background-color: transparent;
   height: 7vmin;
   width: 7vmin;
+  min-height: 40px;
+  min-width: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
