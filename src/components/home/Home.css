@@ -1,6 +1,8 @@
 .home-hero {
   height: 90vh;
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .home-title {
@@ -47,14 +49,14 @@
 }
 
 .home-buttons button:hover {
-  background-color: #2400b6;
+  background-color: rgb(169, 72, 30);
   color: white;
 }
 
 @media screen and (max-width: 884px) {
   .home-hero {
     flex-direction: column;
-    min-width: 90%;
+    min-width: 300px;
   }
 
   .home-title {
