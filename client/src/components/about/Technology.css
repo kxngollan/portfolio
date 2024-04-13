@@ -1,0 +1,29 @@
+.tech-skills {
+  padding: 16px;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+}
+.tech-skill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tech-skill:hover {
+  transform: translateY(-10px);
+}
+
+.skill-title {
+  margin-top: 15px;
+  font-weight: 400;
+}
+
+.colored {
+  font-size: 3rem;
+}
+
+.skill-photo {
+  height: 3rem;
+}
