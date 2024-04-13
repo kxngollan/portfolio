@@ -3,58 +3,79 @@ import "./AddProject.css";
 import { IoMdCloudUpload } from "react-icons/io";
 
 const AddProject = () => {
-  const [image, setImage] = useState(false);
-  const [giphy, setGiphy] = useState(false);
+  const [image, setImage] = useState(null);
+  const [giphy, setGiphy] = useState(null);
   const [projectDetails, setProjectDetails] = useState({
     name: "",
-    descriptin: "",
+    description: "",
     difficulties: "",
     image: "",
     giphy: "",
+    github: "",
+    link: "",
+    figma: "",
   });
 
-  const server = "http://localhost:4000/";
+  const server = "http://localhost:4000/admin/";
 
-  const AddProject = async () => {
-    let dataObj;
-    let project = projectDetails;
-
+  const addProject = async () => {
     let formData = new FormData();
-    formData.append("project", image);
+    if (image) formData.append("image", image);
+    if (giphy) formData.append("giphy", giphy);
 
-    await fetch(`${server}/upload`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-      },
-      body: formData,
-    })
-      .then((resp) => resp.json())
-      .then((data) => {
-        dataObj = data;
+    try {
+      const uploadResponse = await fetch(`${server}upload`, {
+        method: "POST",
+        body: formData,
       });
 
-    if (dataObj.success) {
-      project.image = dataObj.image_url;
-      project.giphy = dataObj.giphy_url;
-      console.log(project);
-      await fetch(`${server}addproject`, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(project),
-      })
-        .then((resp) => resp.json())
-        .then((data) => {
-          data.success ? alert("Project Added") : alert("Failed");
+      const dataObj = await uploadResponse.json();
+      if (dataObj.success) {
+        const project = {
+          ...projectDetails,
+          image: dataObj.image_url,
+          giphy: dataObj.giphy_url,
+        };
+
+        const projectResponse = await fetch(`${server}addproject`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(project),
         });
+
+        if (!projectResponse.ok) {
+          throw new Error(
+            "Failed to add project. Server responded with: " +
+              projectResponse.status
+          );
+        }
+
+        const projectData = await projectResponse.json();
+        alert(projectData.success ? "Project Added" : "Failed");
+      } else {
+        alert("Failed at upload project stage: " + dataObj.message);
+      }
+      setImage(null);
+      setGiphy(null);
+      setProjectDetails({
+        name: "",
+        description: "",
+        difficulties: "",
+        image: "",
+        giphy: "",
+        github: "",
+        link: "",
+        figma: "",
+      });
+    } catch (error) {
+      console.error("Failed to upload project:", error);
+      alert("Failed to upload project: " + error.message);
     }
   };
 
   const changeHandler = (e) => {
-    console.log(e);
     setProjectDetails({ ...projectDetails, [e.target.name]: e.target.value });
   };
 
@@ -74,10 +95,46 @@ const AddProject = () => {
         />
       </div>
       <div className="addproject-itemfield">
+        <p>Github Repo</p>
+        <input
+          type="text"
+          name="github"
+          value={projectDetails.github}
+          onChange={(e) => {
+            changeHandler(e);
+          }}
+          placeholder="Enter github link"
+        />
+      </div>
+      <div className="addproject-itemfield">
+        <p>Live site</p>
+        <input
+          type="text"
+          name="link"
+          value={projectDetails.link}
+          onChange={(e) => {
+            changeHandler(e);
+          }}
+          placeholder="Enter github link"
+        />
+      </div>
+      <div className="addproject-itemfield">
+        <p>Figma</p>
+        <input
+          type="text"
+          name="figma"
+          value={projectDetails.figma}
+          onChange={(e) => {
+            changeHandler(e);
+          }}
+          placeholder="Enter figma link"
+        />
+      </div>
+      <div className="addproject-itemfield">
         <p>Initial Description</p>
         <textarea
           name="description"
-          value={projectDetails.descriptin}
+          value={projectDetails.description}
           onChange={(e) => {
             changeHandler(e);
           }}
@@ -137,7 +194,7 @@ const AddProject = () => {
           hidden
         />
       </div>
-      <button className="addproject-btn" onClick={() => AddProject()}>
+      <button className="addproject-btn" onClick={() => addProject()}>
         ADD
       </button>
     </div>
