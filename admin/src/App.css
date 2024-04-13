@@ -1,0 +1,9 @@
+#root {
+  display: flex;
+}
+
+@media (max-width: 800px) {
+  #root {
+    flex-direction: column;
+  }
+}
