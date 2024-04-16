@@ -18,6 +18,10 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+const tokenCheck = require("../util/auth");
+
+// route.use(tokenCheck);
+
 route.post(
   "/upload",
   upload.fields([
@@ -67,6 +71,12 @@ route.post("/addproject", async (req, res) => {
     console.log(error);
     res.send({ message: "Project failed to add", success: false });
   }
+});
+
+route.delete("/removeproject", async (req, res) => {
+  await Project.findOneAndDelete({ id: req.body.id });
+  console.log("Removed");
+  res.json({ success: true, name: req.body.name });
 });
 
 module.exports = route;
