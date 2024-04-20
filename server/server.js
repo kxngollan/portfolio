@@ -40,15 +40,11 @@ app.use("/admin", admin);
 // const login = require("./routes/login");
 // app.use(login);
 
-app.get("/projects", async (req, res) => {
-  console.log("hello");
-  try {
-    const projects = await Project.find();
-    res.send(projects);
-  } catch (error) {
-    console.log(error);
-  }
-});
+const email = require("./routes/email");
+app.use("/email", email);
+
+const get = require("./routes/get");
+app.use("/get", get);
 
 const PORT = process.env.PORT || 8000;
 
