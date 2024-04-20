@@ -1,3 +1,4 @@
+/* Main container style */
 .listproject {
   display: flex;
   flex-direction: column;
@@ -8,51 +9,58 @@
   margin: 30px;
   border-radius: 6px;
   background: #fff;
+  overflow: hidden;
 }
+
 .listproject-format-main {
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 2fr 2fr 3fr 2fr 1fr 1fr;
   gap: 10px;
   width: 100%;
-  padding: 20px 0px;
+  padding: 20px 0;
   color: #454545;
   font-size: 15px;
   font-weight: 600;
 }
 
+/* Link styling in the table */
 .list-projects-link {
   text-decoration: none;
   color: inherit;
+  display: inline-flex; /* Makes icons align nicely */
+  align-items: center;
+  justify-content: center;
 }
 
-.listproject-format {
-  align-items: center;
-  font-weight: 500;
-}
-.listproject-project-icon {
-  height: 80px;
-}
+/* Common styling for icons and other elements within rows */
+.listproject-project-icon,
 .listproject-remove-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  width: 50px; /* Ensures icons are neatly laid out */
+}
+
+.listproject-remove-icon {
   margin: auto;
 }
-.listproject-allprojects {
-  overflow-y: auto;
-}
+
+/* Responsive adjustments */
 @media (max-width: 800px) {
   .listproject {
     box-sizing: border-box;
     width: 95%;
-    height: 100%;
+    height: auto; /* Adjust height for smaller devices */
     padding: 10px 30px;
     margin: 20px auto;
   }
   .listproject-format-main {
-    padding: 15px 0px;
+    padding: 15px 0;
     color: #454545;
     font-size: 12px;
   }
   .listproject-project-icon {
-    height: 60px;
+    height: 60px; /* Smaller icons for smaller screens */
   }
 }

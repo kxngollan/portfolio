@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./AddProject.css";
 import { IoMdCloudUpload } from "react-icons/io";
+import { server } from "../Server";
 
 const AddProject = () => {
   const [image, setImage] = useState(null);
@@ -16,7 +17,7 @@ const AddProject = () => {
     figma: "",
   });
 
-  const server = "http://localhost:4000/admin/";
+  const serveradmin = `${server}/admin/`;
 
   const addProject = async () => {
     let formData = new FormData();
@@ -24,7 +25,7 @@ const AddProject = () => {
     if (giphy) formData.append("giphy", giphy);
 
     try {
-      const uploadResponse = await fetch(`${server}upload`, {
+      const uploadResponse = await fetch(`${serveradmin}upload`, {
         method: "POST",
         body: formData,
       });
@@ -37,7 +38,7 @@ const AddProject = () => {
           giphy: dataObj.giphy_url,
         };
 
-        const projectResponse = await fetch(`${server}addproject`, {
+        const projectResponse = await fetch(`${serveradmin}addproject`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

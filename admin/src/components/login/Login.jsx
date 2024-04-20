@@ -16,7 +16,7 @@ const LoginForm = () => {
     setPassword(event.target.value);
   };
 
-  const server = "http://localhost:4000/";
+  const server = "https//localhost:8443/";
 
   const handleSubmit = async (event) => {
     event.preventDefault();
