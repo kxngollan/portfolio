@@ -1,7 +1,11 @@
+import { useEffect, useState } from "react";
 import ProjectPhotos from "./ProjectPhotos";
 import { motion } from "framer-motion";
+import { server } from "../../../Server";
 
 const Projects = () => {
+  const [project, setProjects] = useState([]);
+
   const projects = [
     {
       photo:
@@ -52,6 +56,16 @@ const Projects = () => {
       id: 12,
     },
   ];
+
+  const fetchProjects = async () => {
+    await fetch(`${server}/projects`)
+      .then((res) => res.json())
+      .then((data) => setProjects(data));
+  };
+
+  useEffect(() => {
+    fetchProjects();
+  }, []);
 
   const parentVariants = {
     initial: {},
