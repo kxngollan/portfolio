@@ -1,42 +1,40 @@
+require("dotenv").config();
 const express = require("express");
 const route = express.Router();
 const nodemailer = require("nodemailer");
-const sendGridTransport = require("nodemailer-sendgrid-transport");
 
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL,
-    pass: process.env.EMAILPASSWORD,
-  },
-});
+route.post("/send-mail", async (req, res) => {
+  console.log("sending");
+  try {
+    const { name, company, number, email, message } = req.body;
 
-route.post("/send-mail", (req, res) => {
-  const { name, company, number, email, message } = req.body;
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.NODEMAILEREMAIL,
+        pass: process.env.NODEMAILERPASS,
+      },
+    });
 
-  console.log(req.body);
+    let mailOptions = {
+      from: process.env.NODEMAILEREMAIL,
+      to: process.env.NODEMAILER_RECIEVER,
+      subject: "New Portfolio Contact Request",
+      text: `You have received a new message from:
+             Name: ${name}
+             Company: ${company}
+             Contact Number: ${number}
+             Email: ${email}
+             Message: ${message}`,
+    };
 
-  let mailOptions = {
-    from: process.env.EMAIL,
-    to: "onlymuza@gmail.com",
-    subject: "New Portfolio Contact Request",
-    text: `You have received a new message from:
-           Name: ${name}
-           Company: ${company}
-           Contact Number: ${number}
-           Email: ${email}
-           Message: ${message}`,
-  };
-
-  transporter.sendMail(mailOptions, function (error, info) {
-    if (error) {
-      console.log(error);
-      res.send("error");
-    } else {
-      console.log("Email sent: " + info.response);
-      res.send("Email sent successfully");
-    }
-  });
+    const info = await transporter.sendMail(mailOptions);
+    console.log("Email sent: " + info.response);
+    res.send("Email sent successfully");
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Error in sending email");
+  }
 });
 
 module.exports = route;
