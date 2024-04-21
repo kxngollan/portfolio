@@ -13,49 +13,49 @@ const ProjectPhotos = ({ project, index }) => {
       >
         <img
           className="project-card-front-image project-card-image"
-          alt={project.title}
-          src={project.photo}
+          alt={project.name}
+          src={project.image}
         />
         <div className="project-card-faders">
           <img
             className="project-card-fader project-card-image"
-            alt={project.title}
-            src={project.photo}
+            alt={project.name}
+            src={project.image}
           />
           <img
             className="project-card-fader project-card-image"
-            alt={project.title}
-            src={project.photo}
+            alt={project.name}
+            src={project.image}
           />
           <img
             className="project-card-fader project-card-image"
-            alt={project.title}
-            src={project.photo}
+            alt={project.name}
+            src={project.image}
           />
           <img
             className="project-card-fader project-card-image"
-            alt={project.title}
-            src={project.photo}
+            alt={project.name}
+            src={project.image}
           />
           <img
             className="project-card-fader project-card-image"
-            alt={project.title}
-            src={project.photo}
+            alt={project.name}
+            src={project.image}
           />
           <img
             className="project-card-fader project-card-image"
-            alt={project.title}
-            src={project.photo}
+            alt={project.name}
+            src={project.image}
           />
           <img
             className="project-card-fader project-card-image"
-            alt={project.title}
-            src={project.photo}
+            alt={project.name}
+            src={project.image}
           />
           <img
             className="project-card-fader project-card-image"
-            alt={project.title}
-            src={project.photo}
+            alt={project.name}
+            src={project.image}
           />
         </div>
       </div>

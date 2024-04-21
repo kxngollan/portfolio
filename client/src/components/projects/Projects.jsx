@@ -8,51 +8,51 @@ const Projects = () => {
 
   const projects = [
     {
-      photo:
+      image:
         "https://assets.codepen.io/1468070/game+cover+-+fall+guys.png?format=auto&quality=80",
-      title: "Fall Guys",
+      name: "Fall Guys",
       id: 12,
     },
     {
-      photo:
+      image:
         "https://assets.codepen.io/1468070/game+cover+-+fall+guys.png?format=auto&quality=80",
-      title: "Fall Guys",
+      name: "Fall Guys",
       id: 12,
     },
     {
-      photo:
+      image:
         "https://assets.codepen.io/1468070/game+cover+-+fall+guys.png?format=auto&quality=80",
-      title: "Fall Guys",
+      name: "Fall Guys",
       id: 12,
     },
     {
-      photo:
+      image:
         "https://assets.codepen.io/1468070/game+cover+-+fall+guys.png?format=auto&quality=80",
-      title: "Fall Guys",
+      name: "Fall Guys",
       id: 12,
     },
     {
-      photo:
+      image:
         "https://assets.codepen.io/1468070/game+cover+-+fall+guys.png?format=auto&quality=80",
-      title: "Fall Guys",
+      name: "Fall Guys",
       id: 12,
     },
     {
-      photo:
+      image:
         "https://assets.codepen.io/1468070/game+cover+-+fall+guys.png?format=auto&quality=80",
-      title: "Fall Guys",
+      name: "Fall Guys",
       id: 12,
     },
     {
-      photo:
+      image:
         "https://assets.codepen.io/1468070/game+cover+-+fall+guys.png?format=auto&quality=80",
-      title: "Fall Guys",
+      name: "Fall Guys",
       id: 12,
     },
     {
-      photo:
+      image:
         "https://assets.codepen.io/1468070/game+cover+-+fall+guys.png?format=auto&quality=80",
-      title: "Fall Guys",
+      name: "Fall Guys",
       id: 12,
     },
   ];

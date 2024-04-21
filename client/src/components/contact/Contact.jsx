@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/md";
+import { server } from "../../../Server";
 import "./Contact.css";
 
 const Contact = () => {
@@ -24,8 +25,6 @@ const Contact = () => {
     setError(false);
     setSuccess(false);
     console.log("Form submitted:", formData);
-
-    const server = "https://localhost:8443";
 
     try {
       const response = await fetch(`${server}/email/send-mail`, {
