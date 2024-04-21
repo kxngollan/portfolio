@@ -16,11 +16,6 @@
   background: #ecf0f1;
 }
 
-.project-links {
-  text-decoration: none;
-  color: inherit;
-}
-
 .project-buttons {
   display: flex;
   flex-direction: column;

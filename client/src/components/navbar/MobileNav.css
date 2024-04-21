@@ -13,8 +13,6 @@
 }
 
 .mobile-nav .title {
-  color: inherit;
-  text-decoration: none;
   font-size: 2rem;
   padding: 0;
 }
@@ -74,9 +72,7 @@
 }
 
 .side-nav-link {
-  text-decoration: none;
   font-size: 1.5rem;
-  color: inherit;
 }
 
 .side-nav-socials {
@@ -86,9 +82,4 @@
 
 .nav-icon {
   font-size: 1.5rem;
-}
-
-.side-nav-socials li a {
-  color: inherit;
-  text-decoration: none;
 }

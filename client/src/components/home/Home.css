@@ -21,11 +21,6 @@
   justify-content: center;
 }
 
-.home-links {
-  text-decoration: none;
-  color: inherit;
-}
-
 .home-buttons {
   display: flex;
   flex-direction: column;

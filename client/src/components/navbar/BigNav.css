@@ -12,11 +12,6 @@
   font-size: 2rem;
 }
 
-.navTitle {
-  text-decoration: none;
-  color: inherit;
-}
-
 .bigNav ul {
   display: flex;
   justify-content: space-between;
@@ -25,11 +20,6 @@
 
 .bigNav ul li {
   list-style: none;
-}
-
-.bigNav ul li a {
-  text-decoration: none;
-  color: inherit;
 }
 
 .nav-item a {
