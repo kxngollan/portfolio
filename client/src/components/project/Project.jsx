@@ -23,10 +23,14 @@ const Project = () => {
 
       if (res.status === 404) {
         setError("Project not found");
+        setLoading(false);
+        return;
       }
 
       if (!res.ok) {
         setError("Internal server error");
+        setLoading(false);
+        return;
       }
 
       const data = await res.json();

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const ProjectPhotos = ({ project, index }) => {
   return (
-    <Link to={`/projects/${project.id}`}>
+    <Link to={`/project/${project.id}`}>
       <div
         className="project-card"
         data-color={
