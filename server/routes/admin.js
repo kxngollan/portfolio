@@ -1,27 +1,21 @@
 const express = require("express");
 const route = express.Router();
 const Project = require("../database/projectSchema");
-
 const multer = require("multer");
 const path = require("path");
 
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    const imagePath = path.join(__dirname, "../Images");
-    cb(null, imagePath);
-  },
+  destination: "./images",
   filename: (req, file, cb) => {
     console.log(file);
-    cb(null, Date.now() + path.extname(file.originalname));
+    return cb(
+      null,
+      `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`
+    );
   },
 });
 
 const upload = multer({ storage: storage });
-
-const tokenCheck = require("../util/auth");
-
-// route.use(tokenCheck);
-
 route.post(
   "/upload",
   upload.fields([
@@ -32,8 +26,8 @@ route.post(
     if (req.files["image"] && req.files["giphy"]) {
       console.log("Photos uploaded");
       const urlBase = `${req.protocol}://${req.get("host")}`;
-      const imageUrl = `${urlBase}/Images/${req.files["image"][0].filename}`;
-      const giphyUrl = `${urlBase}/Images/${req.files["giphy"][0].filename}`;
+      const imageUrl = `${urlBase}/images/${req.files["image"][0].filename}`;
+      const giphyUrl = `${urlBase}/images/${req.files["giphy"][0].filename}`;
 
       res.json({
         success: true,

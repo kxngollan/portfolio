@@ -37,6 +37,8 @@ const Project = require("./database/projectSchema");
 const admin = require("./routes/admin");
 app.use("/admin", admin);
 
+app.use("/images", express.static("images"));
+
 // const login = require("./routes/login");
 // app.use(login);
 
