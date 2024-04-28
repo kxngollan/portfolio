@@ -51,7 +51,7 @@
   .listproject {
     box-sizing: border-box;
     width: 95%;
-    height: auto; /* Adjust height for smaller devices */
+    height: auto;
     padding: 10px 30px;
     margin: 20px auto;
   }

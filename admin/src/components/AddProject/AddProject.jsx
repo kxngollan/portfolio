@@ -4,6 +4,7 @@ import { IoMdCloudUpload } from "react-icons/io";
 import { server } from "../Server";
 
 const AddProject = () => {
+  const [loading, setLoading] = useState(false);
   const [image, setImage] = useState(null);
   const [giphy, setGiphy] = useState(null);
   const [projectDetails, setProjectDetails] = useState({
@@ -20,60 +21,59 @@ const AddProject = () => {
   const serveradmin = `${server}/admin/`;
 
   const addProject = async () => {
+    setLoading(true);
+    let dataObj;
+    let project = projectDetails;
+
     let formData = new FormData();
-    if (image) formData.append("image", image);
-    if (giphy) formData.append("giphy", giphy);
+    formData.append("image", image);
+    formData.append("giphy", giphy);
 
-    try {
-      const uploadResponse = await fetch(`${serveradmin}upload`, {
+    console.log(`${serveradmin}upload`);
+    console.log(formData);
+
+    await fetch(`${serveradmin}upload`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+      },
+      body: formData,
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        dataObj = data;
+      });
+
+    if (dataObj.success) {
+      project.image = dataObj.image_url;
+      project.giphy = dataObj.giphy_url;
+
+      await fetch(`${serveradmin}addproject`, {
         method: "POST",
-        body: formData,
-      });
-
-      const dataObj = await uploadResponse.json();
-      if (dataObj.success) {
-        const project = {
-          ...projectDetails,
-          image: dataObj.image_url,
-          giphy: dataObj.giphy_url,
-        };
-
-        const projectResponse = await fetch(`${serveradmin}addproject`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(project),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(project),
+      })
+        .then((resp) => resp.json())
+        .then((data) => {
+          data.success ? alert("Product Added") : alert("Failed");
         });
-
-        if (!projectResponse.ok) {
-          throw new Error(
-            "Failed to add project. Server responded with: " +
-              projectResponse.status
-          );
-        }
-
-        const projectData = await projectResponse.json();
-        alert(projectData.success ? "Project Added" : "Failed");
-      } else {
-        alert("Failed at upload project stage: " + dataObj.message);
-      }
-      setImage(null);
-      setGiphy(null);
-      setProjectDetails({
-        name: "",
-        description: "",
-        difficulties: "",
-        image: "",
-        giphy: "",
-        github: "",
-        link: "",
-        figma: "",
-      });
-    } catch (error) {
-      console.error("Failed to upload project:", error);
-      alert("Failed to upload project: " + error.message);
     }
+    setImage(null);
+    setGiphy(null);
+    setProjectDetails({
+      name: "",
+      description: "",
+      difficulties: "",
+      image: "",
+      giphy: "",
+      github: "",
+      link: "",
+      figma: "",
+    });
+    setLoading(false);
   };
 
   const changeHandler = (e) => {
@@ -195,9 +195,13 @@ const AddProject = () => {
           hidden
         />
       </div>
-      <button className="addproject-btn" onClick={() => addProject()}>
-        ADD
-      </button>
+      {loading ? (
+        <div className="addproject-btn">Sending</div>
+      ) : (
+        <button className="addproject-btn" onClick={() => addProject()}>
+          ADD
+        </button>
+      )}
     </div>
   );
 };
