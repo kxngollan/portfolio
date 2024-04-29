@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const route = express.Router();
 const Project = require("../database/projectSchema");
@@ -6,9 +7,9 @@ const { v2: cloudinary } = require("cloudinary");
 
 // Configure Cloudinary with credentials
 cloudinary.config({
-  cloud_name: "dpgfwnaxp",
-  api_key: "633599964778653",
-  api_secret: "w7DTcpKubghYzvOHcQZ0f6a8Lqw",
+  cloud_name: process.env.CLOUD_API_NAME,
+  api_key: process.env.CLOUD_API_KEY,
+  api_secret: process.env.CLOUD_API_SCERET,
   secure: true,
 });
 
