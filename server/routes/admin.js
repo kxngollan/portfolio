@@ -2,41 +2,59 @@ const express = require("express");
 const route = express.Router();
 const Project = require("../database/projectSchema");
 const multer = require("multer");
-const path = require("path");
+const { v2: cloudinary } = require("cloudinary");
+
+// Configure Cloudinary with credentials
+cloudinary.config({
+  cloud_name: "dpgfwnaxp",
+  api_key: "633599964778653",
+  api_secret: "w7DTcpKubghYzvOHcQZ0f6a8Lqw",
+  secure: true,
+});
 
 const storage = multer.diskStorage({
-  destination: "./images",
   filename: (req, file, cb) => {
-    console.log(file);
-    return cb(
-      null,
-      `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`
-    );
+    cb(null, file.originalname);
   },
 });
 
 const upload = multer({ storage: storage });
+
 route.post(
   "/upload",
   upload.fields([
     { name: "image", maxCount: 1 },
     { name: "giphy", maxCount: 1 },
   ]),
-  (req, res) => {
-    if (req.files["image"] && req.files["giphy"]) {
-      console.log("Photos uploaded");
-      const urlBase = `${req.protocol}://${req.get("host")}`;
-      const imageUrl = `${urlBase}/images/${req.files["image"][0].filename}`;
-      const giphyUrl = `${urlBase}/images/${req.files["giphy"][0].filename}`;
+  async (req, res) => {
+    const images = req.files["image"];
+    const giphys = req.files["giphy"];
 
-      res.json({
-        success: true,
-        message: "Files uploaded successfully",
-        image_url: imageUrl,
-        giphy_url: giphyUrl,
-      });
+    let imageUrl, giphyUrl;
+
+    if (images && images.length > 0 && giphys && giphys.length > 0) {
+      const image = images[0];
+      const giphy = giphys[0];
+
+      try {
+        const uploadImage = await cloudinary.uploader.upload(image.path);
+        imageUrl = uploadImage.url;
+
+        const uploadGiphy = await cloudinary.uploader.upload(giphy.path);
+        giphyUrl = uploadGiphy.url;
+
+        res.json({
+          success: true,
+          message: "Files uploaded successfully",
+          image_url: imageUrl,
+          giphy_url: giphyUrl,
+        });
+      } catch (err) {
+        console.log(err);
+        res.status(500).send("Failed to upload images.");
+      }
     } else {
-      res.status(400).send("You must upload both images.");
+      res.status(400).send("You must upload both an image and a giphy.");
     }
   }
 );
