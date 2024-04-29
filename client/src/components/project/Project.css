@@ -3,7 +3,11 @@
   text-align: center;
 }
 
-#giphy-container img {
+.project-title {
+  text-align: center;
+}
+
+.giphy-container img {
   width: 100%;
   max-width: 500px;
   display: block;

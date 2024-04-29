@@ -43,23 +43,7 @@ const Project = () => {
 
   useEffect(() => {
     fetchProject();
-  }, []);
-
-  if (loading) {
-    return (
-      <main>
-        <h2>Loading..</h2>
-      </main>
-    );
-  }
-
-  if (error) {
-    return (
-      <main>
-        <h2>{error}</h2>
-      </main>
-    );
-  }
+  }, [id]);
 
   const parentVariants = {
     initial: {},
@@ -78,81 +62,100 @@ const Project = () => {
 
   return (
     <main>
-      <motion.div initial="initial" animate="animate" variants={parentVariants}>
-        <h1 id="project-name">{project.name}</h1>
-        <motion.div
-          initial="initial"
-          animate="animate"
-          variants={childVariants}
-          id="giphy-container"
-        >
-          <img src={project.giphy} alt="Giphy Image" />
-        </motion.div>
-        {project.description ? (
+      {loading ? <h2>Loading...</h2> : null}
+      {error ? <h2>{error}</h2> : null}
+
+      {!error && !loading ? (
+        <>
           <motion.div
             initial="initial"
             animate="animate"
-            variants={childVariants}
-            className="description"
+            variants={parentVariants}
           >
-            <p>{project.description}</p>
+            <motion.h1
+              initial="initial"
+              animate="animate"
+              variants={childVariants}
+              className="project-title"
+            >
+              {project.name}
+            </motion.h1>
+
+            <motion.div
+              initial="initial"
+              animate="animate"
+              variants={childVariants}
+              className="giphy-container"
+            >
+              <img src={project.giphy} alt="Giphy Image" />
+            </motion.div>
+            {project.description ? (
+              <motion.div
+                initial="initial"
+                animate="animate"
+                variants={childVariants}
+                className="description"
+              >
+                <p>{project.description}</p>
+              </motion.div>
+            ) : null}
+            {project.difficulties ? (
+              <motion.div
+                initial="initial"
+                animate="animate"
+                variants={childVariants}
+                className="description"
+              >
+                <p>{project.difficulties}</p>
+              </motion.div>
+            ) : null}
+            <motion.div
+              initial="initial"
+              animate="animate"
+              variants={childVariants}
+              className="project-buttons"
+            >
+              {project.github ? (
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href={project.github}
+                  className="project-links"
+                >
+                  <button>
+                    <FaGithub className="project-icon" />
+                    Github
+                  </button>
+                </a>
+              ) : null}
+              {project.link ? (
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href={project.link}
+                  className="project-links"
+                >
+                  <button>
+                    <AiOutlineExport className="project-icon" /> Live Link
+                  </button>
+                </a>
+              ) : null}
+              {project.figma ? (
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href={project.figma}
+                  className="project-links"
+                >
+                  <button>
+                    <FaFigma className="project-icon" /> Figma
+                  </button>
+                </a>
+              ) : null}
+            </motion.div>
           </motion.div>
-        ) : null}
-        {project.difficulties ? (
-          <motion.div
-            initial="initial"
-            animate="animate"
-            variants={childVariants}
-            className="description"
-          >
-            <p>{project.difficulties}</p>
-          </motion.div>
-        ) : null}
-        <motion.div
-          initial="initial"
-          animate="animate"
-          variants={childVariants}
-          className="project-buttons"
-        >
-          {project.github ? (
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href={project.github}
-              className="project-links"
-            >
-              <button>
-                <FaGithub className="project-icon" />
-                Github
-              </button>
-            </a>
-          ) : null}
-          {project.link ? (
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href={project.link}
-              className="project-links"
-            >
-              <button>
-                <AiOutlineExport className="project-icon" /> Live Link
-              </button>
-            </a>
-          ) : null}
-          {project.figma ? (
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href={project.figma}
-              className="project-links"
-            >
-              <button>
-                <FaFigma className="project-icon" /> Figma
-              </button>
-            </a>
-          ) : null}
-        </motion.div>
-      </motion.div>
+        </>
+      ) : null}
     </main>
   );
 };

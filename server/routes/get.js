@@ -1,6 +1,5 @@
 const express = require("express");
 const route = express.Router();
-
 const Project = require("../database/projectSchema");
 
 route.get("/projects", async (req, res) => {
