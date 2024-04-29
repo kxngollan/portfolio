@@ -4,61 +4,10 @@ import { motion } from "framer-motion";
 import { server } from "../../../Server";
 
 const Projects = () => {
-  const [project, setProjects] = useState([]);
-
-  const projects = [
-    {
-      image:
-        "https://assets.codepen.io/1468070/game+cover+-+fall+guys.png?format=auto&quality=80",
-      name: "Fall Guys",
-      id: 12,
-    },
-    {
-      image:
-        "https://assets.codepen.io/1468070/game+cover+-+fall+guys.png?format=auto&quality=80",
-      name: "Fall Guys",
-      id: 12,
-    },
-    {
-      image:
-        "https://assets.codepen.io/1468070/game+cover+-+fall+guys.png?format=auto&quality=80",
-      name: "Fall Guys",
-      id: 12,
-    },
-    {
-      image:
-        "https://assets.codepen.io/1468070/game+cover+-+fall+guys.png?format=auto&quality=80",
-      name: "Fall Guys",
-      id: 12,
-    },
-    {
-      image:
-        "https://assets.codepen.io/1468070/game+cover+-+fall+guys.png?format=auto&quality=80",
-      name: "Fall Guys",
-      id: 12,
-    },
-    {
-      image:
-        "https://assets.codepen.io/1468070/game+cover+-+fall+guys.png?format=auto&quality=80",
-      name: "Fall Guys",
-      id: 12,
-    },
-    {
-      image:
-        "https://assets.codepen.io/1468070/game+cover+-+fall+guys.png?format=auto&quality=80",
-      name: "Fall Guys",
-      id: 12,
-    },
-    {
-      image:
-        "https://assets.codepen.io/1468070/game+cover+-+fall+guys.png?format=auto&quality=80",
-      name: "Fall Guys",
-      id: 12,
-    },
-  ];
+  const [projects, setProjects] = useState([]);
 
   const fetchProjects = async () => {
-    await fetch(`${server}/projects`)
+    await fetch(`${server}/get/projects`)
       .then((res) => res.json())
       .then((data) => setProjects(data));
   };

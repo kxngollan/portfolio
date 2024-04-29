@@ -42,6 +42,11 @@ const AddProject = () => {
       .then((resp) => resp.json())
       .then((data) => {
         dataObj = data;
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+        alert("Failed to upload");
       });
 
     if (dataObj.success) {
@@ -59,6 +64,11 @@ const AddProject = () => {
         .then((resp) => resp.json())
         .then((data) => {
           data.success ? alert("Product Added") : alert("Failed");
+        })
+        .catch((err) => {
+          console.log(err);
+          setLoading(false);
+          alert("Failed to project to database");
         });
     }
     setImage(null);
