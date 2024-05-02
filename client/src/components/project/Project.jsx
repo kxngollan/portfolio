@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import { server } from "../../../Server";
 import { FaGithub, FaFigma } from "react-icons/fa";
 import { AiOutlineExport } from "react-icons/ai";
@@ -8,35 +8,25 @@ import "./Project.css";
 
 const Project = () => {
   const [project, setProject] = useState({});
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const { id } = useParams();
 
   const fetchProject = async () => {
     setLoading(true);
-    setError(null);
     try {
-      const res = await fetch(`${server}/get/project/${id}`, {
-        method: "GET",
-      });
-
-      if (res.status === 404) {
-        setError("Project not found");
-        setLoading(false);
-        return;
-      }
-
+      const res = await fetch(`${server}/get/project/${id}`);
       if (!res.ok) {
-        setError("Internal server error");
+        setError("Failed to fetch project");
         setLoading(false);
         return;
       }
-
       const data = await res.json();
+      console.log(data);
       setProject(data);
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
     }
     setLoading(false);
   };
@@ -44,6 +34,22 @@ const Project = () => {
   useEffect(() => {
     fetchProject();
   }, [id]);
+
+  if (loading) {
+    return (
+      <main>
+        <h1>Loading...</h1>
+      </main>
+    );
+  }
+
+  if (error) {
+    return (
+      <main>
+        <h1>{error}</h1>
+      </main>
+    );
+  }
 
   const parentVariants = {
     initial: {},
@@ -61,102 +67,72 @@ const Project = () => {
   };
 
   return (
-    <main>
-      {loading ? <h2>Loading...</h2> : null}
-      {error ? <h2>{error}</h2> : null}
+    <motion.div initial="initial" animate="animate" variants={parentVariants}>
+      <main className="project">
+        <motion.div
+          initial="initial"
+          animate="animate"
+          variants={childVariants}
+          className="giphy-container"
+        >
+          <img src={project.giphy} alt={`Giphy Image ${project.name}`} />
+        </motion.div>
+        <motion.div
+          initial="initial"
+          animate="animate"
+          variants={childVariants}
+          className="information"
+        >
+          <h1 className="title">{project.name}</h1>
+          {project.description ? (
+            <p className="description">{project.description}</p>
+          ) : null}
+          {project.difficulties ? (
+            <p className="difficulties">{project.difficulties}</p>
+          ) : null}
 
-      {!error && !loading ? (
-        <>
-          <motion.div
-            initial="initial"
-            animate="animate"
-            variants={parentVariants}
-          >
-            <motion.h1
-              initial="initial"
-              animate="animate"
-              variants={childVariants}
-              className="project-title"
-            >
-              {project.name}
-            </motion.h1>
-
-            <motion.div
-              initial="initial"
-              animate="animate"
-              variants={childVariants}
-              className="giphy-container"
-            >
-              <img src={project.giphy} alt="Giphy Image" />
-            </motion.div>
-            {project.description ? (
-              <motion.div
-                initial="initial"
-                animate="animate"
-                variants={childVariants}
-                className="description"
+          <div className="list-buttons">
+            {project.github ? (
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href={project.github}
+                className="project-links"
               >
-                <p>{project.description}</p>
-              </motion.div>
+                <button>
+                  <FaGithub className="project-icon" />
+                  Github
+                </button>
+              </a>
             ) : null}
-            {project.difficulties ? (
-              <motion.div
-                initial="initial"
-                animate="animate"
-                variants={childVariants}
-                className="description"
+            {project.link ? (
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href={project.link}
+                className="project-links"
               >
-                <p>{project.difficulties}</p>
-              </motion.div>
+                <button>
+                  <AiOutlineExport className="project-icon" /> Live Link
+                </button>
+              </a>
             ) : null}
-            <motion.div
-              initial="initial"
-              animate="animate"
-              variants={childVariants}
-              className="project-buttons"
-            >
-              {project.github ? (
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href={project.github}
-                  className="project-links"
-                >
-                  <button>
-                    <FaGithub className="project-icon" />
-                    Github
-                  </button>
-                </a>
-              ) : null}
-              {project.link ? (
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href={project.link}
-                  className="project-links"
-                >
-                  <button>
-                    <AiOutlineExport className="project-icon" /> Live Link
-                  </button>
-                </a>
-              ) : null}
-              {project.figma ? (
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href={project.figma}
-                  className="project-links"
-                >
-                  <button>
-                    <FaFigma className="project-icon" /> Figma
-                  </button>
-                </a>
-              ) : null}
-            </motion.div>
-          </motion.div>
-        </>
-      ) : null}
-    </main>
+            {project.figma ? (
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href={project.figma}
+                className="project-links"
+              >
+                <button>
+                  <FaFigma className="project-icon" /> Figma
+                </button>
+              </a>
+            ) : null}
+          </div>
+        </motion.div>
+      </main>
+    </motion.div>
   );
 };
 

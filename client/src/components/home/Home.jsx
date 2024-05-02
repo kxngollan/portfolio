@@ -36,7 +36,7 @@ const Home = () => {
             initial="initial"
             animate="animate"
             variants={childVariants}
-            className="home-buttons"
+            className="list-buttons"
           >
             <a
               target="_blank"

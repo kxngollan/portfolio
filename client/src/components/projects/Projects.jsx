@@ -5,11 +5,24 @@ import { server } from "../../../Server";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const fetchProjects = async () => {
-    await fetch(`${server}/get/projects`)
-      .then((res) => res.json())
-      .then((data) => setProjects(data));
+    setLoading(true);
+    setError(null);
+    try {
+      console.log("fetching projects");
+      const res = await fetch(`${server}/get/projects`);
+      if (!res.ok) throw new Error("Failed to fetch projects");
+
+      const data = await res.json();
+      setProjects(data);
+    } catch (err) {
+      console.log(err);
+      setError("Failed to get projects");
+    }
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -30,6 +43,18 @@ const Projects = () => {
     initial: { y: 30, opacity: 0 },
     animate: { y: 0, opacity: 1, transition: { duration: 1 } },
   };
+
+  if (loading) {
+    return (
+      <main>
+        <h1>Loading...</h1>
+      </main>
+    );
+  }
+
+  if (error) {
+    return <main>{error}</main>;
+  }
 
   return (
     <motion.div initial="initial" animate="animate" variants={parentVariants}>

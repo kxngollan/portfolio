@@ -13,7 +13,7 @@ body {
 
 main {
   min-height: 100vh;
-  min-width: 90vw;
+  max-width: 90vw;
   padding: 0;
   margin: 0;
   margin: auto;
@@ -30,6 +30,13 @@ button {
   border: 0.4vmin rgb(200, 200, 200);
   padding: 1vmin;
   cursor: pointer;
+}
+
+.list-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
 }
 
 button:hover {
