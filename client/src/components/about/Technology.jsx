@@ -22,6 +22,10 @@ const Technology = () => {
           <h5 className="skill-title">Javascript</h5>
         </div>
         <div className="tech-skill">
+          <i className="devicon-php-plain colored"></i>
+          <h5 className="skill-title">PHP</h5>
+        </div>
+        <div className="tech-skill">
           <img
             className="skill-photo"
             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
@@ -32,6 +36,10 @@ const Technology = () => {
         <div className="tech-skill">
           <i className="devicon-react-original colored"></i>
           <h5 className="skill-title">React</h5>
+        </div>
+        <div className="tech-skill">
+          <i className="devicon-wordpress-plain colored"></i>
+          <h5 className="skill-title">Wordpress</h5>
         </div>
         <div className="tech-skill">
           <i className="devicon-git-plain colored"></i>
