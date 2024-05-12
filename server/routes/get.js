@@ -6,6 +6,7 @@ route.get("/projects", async (req, res) => {
   console.log("looking for projects");
   try {
     const projects = await Project.find();
+    projects.sort((a, b) => a.id - b.id);
     res.send(projects);
   } catch (error) {
     console.log(error);
