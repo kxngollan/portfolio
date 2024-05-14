@@ -15,47 +15,56 @@ const ProjectPhotos = ({ project, index }) => {
           className="project-card-front-image project-card-image"
           alt={project.name}
           src={project.image}
+          loading="lazy"
         />
         <div className="project-card-faders">
           <img
             className="project-card-fader project-card-image"
             alt={project.name}
             src={project.image}
+            loading="lazy"
           />
           <img
             className="project-card-fader project-card-image"
             alt={project.name}
             src={project.image}
+            loading="lazy"
           />
           <img
             className="project-card-fader project-card-image"
             alt={project.name}
             src={project.image}
+            loading="lazy"
           />
           <img
             className="project-card-fader project-card-image"
             alt={project.name}
             src={project.image}
+            loading="lazy"
           />
           <img
             className="project-card-fader project-card-image"
             alt={project.name}
             src={project.image}
+            loading="lazy"
           />
           <img
             className="project-card-fader project-card-image"
             alt={project.name}
             src={project.image}
+            loading="lazy"
           />
           <img
             className="project-card-fader project-card-image"
             alt={project.name}
             src={project.image}
+            loading="lazy"
           />
           <img
             className="project-card-fader project-card-image"
             alt={project.name}
             src={project.image}
+            loading="lazy"
           />
         </div>
       </div>

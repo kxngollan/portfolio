@@ -52,7 +52,11 @@ const ProjectPage = () => {
   return (
     <main className="project">
       <div className="giphy-container">
-        <img src={project.giphy} alt={`Giphy Image ${project.name}`} />
+        <img
+          src={project.giphy}
+          alt={`Giphy Image ${project.name}`}
+          loading="lazy"
+        />
       </div>
       <div className="information">
         <h1 className="title">{project.name}</h1>

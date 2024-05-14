@@ -27,6 +27,7 @@ const Technology = () => {
         </div>
         <div className="tech-skill">
           <img
+            loading="lazy"
             className="skill-photo"
             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
             alt="pythonlogo"
@@ -73,6 +74,7 @@ const Technology = () => {
         </div>
         <div className="tech-skill">
           <img
+            loading="lazy"
             className="skill-photo"
             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
             alt="mongodb logo"

@@ -36,7 +36,7 @@ const About = () => {
           variants={childVariants}
           className="about-col-1"
         >
-          <img src={headshot} alt="photo of me" />
+          <img src={headshot} alt="photo of me" loading="lazy" />
         </motion.div>
         <motion.div
           initial="initial"
