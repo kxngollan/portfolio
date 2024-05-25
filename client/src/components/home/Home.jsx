@@ -60,7 +60,11 @@ const Home = () => {
                 LinkedIn
               </button>
             </a>
-            <a href="./MyImages/Ollan-cv.pdf" className="home-links" download>
+            <a
+              href="./image/pdf/Portfolio-resume.pdf"
+              className="home-links"
+              download
+            >
               <button>
                 <IoMdDownload className="home-icon" />
                 Resume
