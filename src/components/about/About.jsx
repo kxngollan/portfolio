@@ -87,7 +87,7 @@ const About = () => {
             <div className="tab-contents" id="Experience">
               <ul>
                 <li>
-                  <span>2023 - Current</span>
+                  <span>Sept 2023 - Jun 2024 </span>
                 </li>
                 <li>
                   <span>Aside of Code Juniour Developer training:</span>

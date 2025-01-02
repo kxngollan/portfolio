@@ -39,6 +39,22 @@ const Technology = () => {
           <h5 className="skill-title">React</h5>
         </div>
         <div className="tech-skill">
+          <i class="devicon-nextjs-plain colored"></i>
+          <h5 className="skill-title">Next</h5>
+        </div>
+        <div className="tech-skill">
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original-wordmark.svg"
+            className="skill-photo"
+            alt="Vue Logo"
+          />
+          <h5 className="skill-title">Vue</h5>
+        </div>
+        <div className="tech-skill">
+          <i class="devicon-nuxtjs-plain colored"></i>
+          <h5 className="skill-title">NuxtJs</h5>
+        </div>
+        <div className="tech-skill">
           <i className="devicon-wordpress-plain colored"></i>
           <h5 className="skill-title">Wordpress</h5>
         </div>
@@ -50,12 +66,10 @@ const Technology = () => {
           <i className="devicon-github-original colored"></i>
           <h5 className="skill-title">Github</h5>
         </div>
-
         <div className="tech-skill">
           <i className="devicon-bootstrap-plain colored"></i>
           <h5 className="skill-title">Bootstrap</h5>
         </div>
-
         <div className="tech-skill">
           <i className="devicon-nodejs-plain colored"></i>
           <h5 className="skill-title">Node.js</h5>

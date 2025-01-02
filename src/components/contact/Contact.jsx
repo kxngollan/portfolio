@@ -28,6 +28,7 @@ const Contact = () => {
     console.log("Form submitted:", formData);
 
     try {
+      ("use server");
       const response = await fetch("/api/email", {
         method: "POST",
         headers: {
