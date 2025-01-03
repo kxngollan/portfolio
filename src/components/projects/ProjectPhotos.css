@@ -1,0 +1,154 @@
+:root {
+  --blue-rgb: 92 192 249;
+  --green-rgb: 125 161 35;
+  --brown-rgb: 127 46 23;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main:has(.project-card[data-color="blue"]:hover) {
+  background-color: rgb(var(--blue-rgb) / 80%);
+}
+
+main:has(.project-card[data-color="brown"]:hover) {
+  background-color: rgb(var(--brown-rgb) / 80%);
+}
+
+main:has(.project-card[data-color="green"]:hover) {
+  background-color: rgb(var(--green-rgb) / 80%);
+}
+
+#project-cards {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  justify-items: center;
+}
+
+.project-card {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  transition: scale 100ms;
+}
+
+.project-card .project-card-front-image {
+  position: relative;
+  z-index: 2;
+}
+
+.project-card .project-card-image {
+  width: clamp(300px, 20vw, 400px);
+  aspect-ratio: 2 / 3;
+  border-radius: clamp(0.5rem, 0.75vw, 2rem);
+}
+
+.project-card-faders {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 1500ms;
+  pointer-events: none;
+}
+
+.project-card:hover .project-card-faders {
+  opacity: 1;
+}
+
+.project-card:active {
+  scale: 0.98;
+}
+
+.project-card-fader {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.project-card-fader:nth-child(odd) {
+  animation: fade-left 3s linear infinite;
+}
+
+.project-card-fader:nth-child(even) {
+  animation: fade-right 3s linear infinite;
+}
+
+.project-card-fader:is(:nth-child(3), :nth-child(4)) {
+  animation-delay: 750ms;
+}
+
+.project-card-fader:is(:nth-child(5), :nth-child(6)) {
+  animation-delay: 1500ms;
+}
+
+.project-card-fader:is(:nth-child(7), :nth-child(8)) {
+  animation-delay: 2250ms;
+}
+
+@media (max-width: 1200px) {
+  #project-cards {
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+    padding: 4rem;
+  }
+
+  .project-card .project-card-image {
+    width: 400px;
+  }
+}
+
+@media (max-width: 600px) {
+  #project-cards {
+    gap: 2rem;
+    padding: 2rem;
+  }
+
+  .project-card {
+    width: 80%;
+  }
+
+  .project-card .project-card-image {
+    width: 100%;
+  }
+}
+
+@keyframes fade-left {
+  from {
+    scale: 1;
+    translate: 0%;
+    opacity: 1;
+  }
+
+  to {
+    scale: 0.8;
+    translate: -30%;
+    opacity: 0;
+  }
+}
+
+@keyframes fade-right {
+  from {
+    scale: 1;
+    translate: 0%;
+    opacity: 1;
+  }
+
+  to {
+    scale: 0.8;
+    translate: 30%;
+    opacity: 0;
+  }
+}

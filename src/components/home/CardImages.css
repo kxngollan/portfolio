@@ -1,0 +1,127 @@
+.big-card:nth-child(2) {
+  background-image: url("./image/coding/Cbig4.jpeg");
+}
+
+.big-card:nth-child(4) {
+  background-image: url("./image/coding/Cbig2.jpeg");
+}
+
+.big-card:nth-child(6) {
+  background-image: url("./image/coding/Cbig3.jpeg");
+}
+
+.big-card:nth-child(8) {
+  background-image: url("./image/coding/Cbig1.jpeg");
+}
+
+.little-card:nth-child(1) {
+  background-image: url("./image/coding/Clittle1.jpeg");
+}
+
+.little-card:nth-child(3) {
+  background-image: url("./image/coding/Clittle2.jpeg");
+}
+
+.little-card:nth-child(5) {
+  background-image: url("./image/coding/Clittle3.jpeg");
+}
+
+.little-card:nth-child(7) {
+  background-image: url("./image/coding/Clittle4.jpeg");
+}
+
+.card-group[data-index="1"] .big-card:nth-child(2) {
+  background-image: url("./image/friends-family/Fbig4.jpeg");
+}
+
+.card-group[data-index="1"] .big-card:nth-child(4) {
+  background-image: url("./image/friends-family/Fbig2.jpeg");
+}
+
+.card-group[data-index="1"] .big-card:nth-child(6) {
+  background-image: url("./image/friends-family/Fbig3.jpeg");
+}
+
+.card-group[data-index="1"] .big-card:nth-child(8) {
+  background-image: url("./image/friends-family/Fbig1.jpeg");
+}
+
+.card-group[data-index="1"] .little-card:nth-child(1) {
+  background-image: url("./image/friends-family/Flittle1.jpeg");
+}
+
+.card-group[data-index="1"] .little-card:nth-child(3) {
+  background-image: url("./image/friends-family/Flittle2.jpeg");
+}
+
+.card-group[data-index="1"] .little-card:nth-child(5) {
+  background-image: url("./image/friends-family/Flittle3.jpeg");
+}
+
+.card-group[data-index="1"] .little-card:nth-child(7) {
+  background-image: url("./image/friends-family/Flittle4.jpeg");
+}
+
+.card-group[data-index="2"] .big-card:nth-child(2) {
+  background-image: url("./image/sports/Sbig4.jpeg");
+}
+
+.card-group[data-index="2"] .big-card:nth-child(4) {
+  background-image: url("./image/sports/Sbig2.jpeg");
+}
+
+.card-group[data-index="2"] .big-card:nth-child(6) {
+  background-image: url("./image/sports/Sbig3.jpeg");
+}
+
+.card-group[data-index="2"] .big-card:nth-child(8) {
+  background-image: url("./image/sports/Sbig1.jpeg");
+}
+
+.card-group[data-index="2"] .little-card:nth-child(1) {
+  background-image: url("./image/sports/Slittle1.jpeg");
+}
+
+.card-group[data-index="2"] .little-card:nth-child(3) {
+  background-image: url("./image/sports/Slittle2.jpeg");
+}
+
+.card-group[data-index="2"] .little-card:nth-child(5) {
+  background-image: url("./image/sports/Slittle3.jpeg");
+}
+
+.card-group[data-index="2"] .little-card:nth-child(7) {
+  background-image: url("./image/sports/Slittle4.jpeg");
+}
+
+.card-group[data-index="3"] .big-card:nth-child(2) {
+  background-image: url("./image/travelling/Tbig4.jpeg");
+}
+
+.card-group[data-index="3"] .big-card:nth-child(4) {
+  background-image: url("./image/travelling/Tbig2.jpeg");
+}
+
+.card-group[data-index="3"] .big-card:nth-child(6) {
+  background-image: url("./image/travelling/Tbig3.jpeg");
+}
+
+.card-group[data-index="3"] .big-card:nth-child(8) {
+  background-image: url("./image/travelling/Tbig1.jpeg");
+}
+
+.card-group[data-index="3"] .little-card:nth-child(1) {
+  background-image: url("./image/travelling/Tlittle1.jpeg");
+}
+
+.card-group[data-index="3"] .little-card:nth-child(3) {
+  background-image: url("./image/travelling/Tlittle2.jpeg");
+}
+
+.card-group[data-index="3"] .little-card:nth-child(5) {
+  background-image: url("./image/travelling/Tlittle3.jpeg");
+}
+
+.card-group[data-index="3"] .little-card:nth-child(7) {
+  background-image: url("./image/travelling/Tlittle4.jpeg");
+}
