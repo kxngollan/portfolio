@@ -11,6 +11,13 @@ export const POST = async (request: Request) => {
       return new NextResponse("Please fill in all fields", { status: 400 });
     }
 
+    let user = process.env.NODEMAILEREMAIL;
+    let pass = process.env.NODEMAILERPASS;
+
+    if (!user || !pass) {
+      return new NextResponse("Issue with gmail", { status: 500 });
+    }
+
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
