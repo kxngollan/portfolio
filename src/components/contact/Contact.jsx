@@ -37,6 +37,8 @@ const Contact = () => {
         body: JSON.stringify(formData),
       });
 
+      console.log("Response: ", response);
+
       if (response.ok) {
         console.log("Form submitted successfully");
         setFormData({
