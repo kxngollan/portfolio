@@ -30,11 +30,30 @@ body {
 
 main {
   min-height: 100vh;
-  max-width: 90vw;
+  width: 90vw;
   padding: 0;
   margin: 0;
   margin: auto;
   position: relative;
+}
+
+h4 {
+  font-weight: 400;
+  padding: 5px 0;
+  font-size: 2.2rem;
+  line-height: 5rem;
+}
+
+@media (min-width: 768px) {
+  h4 {
+    font-size: 3.2rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  h4 {
+    font-size: 6.4rem;
+  }
 }
 
 button {
@@ -44,16 +63,18 @@ button {
   font-size: 1.5rem;
   border-radius: 5vmin;
   width: 20vmin;
-  border: 0.4vmin rgb(200, 200, 200);
+  border: 0.4vmin solid rgb(200, 200, 200);
+  background-color: aliceblue;
   padding: 1vmin;
   cursor: pointer;
+  margin-top: 10px;
 }
 
 .list-buttons {
   display: flex;
   flex-direction: column;
-  gap: 10px;
   align-items: center;
+  margin-top: 3px;
 }
 
 button:hover {
