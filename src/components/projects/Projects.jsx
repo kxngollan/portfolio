@@ -285,7 +285,7 @@ const Projects = () => {
                         <Link
                           target="_blank"
                           rel="noopener noreferrer"
-                          href={col.link ? col.link : ""}
+                          href={cont.link ? cont.link : ""}
                         >
                           <Image
                             src={cont.photo}
