@@ -7,7 +7,15 @@ import { FaGlobeAfrica } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import "./Projects.css";
-import comingSoon from "./assets/mm-coming-soon.png";
+import chess from "./assets/chess.png";
+import catchem from "./assets/catchem.png";
+import color from "./assets/coloralong.png";
+import cv from "./assets/cvmaker.png";
+import drum from "./assets/drum.png";
+import etch from "./assets/etchsketch.png";
+import forum from "./assets/forum.png";
+import fstore from "./assets/fstore.png";
+import portfolio from "./assets/portfolio.png";
 
 const Projects = () => {
   const wrapperRef = useRef(null);
@@ -18,15 +26,17 @@ const Projects = () => {
       name: "Chess",
       description:
         "A chess game allow users to play and fetch games using Chess.com API",
-      link: "https://chess-weld-rho.vercel.app/",
+      link: "https://chess-weld-rho.vercel.app/analysis",
       github: "https://github.com/kxngollan/chess",
+      photo: chess,
     },
     {
       name: "Forum",
       description:
-        "This is message forum board app for users to login and drop a messgae in",
+        "Message forum board app for users to login and drop a messgae in for others to see and do with as they please",
       link: "https://nuxtapp-sooty.vercel.app/",
       github: "https://github.com/kxngollan/nuxtapp",
+      photo: forum,
     },
   ];
 
@@ -39,12 +49,14 @@ const Projects = () => {
       github: "https://github.com/kxngollan/portfolio",
       figma:
         "https://www.figma.com/file/TSiGHDAfHnW1EZGlD1lR5W/portfolio?type=design&node-id=0-1&mode=design&t=r5DczCSMr1MmdJSy-0",
+      photo: portfolio,
     },
     {
       name: "FStore",
-      description: "",
+      description: "Th",
       link: "https://fake-store-red.vercel.app/",
       github: "https://github.com/kxngollan/fake-store",
+      photo: fstore,
     },
     {
       name: "Catch'em ",
@@ -53,15 +65,17 @@ const Projects = () => {
       link: "https://chic-gecko-a211b1.netlify.app/",
       github: "https://github.com/kxngollan/Catch-em-all",
       figma: "https://github.com/kxngollan/Catch-em-all",
+      photo: catchem,
     },
     {
       name: "CV",
       description:
-        "This is a Cv maker I have created using Vite ReactJs. I used Vite because the load time is considerable faster than regular react. This uses the useState functionality in react to keep store of the inputs and",
+        "This is a Cv maker created using Vite ReactJs. I used Vite because the load time is considerable faster than regular react. This uses the useState functionality in react to keep store of the inputs and",
       link: "https://teal-biscuit-78824f.netlify.app/",
       github: "https://github.com/kxngollan/cv-maker",
       figma:
         "https://www.figma.com/file/CBAXUlYq2xCAT6k2EKXnXw/portfolio?type=design&mode=design&t=oTV3yepu6BMZqjrk-1",
+      photo: cv,
     },
   ];
 
@@ -74,6 +88,7 @@ const Projects = () => {
       github: "https://github.com/kxngollan/color-along",
       figma:
         "https://www.figma.com/file/vMFHsmHFFNfzEfshDtwNhv/Color-Along?type=design&node-id=0%3A1&mode=design&t=xbZGHmaiV5oHn0dr-1",
+      photo: color,
     },
     {
       name: "Sketch",
@@ -83,6 +98,7 @@ const Projects = () => {
       github: "https://github.com/kxngollan/etch-a-sketch-page",
       figma:
         "https://www.figma.com/file/OBpI2xulWl3y4ktwVVNpFc/Etch-a-sketch?type=design&node-id=0%3A1&mode=design&t=oTV3yepu6BMZqjrk-1",
+      photo: etch,
     },
     {
       name: "KeyDrum",
@@ -90,6 +106,7 @@ const Projects = () => {
         "This is a drum app which allows for users to make cool and interesting beats. It is very simple and fun to play with. I I made this to showcase my abilities with vanilla Javascript, html and css.",
       link: "https://kxngollan.github.io/My-Drum/",
       github: "https://github.com/kxngollan/My-Drum",
+      photo: drum,
     },
   ];
 
@@ -270,7 +287,7 @@ const Projects = () => {
                           href={col.link ? col.link : ""}
                         >
                           <Image
-                            src={comingSoon}
+                            src={cont.photo}
                             alt="image of Music Material"
                           />
                           <p>
@@ -330,128 +347,6 @@ const Projects = () => {
                   </ul>
                 </li>
               ))}
-
-              <li id="vue" className="portfolio-content">
-                <div className="portfolio-content-index">
-                  <div>
-                    <span>01</span>
-                  </div>
-                  <div className="portfolio-index">
-                    <h3>Nuxt/Vue</h3>
-                    <p className="portfolio__index-hide">
-                      * Scroll horizontally / drag right to view projects
-                    </p>
-                  </div>
-                </div>
-                <ul className="wrapper" ref={wrapperRef}>
-                  <li className="project">
-                    <Link
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      href="https://musicmaterial.netlify.app/"
-                    >
-                      <Image src={comingSoon} alt="image of Music Material" />
-                      <h4></h4>
-                      <p>
-                        A chess game allow users to play and fetch games using
-                      </p>
-                    </Link>
-                    <ul className="project-tools">
-                      <li>Nuxt</li>
-                      <li>Chess.com Api</li>
-                    </ul>
-                    <div className="links">
-                      <Link
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href="https://musicmaterial.netlify.app/"
-                      >
-                        <i className="fas fa-external-link-alt"></i>Demo
-                      </Link>
-                    </div>
-                  </li>
-                  <li className="project">
-                    <Link
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      href="https://musicmaterial.netlify.app/"
-                    >
-                      <Image src={comingSoon} alt="image of Music Material" />
-                      <h4></h4>
-                      <p>
-                        A chess game allow users to play and fetch games using
-                        Chess.com API
-                      </p>
-                    </Link>
-                    <ul className="project-tools">
-                      <li>Nuxt</li>
-                      <li>Chess.com Api</li>
-                    </ul>
-                    <div className="links">
-                      <Link
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href="https://musicmaterial.netlify.app/"
-                      >
-                        <i className="fas fa-external-link-alt"></i>Demo
-                      </Link>
-                    </div>
-                  </li>{" "}
-                  <li className="project">
-                    <Link
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      href="https://musicmaterial.netlify.app/"
-                    >
-                      <Image src={comingSoon} alt="image of Music Material" />
-                      <h4></h4>
-                      <p>
-                        A chess game allow users to play and fetch games using
-                        Chess.com API
-                      </p>
-                    </Link>
-                    <ul className="project-tools">
-                      <li>Nuxt</li>
-                      <li>Api</li>
-                    </ul>
-                    <div className="links">
-                      <Link
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href="https://musicmaterial.netlify.app/"
-                      >
-                        <i className="fas fa-external-link-alt"></i>Demo
-                      </Link>
-                    </div>
-                  </li>{" "}
-                  <li className="project">
-                    <Link
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      href="https://musicmaterial.netlify.app/"
-                    >
-                      <Image src={comingSoon} alt="image of Music Material" />
-                      <h4></h4>
-                      <p>
-                        A chess game allow users to play and fetch games using
-                      </p>
-                    </Link>
-                    <ul className="project-tools">
-                      <li>Nuxt</li>
-                      <li>Chess.com Api</li>
-                    </ul>
-                    <div className="links">
-                      <Link
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href="https://musicmaterial.netlify.app/"
-                      >
-                        <FaGlobeAfrica /> Demo
-                      </Link>
-                    </div>
-                  </li>
-                </ul>
-              </li>
             </ol>
           </section>
         </div>
