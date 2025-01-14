@@ -53,7 +53,8 @@ const Projects = () => {
     },
     {
       name: "FStore",
-      description: "Th",
+      description:
+        "A store to browse through various, object and be able to browse different pages as well as add them to your cart",
       link: "https://fake-store-red.vercel.app/",
       github: "https://github.com/kxngollan/fake-store",
       photo: fstore,
