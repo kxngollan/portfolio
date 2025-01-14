@@ -3,6 +3,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/md";
+import Link from "next/link";
 
 import "./Contact.css";
 
@@ -164,7 +165,10 @@ const Contact = () => {
           <div className="my-details">
             <h3>My Contact Details</h3>
             <p>
-              <MdOutlineEmail /> Email: ammmuza@gmail.com
+              <MdOutlineEmail />
+              <Link href={"mailto:ammmuza@gmail.com"}>
+                Email: ammmuza@gmail.com
+              </Link>
             </p>
             <p>
               <FaPhoneAlt /> Phone: +44 7427673621
