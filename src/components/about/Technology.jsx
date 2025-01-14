@@ -39,7 +39,7 @@ const Technology = () => {
           <h5 className="skill-title">React</h5>
         </div>
         <div className="tech-skill">
-          <i class="devicon-nextjs-plain colored"></i>
+          <i className="devicon-nextjs-plain colored"></i>
           <h5 className="skill-title">Next</h5>
         </div>
         <div className="tech-skill">
@@ -51,7 +51,7 @@ const Technology = () => {
           <h5 className="skill-title">Vue</h5>
         </div>
         <div className="tech-skill">
-          <i class="devicon-nuxtjs-plain colored"></i>
+          <i className="devicon-nuxtjs-plain colored"></i>
           <h5 className="skill-title">NuxtJs</h5>
         </div>
         <div className="tech-skill">
