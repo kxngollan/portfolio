@@ -67,10 +67,7 @@ const Footer2 = () => {
               </Link>
             </li>
             <li>
-              <a
-                href="/pdf/Portfolio-resume.pdf"
-                download="/pdf/Portfolio-resume.pdf"
-              >
+              <a href="/pdf/cv.pdf" download="ollan-muza.pdf">
                 Resume
               </a>
             </li>

@@ -2,11 +2,20 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <main style={{ flexDirection: "column" }}>
-      <h1>Page is not found</h1>
+    <main
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <h4 style={{ fontSize: "2.2rem;", textAlign: "center" }}>
+        Page is not found
+      </h4>
 
       <Link href={"/"}>
-        <button>Return to home page</button>
+        <button style={{ padding: "10px", width: "inherit" }}>Home</button>
       </Link>
     </main>
   );
