@@ -63,8 +63,8 @@ const Home = () => {
               </button>
             </Link>
             <a
-              href="/Portfolio-resume.pdf"
-              download="Portfolio-resume.pdf"
+              href="/pdf/Portfolio-resume.pdf"
+              download="/pdf/Portfolio-resume.pdf"
               className="home-links"
             >
               <button>
