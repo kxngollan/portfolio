@@ -5,6 +5,7 @@ import { IoMdDownload } from "react-icons/io";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { motion } from "framer-motion";
 import CardSwiper from "./CardSwiper";
+import Link from "next/link";
 
 const Home = () => {
   const parentVariants = {
@@ -39,7 +40,7 @@ const Home = () => {
             variants={childVariants}
             className="list-buttons"
           >
-            <a
+            <Link
               target="_blank"
               rel="noreferrer"
               href="https://github.com/kxngollan"
@@ -49,8 +50,8 @@ const Home = () => {
                 <FaGithub className="home-icon" />
                 Github
               </button>
-            </a>
-            <a
+            </Link>
+            <Link
               target="_blank"
               rel="noreferrer"
               href="https://www.linkedin.com/in/ollan-muza-3bb54326b/"
@@ -60,11 +61,11 @@ const Home = () => {
                 <FaLinkedin className="home-icon" />
                 LinkedIn
               </button>
-            </a>
+            </Link>
             <a
-              href="./image/pdf/Portfolio-resume.pdf"
+              href="/Portfolio-resume.pdf"
+              download="Portfolio-resume.pdf"
               className="home-links"
-              download
             >
               <button>
                 <IoMdDownload className="home-icon" />
