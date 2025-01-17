@@ -30,7 +30,6 @@ const BigNav = ({ name, navLinks, socialLinks }) => {
           </li>
         ))}
       </ul>
-      <p onClick={() => console.log(pathname)}></p>
     </nav>
   );
 };

@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   description:
     "Ollan Muza's personal website, full stack web developer bring to life your ideas",
   icons: {
-    icon: "/logo.png",
+    icon: "/icon.ico",
   },
 };
 
@@ -36,7 +36,7 @@ export default function RootLayout({
           type="text/css"
           href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
         />
-        <link rel="icon" href="./assets/logo.png" />
+        <link rel="icon" type="image/x-icon" href="/icon.ico" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

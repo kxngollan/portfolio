@@ -10,7 +10,7 @@ export default function NotFound() {
         justifyContent: "center",
       }}
     >
-      <h4 style={{ fontSize: "2.2rem;", textAlign: "center" }}>
+      <h4 style={{ fontSize: "2.2rem", textAlign: "center" }}>
         Page is not found
       </h4>
 
