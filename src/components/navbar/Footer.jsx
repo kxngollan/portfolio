@@ -66,11 +66,6 @@ const Footer2 = () => {
                 Linkedin
               </Link>
             </li>
-            <li>
-              <a href="/pdf/cv.pdf" download="ollan-muza.pdf">
-                Resume
-              </a>
-            </li>
           </ul>
         </section>
       </div>
