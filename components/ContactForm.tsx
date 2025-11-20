@@ -153,7 +153,7 @@ const Contact = () => {
           className="w-full rounded-md px-4  text-sm pt-3 border  border-slate-700 focus:border-slate-900 dark:border-gray-600  dark:focus:border-white outline-none"
         ></textarea>
         <button
-          type="button"
+          type="submit"
           className="bg-[#ffa351] text-white hover:text-[#ffa351] hover:border-[#ffa351] hover:bg-inherit border-2
           dar tracking-wide rounded-md text-sm font-medium px-4 py-3 w-full cursor-pointer mt-2! disabled:bg-gray-700 disabled:border-inherit disabled:text-white disabled:cursor-not-allowed"
           disabled={sending}
