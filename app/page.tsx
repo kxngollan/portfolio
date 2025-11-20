@@ -1,7 +1,7 @@
 import Hero from "@/components/Hero";
 import Techstacks from "@/components/Techstacks";
 import Experience from "@/components/Experience";
-import Projects2 from "@/components/Projects2";
+import Projects from "@/components/Projects";
 import Contact from "@/components/ContactForm";
 
 const Page = () => {
@@ -26,7 +26,7 @@ const Page = () => {
         className="min-h-screen w-full flex items-center justify-center px-4 py-12"
         id="projects"
       >
-        <Projects2 />
+        <Projects />
       </section>
       <section
         className="min-h-[50vh] w-full flex items-center justify-center px-4 py-12"

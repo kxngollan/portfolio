@@ -1,12 +1,15 @@
-import React from "react";
-
+"use client";
 import type { StaticImageData } from "next/image";
-import Image from "next/image";
-import Link from "next/link";
-import { FaGithub, FaGlobeAfrica } from "react-icons/fa";
-import failedImage from "@/public/no-image.png";
+import ProjectCard from "./ProjectsCard";
+import chess from "@/public/assets/projects/chess.jpeg";
+import catchImg from "@/public/assets/projects/catch.jpeg";
+import fake from "@/public/assets/projects/fake-socials.jpeg";
+import store from "@/public/assets/projects/fake-store.jpeg";
+import netflix from "@/public/assets/projects/watch-netflix.jpeg";
+import portfolio from "@/public/assets/projects/portfolio.jpeg";
+import sketch from "@/public/assets/projects/sketch.jpeg";
 
-const Projects: React.FC = () => {
+const Projects = () => {
   type Project = {
     name: string;
     kind?: string;
@@ -16,136 +19,76 @@ const Projects: React.FC = () => {
     live?: string;
     stack: string;
   };
+
   const projects: Project[] = [
     {
       name: "Chess Experiments",
-      desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum ab, et in temporibus ullam animi voluptas laudantium magnam eius blanditiis praesentium, hic adipisci placeat expedita eveniet dolor quaerat deleniti non.",
-      live: "www.chessexperiments.com",
+      image: chess,
+      desc: "An interactive chess platform that lets users test different strategies and analyze moves using the Stockfish engine. Includes real time feedback and a Chrome extension for in-browser play and analysis.",
+      live: "https://www.chessexperiments.com",
       stack:
         "HTML CSS React Typescript NodeJs Stockfish Docker Chrome-Extension ChromeAPI",
     },
     {
+      name: "Watch Netflix Together",
+      image: netflix,
+      desc: "A synchronized streaming app that allows multiple users to watch Netflix shows together in real time with over 70,000 downloads. Built with WebSockets for live chat and playback sync, ensuring a seamless shared viewing experience.",
+      stack: "HTML CSS React Express AWS ChromeAPI",
+      kind: "Company",
+      live: "https://watchnetflixtogether.com/",
+    },
+    {
       name: "Fake Socials",
-      desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum ab, et in temporibus ullam animi voluptas laudantium magnam eius blanditiis praesentium, hic adipisci placeat expedita eveniet dolor quaerat deleniti non.",
+      image: fake,
+      desc: "A mock social media platform where users can post, like, and interact in a simulated environment. Designed to mimic real-world social networks for UI/UX experimentation and backend testing.",
       github: "https://github.com/kxngollan/fake-socials-front",
       live: "www.fakesocials.com",
       stack:
         "HTML CSS React Next Typescript Express AWS Socket-IO PostgresSQL Docker",
     },
     {
-      name: "Watch Netflix Together",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex libero, quos esse tempora est eligendi, dolor architecto eum nostrum, iste velit suscipit? Repudiandae incidunt ea fugiat aperiam perferendis asperiores repellendus?",
-      stack: "HTML CSS React Express AWS SocketIO",
-      kind: "Company",
-      live: "https://watchnetflixtogether.com/",
-    },
-    {
       name: "Portfolio",
-      desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum ab, et in temporibus ullam animi voluptas laudantium magnam eius blanditiis praesentium, hic adipisci placeat expedita eveniet dolor quaerat deleniti non.",
+      image: portfolio,
+      desc: "My personal developer portfolio showcasing projects, skills, and experience. Built for performance and design clarity using React and Tailwind, and fully containerized with Docker for easy deployment.",
       github: "https://github.com/kxngollan/portfolio",
       live: "https://ollanmuza.com/",
       stack: "HTML Tailwind ReactJS Typescript Docker",
     },
     {
       name: "Catch Em All",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius maxime id eligendi explicabo quidem temporibus commodi eum quasi delectus, tenetur expedita corrupti reprehenderit, nulla accusamus, aliquam veniam impedit ad placeat.",
+      image: catchImg,
+      desc: "A Pokémon themed web game where players can discover and catch different Pokémon. This was fueled by my love of Pokémon Features an engaging interface, responsive design, and dynamic data rendering from the PokéAPI.",
       github: "https://github.com/kxngollan/Catch-em-all",
       live: "https://chic-gecko-a211b1.netlify.app/",
       stack: "Netlify HTML CSS React",
     },
     {
       name: "Fake Store",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis eligendi quaerat libero incidunt similique quos ducimus, exercitationem id, ratione adipisci enim itaque, nam repellendus. Repellendus ex veritatis magni ipsam sunt",
+      image: store,
+      desc: "An e-commerce simulation app that fetches live product data from APIs. Users can browse, view product details, and simulate purchases, built as a front-end practice for working with APIs and dynamic rendering.",
       github: "https://github.com/kxngollan/fake-store",
       live: "https://fake-store-red.vercel.app/",
-      stack: "HTML CSS React Vercel APIs ",
+      stack: "HTML CSS React Vercel APIs",
     },
     {
       name: "Etch A Sketch",
-      desc: " Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, nulla rerum excepturi ipsum sed, architecto enim qui dolore voluptate sit nemo doloremque cumque aperiam nesciunt earum dolor velit iure commodi.",
+      image: sketch,
+      desc: "A browser-based drawing app inspired by the classic Etch A Sketch toy. Users can draw using grid-based mechanics, clear the board, and customize drawing sizes with pure HTML, CSS, and Vanilla JS.",
       github: "https://github.com/kxngollan/etch-a-sketch-page",
       live: "https://kxngollan.github.io/etch-a-sketch-page/",
       stack: "HTML CSS VanillaJs",
     },
   ];
-  return (
-    <section className="w-full max-w-5xl">
-      {projects.map((p, i) => (
-        <article
-          key={i}
-          className={`mx-auto max-w-6xl  md:grid md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] md:items-center md:gap-14 mb-20 last:mb-0 ${
-            i % 2 == 1 ? "lg:flex lg:flex-row-reverse " : ""
-          }`}
-        >
-          <div
-            className={`relative mx-auto w-full max-w-xl overflow-hidden rounded-2xl shadow-2xl ${
-              !p?.image ? "dark:bg-white" : ""
-            }`}
-          >
-            <div className="aspect-4/3">
-              <Image
-                draggable={false}
-                src={p?.image ?? failedImage}
-                alt={p?.name}
-                className="h-full w-full object-cover"
-                fill
-              />
-            </div>
-          </div>
-          <div className="mt-10 rounded-2xl  px-8 py-10 shadow-2xl md:mt-0 dark:bg-[rgb(30,28,25)] bg-[rgb(227,214,195)]">
-            <div className="mb-6 flex justify-between text-xs tracking-[0.25em] uppercase dark:text-slate-400">
-              <span></span>
-              <span>{p.kind ?? "Personal Project"}</span>
-            </div>
 
-            <Link
-              href={p.github ?? p.live ?? ""}
-              className="text-3xl font-semibold md:text-4xl"
-            >
-              {p.name.trim()}
-            </Link>
-            <p className="mt-6 text-base leading-relaxed dark:text-slate-200">
-              {p.desc}
-            </p>
-            {p.stack && p.stack.length > 0 && (
-              <div className="mt-8 flex flex-wrap gap-3 text-sm">
-                {p.stack
-                  .trim()
-                  .split(" ")
-                  .map((t: string, i: number) => (
-                    <span
-                      key={i}
-                      className="rounded-full border border-slate-600/70 px-4 py-1 dark:text-slate-200"
-                    >
-                      {t}
-                    </span>
-                  ))}
-              </div>
-            )}
-            <div className="mt-8 flex items-center justify-end gap-5 text-2xl">
-              {p.github && (
-                <Link
-                  href={p.github}
-                  className="hover:text-[#ffa351]"
-                  target="_blank"
-                >
-                  <FaGithub className="cursor-pointer transition-transform hover:scale-110" />
-                </Link>
-              )}
-              {p.live && (
-                <Link
-                  href={p.live}
-                  className="hover:text-[#ffa351]"
-                  target="_blank"
-                >
-                  <FaGlobeAfrica className="cursor-pointer transition-transform hover:scale-110" />
-                </Link>
-              )}
-            </div>
-          </div>
-        </article>
-      ))}
-    </section>
+  return (
+    <div className="w-full max-w-5xl px-4 py-3 text-center sm:px-8">
+      <div className="grid grid-cols-1 gap-8">
+        <hr />
+        {projects.map((project, index) => (
+          <ProjectCard key={index} project={project} index={index} />
+        ))}
+      </div>
+    </div>
   );
 };
 
