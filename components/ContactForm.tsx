@@ -14,7 +14,7 @@ const Contact = () => {
   });
 
   const [sending, setSending] = useState(false);
-  const [error, setError] = useState(true);
+  const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
