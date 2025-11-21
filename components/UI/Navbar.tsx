@@ -26,7 +26,7 @@ const Header: FC = () => {
   }, []);
 
   const menuItems: MenuItem[] = [
-    { text: "home", href: "/" },
+    { text: "home", href: "#hero" },
     { text: "Tech Stack", href: "#technical-stack" },
     { text: "Experience", href: "#experience" },
     { text: "projects", href: "#projects" },
@@ -34,7 +34,7 @@ const Header: FC = () => {
   ];
 
   return (
-    <div
+    <nav
       className="
           fixed
           top-8
@@ -87,7 +87,7 @@ const Header: FC = () => {
           </Link>
         ))}
       </div>
-    </div>
+    </nav>
   );
 };
 
