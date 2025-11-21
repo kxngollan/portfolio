@@ -3,13 +3,14 @@ import Navbar from "@/components/UI/Navbar";
 import Footer from "@/components/UI/Footer";
 import StairTransition from "@/components/StairTransition";
 import PageTransition from "@/components/PageTransition";
+import icon from "@/public/icon.ico"
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Ollan Muza - Software Engineer",
   description: "A Fullstack Software Engineer",
   icons: {
-    icon : "/icon.ico"
+    icon
   }
 };
 
