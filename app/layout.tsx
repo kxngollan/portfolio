@@ -3,6 +3,8 @@ import Navbar from "@/components/UI/Navbar";
 import Footer from "@/components/UI/Footer";
 import StairTransition from "@/components/StairTransition";
 import PageTransition from "@/components/PageTransition";
+import FacingLaptop from "@/public/FacingLaptopSVG.svg";
+import Image from "next/image";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -45,6 +47,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <header className="hidden">
+          <Image
+            draggable={false}
+            priority
+            src={FacingLaptop}
+            alt="Facing laptop"
+            className="z-20 "
+          />
+          <h1>Fullstack Software Engineer</h1>
+        </header>
         <Navbar />
         <StairTransition />
         <PageTransition>{children}</PageTransition>
