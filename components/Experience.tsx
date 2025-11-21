@@ -97,7 +97,7 @@ const Experience: React.FC = () => {
       </aside>
       <section className="md:col-span-2">
         <Link href={displayedJob.link} target="_blank">
-          <header className="mb-6 flex items-center justify-between gap-4 hover:underline ">
+          <div className="mb-6 flex items-center justify-between gap-4 hover:underline ">
             <h1 className="text-2xl md:text-3xl font-semibold hover:underline">
               {displayedJob.title}{" "}
               <span className="text-[#ffa351] underline">
@@ -112,7 +112,7 @@ const Experience: React.FC = () => {
                 alt={`${displayedJob.employer} logo`}
               />
             </div>
-          </header>
+          </div>
         </Link>
         <div className="space-y-2 text-sm md:text-base">
           <div className="flex items-center gap-2">
