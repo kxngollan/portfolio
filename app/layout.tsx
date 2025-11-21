@@ -18,8 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <title>Ollan Muza - Sotware Engineer</title>
         <link rel="icon" href="/icon.ico" sizes="any" />
       </head>
+
       <body>
         <Navbar />
         <StairTransition />
