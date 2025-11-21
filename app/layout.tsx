@@ -6,8 +6,11 @@ import PageTransition from "@/components/PageTransition";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Ollan Muza",
-  description: "A Fullstack Software Developer",
+  title: "Ollan Muza - Software Engineer",
+  description: "A Fullstack Software Engineer",
+  icons: {
+    icon : "/icon.ico"
+  }
 };
 
 export default function RootLayout({
@@ -18,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <title>Ollan Muza - Sotware Engineer</title>
+        <title>Ollan Muza - Software Engineer</title>
         <link rel="icon" href="/icon.ico" sizes="any" />
       </head>
 
