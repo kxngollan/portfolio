@@ -3,12 +3,12 @@ import Navbar from "@/components/UI/Navbar";
 import Footer from "@/components/UI/Footer";
 import StairTransition from "@/components/StairTransition";
 import PageTransition from "@/components/PageTransition";
-import FacingLaptop from "@/public/FacingLaptopSVG.svg";
-import Image from "next/image";
 import "./globals.css";
 
+const siteUrl = "https://www.ollanmuza.com";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.ollanmuza.com"),
+  metadataBase: new URL(siteUrl),
   title: "Ollan Muza - Software Engineer",
   description: "A Fullstack Software Engineer",
   icons: {
@@ -16,16 +16,16 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "Ollan Muza –  Fullstack Software Engineer",
+    title: "Ollan Muza – Fullstack Software Engineer",
     description: "Fullstack Software Engineer",
-    url: "https://www.ollanmuza.com",
+    url: siteUrl,
     siteName: "Ollan Muza",
     images: [
       {
-        url: "/FacingLaptopSVG.svg",
-        width: 630,
+        url: "/og/ollan-muza-og.png",
+        width: 1200,
         height: 630,
-        alt: "Ollan Muza",
+        alt: "Ollan Muza - Fullstack Software Engineer",
       },
     ],
     type: "website",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Ollan Muza - Fullstack Software Engineer",
     description: "Fullstack Software Engineer.",
-    images: ["/FacingLaptopSVG.svg"],
+    images: ["/og/ollan-muza-og.png"],
   },
 };
 
@@ -47,16 +47,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <header className="hidden">
-          <Image
-            draggable={false}
-            priority
-            src={FacingLaptop}
-            alt="Facing laptop"
-            className="z-20 "
-          />
-          <h1>Fullstack Software Engineer</h1>
-        </header>
         <Navbar />
         <StairTransition />
         <PageTransition>{children}</PageTransition>
