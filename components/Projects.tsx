@@ -38,13 +38,22 @@ const Projects = () => {
       live: "https://watchnetflixtogether.com/",
     },
     {
+      name: "Fake Store",
+      image: store,
+      desc: "A fake e-commerce store app that fetches live product data from a postgres database. Users can browse, view product details, and simulate purchases via stripe, built to demonstrate my fullstack capabilities for working with API, databases and dynamic rendering.",
+      github: "https://github.com/kxngollan/fake-store",
+      live: "https://fake-store-red.vercel.app/",
+      stack:
+        "HTML CSS Tailwind Typescript Docker React Next Next-Auth Vercel APIs Postgres Stripe",
+    },
+    {
       name: "Fake Socials",
       image: fake,
       desc: "A mock social media platform where users can post, like, and interact in a simulated environment. Designed to mimic real-world social networks for UI/UX experimentation and backend testing.",
       github: "https://github.com/kxngollan/fake-socials-front",
       live: "www.fakesocials.com",
       stack:
-        "HTML CSS React Next Typescript Express AWS Socket-IO PostgresSQL Docker",
+        "HTML CSS React Next Typescript Express O-Auth AWS Socket-IO PostgresSQL Docker",
     },
     {
       name: "Portfolio",
@@ -61,14 +70,6 @@ const Projects = () => {
       github: "https://github.com/kxngollan/Catch-em-all",
       live: "https://chic-gecko-a211b1.netlify.app/",
       stack: "Netlify HTML CSS React",
-    },
-    {
-      name: "Fake Store",
-      image: store,
-      desc: "An e-commerce simulation app that fetches live product data from APIs. Users can browse, view product details, and simulate purchases, built as a front-end practice for working with APIs and dynamic rendering.",
-      github: "https://github.com/kxngollan/fake-store",
-      live: "https://fake-store-red.vercel.app/",
-      stack: "HTML CSS React Vercel APIs",
     },
     {
       name: "Etch A Sketch",
