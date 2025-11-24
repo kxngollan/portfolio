@@ -2,12 +2,10 @@
 import type { StaticImageData } from "next/image";
 import ProjectCard from "./ProjectsCard";
 import chess from "@/public/assets/projects/chess.jpeg";
-import catchImg from "@/public/assets/projects/catch.jpeg";
 import fake from "@/public/assets/projects/fake-socials.jpeg";
 import store from "@/public/assets/projects/fake-store.jpeg";
 import netflix from "@/public/assets/projects/watch-netflix.jpeg";
 import portfolio from "@/public/assets/projects/portfolio.jpeg";
-import sketch from "@/public/assets/projects/sketch.jpeg";
 
 const Projects = () => {
   type Project = {
@@ -46,15 +44,11 @@ const Projects = () => {
       stack:
         "HTML CSS Tailwind Typescript Docker React Next Next-Auth Vercel APIs Postgres Stripe",
     },
-    {
-      name: "Fake Socials",
-      image: fake,
-      desc: "A mock social media platform where users can post, like, and interact in a simulated environment. Designed to mimic real-world social networks for UI/UX experimentation and backend testing.",
-      github: "https://github.com/kxngollan/fake-socials-front",
-      live: "www.fakesocials.com",
-      stack:
-        "HTML CSS React Next Typescript Express O-Auth AWS Socket-IO PostgresSQL Docker",
-    },
+    // {
+    //   name:"Housing Market",
+    //   desc:"sd",
+    //   stack:"HTML CSS Tailwind Typescript PHP Docker Vue Laravel MySQL"
+    // },
     {
       name: "Portfolio",
       image: portfolio,
@@ -64,20 +58,13 @@ const Projects = () => {
       stack: "HTML Tailwind ReactJS Typescript Docker",
     },
     {
-      name: "Catch Em All",
-      image: catchImg,
-      desc: "A Pokémon themed web game where players can discover and catch different Pokémon. This was fueled by my love of Pokémon Features an engaging interface, responsive design, and dynamic data rendering from the PokéAPI.",
-      github: "https://github.com/kxngollan/Catch-em-all",
-      live: "https://chic-gecko-a211b1.netlify.app/",
-      stack: "Netlify HTML CSS React",
-    },
-    {
-      name: "Etch A Sketch",
-      image: sketch,
-      desc: "A browser-based drawing app inspired by the classic Etch A Sketch toy. Users can draw using grid-based mechanics, clear the board, and customize drawing sizes with pure HTML, CSS, and Vanilla JS.",
-      github: "https://github.com/kxngollan/etch-a-sketch-page",
-      live: "https://kxngollan.github.io/etch-a-sketch-page/",
-      stack: "HTML CSS VanillaJs",
+      name: "Fake Socials",
+      image: fake,
+      desc: "A mock social media platform where users can post, like, and interact in a simulated environment. Designed to mimic real-world social networks for UI/UX experimentation and backend testing.",
+      github: "https://github.com/kxngollan/fake-socials-front",
+      live: "www.fakesocials.com",
+      stack:
+        "HTML CSS React Next Typescript Express O-Auth AWS Socket-IO PostgresSQL Docker",
     },
   ];
 
