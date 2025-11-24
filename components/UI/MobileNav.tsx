@@ -59,7 +59,7 @@ const MobileNav = ({ show, change, menuItems, socialLinks }:{show:boolean, chang
         >
           {menuItems.map((link: MenuItem) => (
             <li key={link.href} className="list-none">
-              <Link href={link.href} className="text-xl">
+              <Link href={link.href} onClick={change} className="text-xl">
                 {link.text}
               </Link>
             </li>
