@@ -29,7 +29,8 @@ const Techstacks = () => {
     { name: "wordpress", duration: 1.5 },
     { name: "react", duration: 2 },
     { name: "nextjs", duration: 2 },
-    { name: "vuejs", duration: 1.5 },
+    { name: "vuejs", title:"vue", duration: 1.5 },
+    {name:"nuxtjs", title:"nuxt", duration:1.5},
     { name: "aws", duration: 1 },
     { name: "linux", duration: 2.5 },
   ];
