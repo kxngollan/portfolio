@@ -4,6 +4,7 @@ import Link from "next/link";
 import {
   FaGithub as GitHubIcon,
   FaGlobeAfrica as LaunchIcon,
+  FaPuzzlePiece as ExtensionIcon
 } from "react-icons/fa";
 import failedImage from "@/public/no-image.png";
 
@@ -15,6 +16,7 @@ type Project = {
   github?: string;
   live?: string;
   stack: string;
+  ext?:string;
 };
 
 const ProjectCard = ({
@@ -97,7 +99,7 @@ const ProjectCard = ({
               {project.stack
                 .trim()
                 .split(" ")
-                .map((tech:string, i:number) => (
+                .map((tech: string, i: number) => (
                   <li
                     key={i}
                     className="
@@ -134,6 +136,16 @@ const ProjectCard = ({
                   className="flex items-center hover:text-[#ffa351] transition-colors"
                 >
                   <LaunchIcon className="text-[1.25rem] sm:text-[1.5rem]" />
+                </Link>
+              )}
+              {project.ext && (
+                <Link
+                  href={project.ext}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center hover:text-[#ffa351] transition-colors"
+                >
+                  <ExtensionIcon className="text-[1.25rem] sm:text-[1.5rem]" />
                 </Link>
               )}
             </div>

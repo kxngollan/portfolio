@@ -17,6 +17,7 @@ const Projects = () => {
     desc: string;
     github?: string;
     live?: string;
+    ext?:string;
     stack: string;
   };
 
@@ -28,6 +29,7 @@ const Projects = () => {
       live: "https://www.chessexperiments.com",
       stack:
         "HTML CSS React Typescript NodeJs Stockfish Docker Chrome-Extension ChromeAPI",
+      ext: "https://chromewebstore.google.com/detail/chess-experiments/dhmflbggejcdphfndmomdnmikdngakce",
     },
     {
       name: "Watch Netflix Together",
@@ -36,6 +38,7 @@ const Projects = () => {
       stack: "HTML CSS React Express AWS ChromeAPI",
       kind: "Company",
       live: "https://watchnetflixtogether.com/",
+      ext: "https://chromewebstore.google.com/detail/watch-netflix-together/fdjglnlhapkoahdmanogpccpmmpnakje",
     },
     {
       name: "Fake Store",
