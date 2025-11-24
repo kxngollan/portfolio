@@ -4,8 +4,8 @@ import Link from "next/link";
 import {
   FaGithub as GitHubIcon,
   FaGlobeAfrica as LaunchIcon,
-  FaPuzzlePiece as ExtensionIcon
 } from "react-icons/fa";
+import { IoExtensionPuzzle as ExtensionIcon } from "react-icons/io5";
 import failedImage from "@/public/no-image.png";
 
 type Project = {
@@ -143,7 +143,7 @@ const ProjectCard = ({
                   href={project.ext}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center hover:text-[#ffa351] transition-colors"
+                  className={`"flex items-center hover:text-[#ffa351] transition-colors" ${project.live ? "ml-3":""}`}
                 >
                   <ExtensionIcon className="text-[1.25rem] sm:text-[1.5rem]" />
                 </Link>
