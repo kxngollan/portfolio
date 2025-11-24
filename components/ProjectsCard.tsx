@@ -97,7 +97,7 @@ const ProjectCard = ({
               {project.stack
                 .trim()
                 .split(" ")
-                .map((tech, i) => (
+                .map((tech:string, i:number) => (
                   <li
                     key={i}
                     className="

@@ -1,11 +1,13 @@
 "use client";
 import type { StaticImageData } from "next/image";
 import ProjectCard from "./ProjectsCard";
-import chess from "@/public/assets/projects/chess.jpeg";
-import fake from "@/public/assets/projects/fake-socials.jpeg";
-import store from "@/public/assets/projects/fake-store.jpeg";
-import netflix from "@/public/assets/projects/watch-netflix.jpeg";
-import portfolio from "@/public/assets/projects/portfolio.jpeg";
+import chess from "@/public/projects/chess.jpeg";
+import fake from "@/public/projects/fake-socials.jpeg";
+import store from "@/public/projects/fake-store.jpeg";
+import netflix from "@/public/projects/watch-netflix.jpeg";
+import portfolio from "@/public/projects/portfolio.jpeg";
+import house from "@/public/projects/house.jpeg";
+
 
 const Projects = () => {
   type Project = {
@@ -44,11 +46,14 @@ const Projects = () => {
       stack:
         "HTML CSS Tailwind Typescript Docker React Next Next-Auth Vercel APIs Postgres Stripe",
     },
-    // {
-    //   name:"Housing Market",
-    //   desc:"sd",
-    //   stack:"HTML CSS Tailwind Typescript PHP Docker Vue Laravel MySQL"
-    // },
+    {
+      name: "Real Estate Listing Platform",
+      image: house,
+      desc: "A fullstack real estate marketplace that allows users to browse, search, and filter housing listings with an intuitive, modern UI. Built with Vue, TypeScript, Inertia, and Tailwind on a Laravel + MySQL backend, the platform includes authenticated listing management, image uploads, and real-time search filtering. With a fully containerised Docker MySQL database for seamless local development and deployment.",
+      stack:
+        "HTML CSS Vue Tailwind Node Inertia PHP LaravelMySQL Docker Composer",
+      github: "https://github.com/kxngollan/housing-listing",
+    },
     {
       name: "Portfolio",
       image: portfolio,
