@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GoogleTagManager } from "@next/third-parties/google";
 import Navbar from "@/components/UI/Navbar";
 import Footer from "@/components/UI/Footer";
 import StairTransition from "@/components/StairTransition";
@@ -46,6 +47,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <GoogleTagManager gtmId="GTM-T6SNKZQH" />
       <body>
         <Navbar />
         <StairTransition />
