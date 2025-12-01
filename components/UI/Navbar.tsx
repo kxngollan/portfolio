@@ -1,5 +1,6 @@
 "use client";
 import { FC, useEffect, useState, ReactElement } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { TiThMenu } from "react-icons/ti";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
@@ -21,6 +22,11 @@ type socials = {
 const Header: FC = () => {
   const [opacity, setOpacity] = useState<number>(1);
   const [show, setshow] = useState<boolean>(false);
+  const path = usePathname();
+
+  useEffect(() => {
+    console.log(path);
+  }, [path]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -37,25 +43,25 @@ const Header: FC = () => {
     };
   }, []);
 
-  useEffect(()=>{
-if (show) {
-  document.body.style.height = "100vh";
-  document.body.style.overflow = "hidden";
-} else {
-  document.body.style.height = "";
-  document.body.style.overflow = "";
-}
-
-  },[show])
-
-
+  useEffect(() => {
+    if (show) {
+      document.body.style.height = "100vh";
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.height = "";
+      document.body.style.overflow = "";
+    }
+  }, [show]);
 
   const menuItems: MenuItem[] = [
-    { text: "home", href: "#hero" },
-    { text: "Tech Stack", href: "#technical-stack" },
-    { text: "Experience", href: "#experience" },
-    { text: "projects", href: "#projects" },
-    { text: "contact", href: "#contact" },
+    { text: "home", href: path === "/" ? "#hero" : "/#hero" },
+    {
+      text: "Tech Stack",
+      href: path === "/" ? "#technical-stack" : "/#technical-stack",
+    },
+    { text: "Experience", href: path === "/" ? "#experience" : "/#experience" },
+    { text: "projects", href: path === "/" ? "#projects" : "/#projects" },
+    { text: "contact", href: path === "/" ? "#contact" : "/#contact" },
   ];
 
   const socialLinks: socials[] = [
@@ -142,7 +148,12 @@ if (show) {
           Ollan M.
         </div>
       </nav>
-     <MobileNav show={show} change={()=>setshow(false)} menuItems={menuItems} socialLinks={socialLinks}/>
+      <MobileNav
+        show={show}
+        change={() => setshow(false)}
+        menuItems={menuItems}
+        socialLinks={socialLinks}
+      />
     </>
   );
 };
