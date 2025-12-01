@@ -24,9 +24,7 @@ const Header: FC = () => {
   const [show, setshow] = useState<boolean>(false);
   const path = usePathname();
 
-  useEffect(() => {
-    console.log(path);
-  }, [path]);
+
 
   useEffect(() => {
     if (typeof window === "undefined") return;
