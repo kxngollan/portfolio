@@ -21,15 +21,15 @@ type socials = {
 
 const Header: FC = () => {
   const [opacity, setOpacity] = useState<number>(1);
+  const [lock, setLock] = useState<boolean>(true);
   const [show, setshow] = useState<boolean>(false);
   const path = usePathname();
-
-
 
   useEffect(() => {
     if (typeof window === "undefined") return;
 
     const handleScroll = () => {
+      if (lock) return;
       const scrollTop = window.scrollY;
       const newOpacity = scrollTop > 50 ? 0.5 : 1;
       setOpacity(newOpacity);
@@ -39,7 +39,7 @@ const Header: FC = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [lock]);
 
   useEffect(() => {
     if (show) {
@@ -50,6 +50,17 @@ const Header: FC = () => {
       document.body.style.overflow = "";
     }
   }, [show]);
+
+  const lockOpacity = () => {
+    setLock(true);
+    setOpacity(1);
+  };
+
+  const unlockOpacity = () => {
+    setLock(false);
+    const sc = typeof window !== "undefined" ? window.scrollY : 0;
+    setOpacity(sc > 50 ? 0.5 : 1);
+  };
 
   const menuItems: MenuItem[] = [
     { text: "home", href: path === "/" ? "#hero" : "/#hero" },
@@ -106,11 +117,8 @@ const Header: FC = () => {
         style={{
           opacity,
         }}
-        onMouseEnter={() => setOpacity(1)}
-        onMouseLeave={() => {
-          const sc = typeof window !== "undefined" ? window.scrollY : 0;
-          setOpacity(sc > 50 ? 0.5 : 1);
-        }}
+        onMouseEnter={lockOpacity}
+        onMouseLeave={unlockOpacity}
       >
         <div
           className=" md:flex
