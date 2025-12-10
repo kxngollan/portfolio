@@ -1,9 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 import Link from "next/link";
 import { FiDownload } from "react-icons/fi";
+
 import Photo from "@/components/Photo";
 import Stats from "@/components/Stats";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaLocationDot } from "react-icons/fa6";
 
 const socials = [
   {
@@ -22,11 +24,17 @@ const Home = () => {
       <div className="container mx-auto h-full">
         <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-0 xl:pb-16">
           {/* Text */}
-          <div className="text-center xl:text-left order-2 xl:order-0">
-            <span className="text-xl">Software Developer</span>
+          <div className="text-center xl:text-left order-2 xl:order-0 ">
+            <span className="text-xl text-[#ffa351]">Software Engineer</span>
             <h1 className="h1 mt-1 mb-3">
-              Hello I'm <br /> <span className="text-accent">Ollan Muza</span>
+              Hello I'm{" "}
+              <span className="text-accent font-black text-[#ffa351]">
+                Ollan Muza
+              </span>
             </h1>
+            <h2 className="h2 mt-1 mb-3 flex gap-1 items-center text-[#ffa351] font-black">
+              <FaLocationDot /> <span>From United Kingdom</span>
+            </h2>
             <p className="max-w-[500px] mb-5">
               I build modern web apps with thoughtful design, clean code, and a
               love for solving real world problems crafting digital experiences
