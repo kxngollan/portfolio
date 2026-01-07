@@ -11,9 +11,7 @@ type TechStacks = {
 type Variant = "light" | "dark" | "grayscale" | undefined;
 
 const Techstacks = () => {
-  const theme: Variant =
-    (localStorage.getItem("theme") as Variant) ?? undefined;
-  const [mode, setMode] = useState<Variant | undefined>(theme ?? "dark");
+  const [mode, setMode] = useState<Variant | undefined>(undefined);
 
   const techstack: TechStacks[] = [
     { name: "html5", title: "html", duration: 2.5 },
@@ -32,7 +30,7 @@ const Techstacks = () => {
     { name: "laravel", duration: 1 },
     { name: "php", duration: 1.5 },
     { name: "java", duration: 1 },
-    { name: "spring", title: "Spring Boot", duration: 1 },
+    { name: "spring", title: "Spring", duration: 1 },
     { name: "wordpress", duration: 1.5 },
     { name: "react", duration: 2 },
     { name: "nextjs", title: "NextJs", duration: 2 },

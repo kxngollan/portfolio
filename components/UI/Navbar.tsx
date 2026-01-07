@@ -21,16 +21,17 @@ type socials = {
 
 const Header: FC = () => {
   const [opacity, setOpacity] = useState<number>(1);
-  const [lock, setLock] = useState<boolean>(true);
+  const [lock, setLock] = useState<boolean>(false);
   const [show, setshow] = useState<boolean>(false);
   const path = usePathname();
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    if (typeof window === "undefined") return console.log("failed");
 
     const handleScroll = () => {
       if (lock) return;
       const scrollTop = window.scrollY;
+      console.log(scrollTop);
       const newOpacity = scrollTop > 50 ? 0.5 : 1;
       setOpacity(newOpacity);
     };
