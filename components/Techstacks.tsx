@@ -3,14 +3,17 @@
 import { useEffect, useState } from "react";
 import StackIcon from "tech-stack-icons";
 
+type TechStacks = {
+  name: string;
+  duration: number;
+  title?: string;
+};
+type Variant = "light" | "dark" | "grayscale" | undefined;
+
 const Techstacks = () => {
-  const theme = localStorage.getItem("theme") ?? null;
-  const [mode, setMode] = useState<string>(theme ?? "dark");
-  type TechStacks = {
-    name: string;
-    duration: number;
-    title?: string;
-  };
+  const theme: Variant =
+    (localStorage.getItem("theme") as Variant) ?? undefined;
+  const [mode, setMode] = useState<Variant | undefined>(theme ?? "dark");
 
   const techstack: TechStacks[] = [
     { name: "html5", title: "html", duration: 2.5 },
