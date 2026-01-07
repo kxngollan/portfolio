@@ -5,8 +5,6 @@ import "./Footer.css";
 
 const Footer = () => {
   const year: number = new Date().getFullYear();
-
-  console.log(year);
   return (
     <>
       <footer className="site-footer">

@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import StackIcon from "tech-stack-icons";
 
 const Techstacks = () => {
@@ -26,11 +25,13 @@ const Techstacks = () => {
     { name: "python", duration: 3 },
     { name: "laravel", duration: 1 },
     { name: "php", duration: 1.5 },
+    { name: "java", duration: 1 },
+    { name: "spring", title: "Spring Boot", duration: 1 },
     { name: "wordpress", duration: 1.5 },
     { name: "react", duration: 2 },
     { name: "nextjs", duration: 2 },
-    { name: "vuejs", title:"vue", duration: 1.5 },
-    {name:"nuxtjs", title:"nuxt", duration:1.5},
+    { name: "vuejs", title: "vue", duration: 1.5 },
+    { name: "nuxtjs", title: "nuxt", duration: 1.5 },
     { name: "aws", duration: 1 },
     { name: "linux", duration: 2.5 },
   ];
@@ -52,7 +53,7 @@ const Techstacks = () => {
           >
             <div className="w-10 h-10 flex items-center justify-center max-[600px]:w-[30px] max-[600px]:h-[30px]">
               <StackIcon
-                name={item.name}
+                name={item.name.toLowerCase()}
                 className="w-full h-full object-contain"
               />
             </div>
