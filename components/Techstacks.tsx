@@ -16,26 +16,26 @@ const Techstacks = () => {
   const techstack: TechStacks[] = [
     { name: "html5", title: "html", duration: 2.5 },
     { name: "css3", title: "css", duration: 2.5 },
+    { name: "python", duration: 3 },
     { name: "nodejs", title: "node", duration: 2.5 },
-    { name: "typescript", title: "typescript", duration: 2 },
+    { name: "typescript", duration: 2 },
     { name: "react", duration: 2 },
-    { name: "nextjs", title: "Next", duration: 2 },
+    { name: "nextjs", duration: 2 },
     { name: "vuejs", title: "vue", duration: 1.5 },
     { name: "nuxtjs", title: "nuxt", duration: 1.5 },
     { name: "bootstrap5", title: "bootstrap", duration: 2.5 },
     { name: "tailwindcss", title: "tailwind", duration: 1.5 },
-    { name: "python", duration: 3 },
-    { name: "java", duration: 1 },
-    { name: "spring", duration: 1 },
     { name: "php", duration: 1.5 },
     { name: "laravel", duration: 1 },
     { name: "wordpress", duration: 1.5 },
+    { name: "java", duration: 1 },
+    { name: "spring", title: "Spring", duration: 1 },
     { name: "mysql", title: "mysql", duration: 2 },
     { name: "postgresql", title: "postgres", duration: 2 },
     { name: "mongodb", duration: 2 },
     { name: "postman", title: "postman", duration: 2 },
     { name: "docker", duration: 1.5 },
-    { name: "aws", duration: 1 },
+    { name: "aws", duration: 1.5 },
     { name: "linux", duration: 2.5 },
   ];
 
@@ -76,26 +76,29 @@ const Techstacks = () => {
       </h4>
 
       <div className="flex flex-wrap justify-center gap-8">
-        {techstack.map((item: TechStacks, index: number) => (
-          <div
-            key={index}
-            className="flex flex-col justify-center items-center w-[120px] h-[120px] dark:bg-[rgb(30,28,25)] bg-[rgb(227,214,195)] p-6 rounded-lg transition-transform duration-300 ease-in-out shadow-none hover:-translate-y-2 hover:shadow-[0_10px_20px_rgba(0,0,0,0.2)] max-[600px]:w-[100px] max-[600px]:h-[100px] max-[600px]:p-2"
-          >
-            <div className="w-10 h-10 flex items-center justify-center max-[600px]:w-[30px] max-[600px]:h-[30px]">
-              <StackIcon
-                name={item.name.toLowerCase()}
-                variant={mode}
-                className="w-full h-full object-contain"
-              />
+        {techstack.map((item: TechStacks, index: number) => {
+          console.log(item.name);
+          return (
+            <div
+              key={index}
+              className="flex flex-col justify-center items-center w-[120px] h-[120px] dark:bg-[rgb(30,28,25)] bg-[rgb(227,214,195)] p-6 rounded-lg transition-transform duration-300 ease-in-out shadow-none hover:-translate-y-2 hover:shadow-[0_10px_20px_rgba(0,0,0,0.2)] max-[600px]:w-[100px] max-[600px]:h-[100px] max-[600px]:p-2"
+            >
+              <div className="w-10 h-10 flex items-center justify-center max-[600px]:w-[30px] max-[600px]:h-[30px]">
+                <StackIcon
+                  name={item.name.toLowerCase()}
+                  variant={mode}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div className=" text-base mt-2 font-bold uppercase ">
+                {item.title ?? item.name}
+              </div>
+              <div>
+                {item.duration} {item.duration <= 1 ? "year" : "years"}
+              </div>
             </div>
-            <div className=" text-base mt-2 font-bold uppercase ">
-              {item.title ?? item.name}
-            </div>
-            <div>
-              {item.duration} {item.duration <= 1 ? "year" : "years"}
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
