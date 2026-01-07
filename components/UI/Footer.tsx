@@ -4,6 +4,9 @@ import Link from "next/link";
 import "./Footer.css";
 
 const Footer = () => {
+  const year: number = new Date().getFullYear();
+
+  console.log(year);
   return (
     <>
       <footer className="site-footer">
@@ -82,6 +85,8 @@ const Footer = () => {
             {" "}
             Ollan Muza
           </Link>
+          <br />
+          <span> &#169; {year} </span>
         </p>
       </footer>
     </>
