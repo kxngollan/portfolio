@@ -45,7 +45,7 @@ const Projects = () => {
       image: store,
       desc: "A fake e-commerce store app that fetches live product data from a postgres database. Users can browse, view product details, and simulate purchases via stripe, built to demonstrate my fullstack capabilities for working with API, databases and dynamic rendering.",
       github: "https://github.com/kxngollan/fake-store",
-      live: "https://fake-store-red.vercel.app/",
+      live: "https://fake-store-alpha-ten.vercel.app/",
       stack:
         "HTML CSS Tailwind Typescript Docker React Next Next-Auth Vercel APIs Postgres Stripe",
     },
