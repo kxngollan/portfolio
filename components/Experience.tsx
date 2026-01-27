@@ -26,7 +26,7 @@ const jobExp: exp[] = [
     image: pepsi,
     employer: "PepsiCo",
     link: "https://www.linkedin.com/company/pepsico/",
-    title: "Manufacturing/Maintenance Engineer",
+    title: "Junior Engineer",
     duration: "Jan 2025 - Present",
     location: "Leicester, UK",
     responsibilities: [
@@ -53,8 +53,13 @@ const jobExp: exp[] = [
     employer: "AsideOfCode",
     link: "https://asideofcode.com/",
     title: "Fullstack Software developer",
-    location: "Remote, UK",
+    location: "London Remote, UK",
     duration: "May 2023 – Jul 2024",
+    responsibilities: [
+      "Assisted in managing project schedules and contributing to the successful completion of +7 projects",
+      "Monitoring project progress and updating documentation to ensure accuracy and compliance.",
+      "Coordinated with vendors and third party contractors, fostering strong professional relationship",
+    ],
   },
 ];
 
