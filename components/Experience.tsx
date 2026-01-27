@@ -71,7 +71,7 @@ const Experience: React.FC = () => {
 
   return (
     <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-14">
-      <aside className="h-fit md:col-span-1 border-l pl-6 space-y-8">
+      <aside className="h-fit cursor-pointer md:col-span-1 border-l pl-6 space-y-8">
         {jobExp.map((company: exp, i: number) => {
           return (
             <div
