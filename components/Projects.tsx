@@ -54,7 +54,7 @@ const Projects = () => {
       image: house,
       desc: "A fullstack real estate marketplace that allows users to browse, search, and filter housing listings with an intuitive, modern UI. Built with Vue, TypeScript, Inertia, and Tailwind on a Laravel + MySQL backend, the platform includes authenticated listing management, image uploads, and real-time search filtering. With a fully containerised Docker MySQL database for seamless local development and deployment.",
       stack:
-        "HTML CSS Vue Tailwind Node Inertia PHP LaravelMySQL Docker Composer",
+        "HTML CSS Vue Tailwind Node Inertia PHP Laravel MySQL Docker Composer",
       github: "https://github.com/kxngollan/housing-listing",
     },
     {
