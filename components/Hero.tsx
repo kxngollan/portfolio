@@ -1,11 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
 import Link from "next/link";
-import { FiDownload } from "react-icons/fi";
-
 import Photo from "@/components/Photo";
 import Stats from "@/components/Stats";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
+import { FiDownload } from "react-icons/fi";
 
 const socials = [
   {
@@ -15,6 +14,10 @@ const socials = [
   {
     icon: <FaLinkedin />,
     url: "https://www.linkedin.com/in/ollan-m/",
+  },
+  {
+    icon: <FaInstagram />,
+    url: "https://www.instagram.com/ollandagreat/",
   },
 ];
 

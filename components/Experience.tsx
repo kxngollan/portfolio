@@ -26,7 +26,7 @@ const jobExp: exp[] = [
     image: pepsi,
     employer: "PepsiCo",
     link: "https://www.linkedin.com/company/pepsico/",
-    title: "Manufacturing/Maintenance Engineer",
+    title: "Junior Engineer",
     duration: "Jan 2025 - Present",
     location: "Leicester, UK",
     responsibilities: [
@@ -53,8 +53,13 @@ const jobExp: exp[] = [
     employer: "AsideOfCode",
     link: "https://asideofcode.com/",
     title: "Fullstack Software developer",
-    location: "Remote, UK",
+    location: "London Remote, UK",
     duration: "May 2023 – Jul 2024",
+    responsibilities: [
+      "Assisted in managing project schedules and contributing to the successful completion of +7 projects",
+      "Monitoring project progress and updating documentation to ensure accuracy and compliance.",
+      "Coordinated with vendors and third party contractors, fostering strong professional relationship",
+    ],
   },
 ];
 
@@ -66,7 +71,7 @@ const Experience: React.FC = () => {
 
   return (
     <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-14">
-      <aside className="h-fit md:col-span-1 border-l pl-6 space-y-8">
+      <aside className="h-fit cursor-pointer md:col-span-1 border-l pl-6 space-y-8">
         {jobExp.map((company: exp, i: number) => {
           return (
             <div
