@@ -26,7 +26,7 @@ const jobExp: exp[] = [
     image: pepsi,
     employer: "PepsiCo",
     link: "https://www.linkedin.com/company/pepsico/",
-    title: "Junior Engineer",
+    title: "Full stack Engineer",
     duration: "Jan 2025 - Present",
     location: "Leicester, UK",
     responsibilities: [
@@ -65,6 +65,7 @@ const jobExp: exp[] = [
 
 const Experience: React.FC = () => {
   const [active, setActive] = useState<number>(0);
+  const [hovered, setHovered] = useState<boolean | null>(null);
   const displayedJob = useMemo(() => {
     return jobExp[active];
   }, [active]);
@@ -102,10 +103,16 @@ const Experience: React.FC = () => {
       </aside>
       <section className="md:col-span-2">
         <Link href={displayedJob.link} target="_blank">
-          <div className="mb-6 flex items-center justify-between gap-4 hover:underline ">
-            <h1 className="text-2xl md:text-3xl font-semibold hover:underline">
+          <div
+            className="mb-6 flex items-center justify-between gap-4 "
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+          >
+            <h1
+              className={`text-2xl md:text-3xl font-semibold ${hovered ? "underline" : ""}`}
+            >
               {displayedJob.title}{" "}
-              <span className="text-[#ffa351] underline">
+              <span className={`text-[#ffa351] ${hovered ? "underline" : ""}`}>
                 @ {displayedJob.employer}
               </span>
             </h1>
