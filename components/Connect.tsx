@@ -5,14 +5,26 @@ import { IoReaderOutline } from "react-icons/io5";
 
 const Connect: React.FC = () => {
   return (
-    <div>
-      <Link href="https://github.com/kxngollan" target="_blank">
+    <div className="flex gap-4 items-center">
+      <Link
+        href="https://github.com/kxngollan"
+        target="_blank"
+        className="text-xl hover:text-[#ffa351] dark:hover:text-[#ffa351] transition-colors dark:text-white"
+      >
         <FaGithub />
       </Link>
-      <Link href="https://www.linkedin.com/in/ollan-m" target="_blank">
+      <Link
+        href="https://www.linkedin.com/in/ollan-m"
+        target="_blank"
+        className="text-xl hover:text-[#ffa351] dark:hover:text-[#ffa351] transition-colors dark:text-white"
+      >
         <FaLinkedin />
       </Link>
-      <Link href="/cv/resume.pdf" download={true}>
+      <Link
+        href="/cv/resume.pdf"
+        download={true}
+        className="text-xl hover:text-[#ffa351] dark:hover:text-[#ffa351] transition-colors dark:text-white"
+      >
         <IoReaderOutline />
       </Link>
     </div>

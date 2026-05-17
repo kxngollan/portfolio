@@ -8,7 +8,6 @@ import netflix from "@/public/projects/watch-netflix.jpeg";
 import portfolio from "@/public/projects/portfolio.jpeg";
 import house from "@/public/projects/house.jpeg";
 
-
 const Projects = () => {
   type Project = {
     name: string;
@@ -17,7 +16,7 @@ const Projects = () => {
     desc: string;
     github?: string;
     live?: string;
-    ext?:string;
+    ext?: string;
     stack: string;
   };
 
@@ -77,9 +76,9 @@ const Projects = () => {
   ];
 
   return (
-    <div className="w-full max-w-5xl px-4 py-3 text-center sm:px-8">
-      <div className="grid grid-cols-1 gap-8">
-        <hr />
+    <div className="w-full max-w-5xl px-4 py-3 text-center sm:px-8 dark:bg-[#0a0a0a]">
+      <div className="grid grid-cols-1 gap-8 dark:divide-slate-700">
+        <hr className="dark:border-slate-700" />
         {projects.map((project, index) => (
           <ProjectCard key={index} project={project} index={index} />
         ))}

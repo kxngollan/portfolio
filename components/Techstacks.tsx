@@ -69,15 +69,14 @@ const Techstacks = () => {
   return (
     <section
       id="technical-stack"
-      className="w-full max-w-5xl px-8 py-8 text-center max-[600px]:px-0"
+      className="w-full max-w-5xl px-8 py-8 text-center max-[600px]:px-0 dark:bg-[#0a0a0a]"
     >
-      <h4 className="text-[#64FFDB] mb-8 flex items-center relative my-2.5 w-full whitespace-nowrap text-[clamp(1.5rem,5vw,2.5rem)] font-semibold">
-        <span className="mr-2 text-[#f6f7f8] font-mono text-[clamp(16px,3vw,20px)] font-normal"></span>
+      <h4 className="text-[#64FFDB] dark:text-[#64FFDB] mb-8 flex items-center relative my-2.5 w-full whitespace-nowrap text-[clamp(1.5rem,5vw,2.5rem)] font-semibold">
+        <span className="mr-2 text-[#f6f7f8] dark:text-[#f6f7f8] font-mono text-[clamp(16px,3vw,20px)] font-normal"></span>
       </h4>
 
       <div className="flex flex-wrap justify-center gap-8">
         {techstack.map((item: TechStacks, index: number) => {
-          console.log(item.name);
           return (
             <div
               key={index}
@@ -90,10 +89,10 @@ const Techstacks = () => {
                   className="w-full h-full object-contain"
                 />
               </div>
-              <div className=" text-base mt-2 font-bold uppercase ">
+              <div className="text-base mt-2 font-bold uppercase dark:text-white">
                 {item.title ?? item.name}
               </div>
-              <div>
+              <div className="dark:text-[#ededed]">
                 {item.duration} {item.duration <= 1 ? "year" : "years"}
               </div>
             </div>

@@ -72,12 +72,12 @@ const Experience: React.FC = () => {
 
   return (
     <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-14">
-      <aside className="h-fit cursor-pointer md:col-span-1 border-l pl-6 space-y-8">
+      <aside className="h-fit cursor-pointer md:col-span-1 border-l dark:border-slate-600 pl-6 space-y-8">
         {jobExp.map((company: exp, i: number) => {
           return (
             <div
-              className={`flex items-center px-2 py-4  ${
-                active === i ? "bg-[#ffa351] rounded-2xl" : ""
+              className={`flex items-center px-2 py-4 transition-all duration-200 ${
+                active === i ? "bg-[#ffa351] dark:bg-[#ffa351] rounded-2xl" : ""
               }`}
               key={i}
               onClick={() => setActive(i)}
@@ -91,8 +91,10 @@ const Experience: React.FC = () => {
                 />
               </div>
               <span
-                className={`text-lg font-semibold tracking-[0.18em] pl-2 ${
-                  active === i ? " text-[[#ffa351]" : ""
+                className={`text-lg font-semibold tracking-[0.18em] pl-2 dark:text-white ${
+                  active === i
+                    ? " text-white dark:text-white"
+                    : "dark:text-[#ededed]"
                 }`}
               >
                 {company.employer}
@@ -109,10 +111,12 @@ const Experience: React.FC = () => {
             onMouseLeave={() => setHovered(false)}
           >
             <h1
-              className={`text-2xl md:text-3xl font-semibold ${hovered ? "underline" : ""}`}
+              className={`text-2xl md:text-3xl font-semibold dark:text-white ${hovered ? "underline" : ""}`}
             >
               {displayedJob.title}{" "}
-              <span className={`text-[#ffa351] ${hovered ? "underline" : ""}`}>
+              <span
+                className={`text-[#ffa351] dark:text-[#ffa351] ${hovered ? "underline" : ""}`}
+              >
                 @ {displayedJob.employer}
               </span>
             </h1>
@@ -126,7 +130,7 @@ const Experience: React.FC = () => {
             </div>
           </div>
         </Link>
-        <div className="space-y-2 text-sm md:text-base">
+        <div className="space-y-2 text-sm md:text-base dark:text-[#ededed]">
           <div className="flex items-center gap-2">
             <FaRegCalendar />
             <span>{displayedJob.duration}</span>
@@ -137,7 +141,7 @@ const Experience: React.FC = () => {
           </div>
         </div>
         {displayedJob.responsibilities ? (
-          <ul className="mt-6 space-y-3 text-sm md:text-base leading-relaxed list-disc list-outside ml-5">
+          <ul className="mt-6 space-y-3 text-sm md:text-base leading-relaxed list-disc list-outside ml-5 dark:text-[#ededed]">
             {displayedJob.responsibilities.map((r: string, i: number) => {
               return <li key={i}>{r}</li>;
             })}

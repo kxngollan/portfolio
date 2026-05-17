@@ -15,11 +15,25 @@
   margin-top: 20px;
 }
 
+.dark .site-footer {
+  background-color: #0a0a0a;
+  border-top-color: #1a1a2e;
+}
+
 .site-footer a {
   line-height: 24px;
+  transition: color 0.3s ease;
+}
+
+.dark .site-footer a {
+  color: #ededed;
 }
 
 .site-footer a:hover {
+  color: #ffa351;
+}
+
+.dark .site-footer a:hover {
   color: #ffa351;
 }
 
@@ -27,6 +41,11 @@
   text-align: center;
   margin: auto;
   padding: 20px 30px 10px 30px;
+  color: inherit;
+}
+
+.dark .site-footer p {
+  color: #ededed;
 }
 
 .footer-main {
@@ -63,6 +82,11 @@
   line-height: 29px;
   font-size: 18px;
   letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.dark .footer-main section h2 {
+  color: #ffa351;
 }
 
 @media (min-width: 600px) {

@@ -62,15 +62,15 @@ const ProjectCard = ({
           <div
             className={`flex flex-col h-[50px] items-center mb-5 lg:mb-0 ${alignSide}`}
           >
-            <p className="m-0 text-[0.75rem] uppercase tracking-wide ">
+            <p className="m-0 text-[0.75rem] uppercase tracking-wide dark:text-[#8892b0]">
               {project.kind ?? "Personal Project"}
             </p>
-            <h3 className="m-0 mt-1 mb-2 text-xl lg:text-[1.35rem] font-semibold">
+            <h3 className="m-0 mt-1 mb-2 text-xl lg:text-[1.35rem] font-semibold dark:text-white">
               <Link
                 href={project.github ?? ""}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="no-underline  hover:underline"
+                className="no-underline hover:underline dark:text-white hover:text-[#ffa351] dark:hover:text-[#ffa351]"
               >
                 {project.name}
               </Link>
@@ -80,13 +80,12 @@ const ProjectCard = ({
             className="
             flex rounded-md p-5
             lg:dark:bg-[rgb(30,28,25)] lg:bg-[rgb(227,214,195)]
-          md:p-5 sm:p-3"
+          md:p-5 sm:p-3 dark:text-[#ededed]"
           >
-            <p className="m-0 text-[0.9rem] md:text-base lg:text-[1.1rem]">
+            <p className="m-0 text-[0.9rem] md:text-base lg:text-[1.1rem] dark:text-[#ededed]">
               {project.desc}
             </p>
           </div>
-
           <div className={`flex flex-col mt-4 self-center ${alignSelf}`}>
             <ul
               className="
@@ -103,9 +102,9 @@ const ProjectCard = ({
                   <li
                     key={i}
                     className="
-                rounded-full border border-slate-600/70 px-4 py-1
+                rounded-full border border-slate-600/70 dark:border-slate-500 px-4 py-1
                   text-[0.75rem] sm:text-[0.8rem] md:text-[0.85rem]
-                  text-[#8892b0]
+                  text-[#8892b0] dark:text-[#8892b0]
                 "
                   >
                     {tech}
@@ -123,7 +122,7 @@ const ProjectCard = ({
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className=" mr-3 flex hover:text-[#ffa351] items-center transition-colors"
+                  className=" mr-3 flex hover:text-[#ffa351] dark:hover:text-[#ffa351] items-center transition-colors dark:text-white"
                 >
                   <GitHubIcon className="text-[1.25rem] sm:text-[1.5rem]" />
                 </Link>
@@ -133,7 +132,7 @@ const ProjectCard = ({
                   href={project.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center hover:text-[#ffa351] transition-colors"
+                  className="flex items-center hover:text-[#ffa351] dark:hover:text-[#ffa351] transition-colors dark:text-white"
                 >
                   <LaunchIcon className="text-[1.25rem] sm:text-[1.5rem]" />
                 </Link>
@@ -143,7 +142,7 @@ const ProjectCard = ({
                   href={project.ext}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`"flex items-center hover:text-[#ffa351] transition-colors" ${project.live ? "ml-3":""}`}
+                  className={`flex items-center hover:text-[#ffa351] dark:hover:text-[#ffa351] transition-colors dark:text-white ${project.live ? "ml-3":""}`}
                 >
                   <ExtensionIcon className="text-[1.25rem] sm:text-[1.5rem]" />
                 </Link>

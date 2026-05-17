@@ -26,12 +26,11 @@ const Header: FC = () => {
   const path = usePathname();
 
   useEffect(() => {
-    if (typeof window === "undefined") return console.log("failed");
+    if (typeof window === "undefined") return;
 
     const handleScroll = () => {
       if (lock) return;
       const scrollTop = window.scrollY;
-      console.log(scrollTop);
       const newOpacity = scrollTop > 50 ? 0.5 : 1;
       setOpacity(newOpacity);
     };
@@ -141,6 +140,10 @@ const Header: FC = () => {
           hover:border-[#ffa351]
           whitespace-nowrap
           capitalize
+          text-gray-900
+          dark:text-white
+          hover:text-[#ffa351]
+          dark:hover:text-[#ffa351]
           "
             >
               {item.text}
@@ -148,7 +151,7 @@ const Header: FC = () => {
           ))}
         </div>
         <div
-          className="flex justify-center items-center gap-4 md:hidden"
+          className="flex justify-center items-center gap-4 md:hidden dark:text-white text-gray-900"
           onClick={() => setshow(true)}
         >
           <TiThMenu />

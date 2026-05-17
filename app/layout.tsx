@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/UI/Navbar";
+import { ThemeProvider } from "@/themes/ThemeProvider";
 import Footer from "@/components/UI/Footer";
 import StairTransition from "@/components/StairTransition";
 import PageTransition from "@/components/PageTransition";
 import Script from "next/script";
 import "./globals.css";
+import ThemeToggle from "@/themes/ThemesToggle";
 
 const siteUrl = "https://www.ollanmuza.com";
 
@@ -49,22 +51,25 @@ export default function RootLayout({
     <html lang="en">
       {/* <GoogleTagManager gtmId="GTM-T6SNKZQH" /> */}
       <body>
-        <Navbar />
-        <StairTransition />
-        <PageTransition>{children}</PageTransition>
-        <Footer />
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-WZPFWZB36T"
-        ></Script>
-        <script>
-          {`
+        <ThemeProvider>
+          <Navbar />
+          <StairTransition />
+          <PageTransition>{children}</PageTransition>
+          <Footer />
+          <ThemeToggle />
+          <Script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-WZPFWZB36T"
+          ></Script>
+          <script>
+            {`
         window.dataLayer = window.dataLayer || [];
         function gtag(){window.dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'G-WZPFWZB36T');
-      `}
-        </script>
+        `}
+          </script>
+        </ThemeProvider>
       </body>
     </html>
   );
