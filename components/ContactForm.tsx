@@ -16,6 +16,8 @@ const Contact = () => {
   const [sending, setSending] = useState(false);
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
+  const fieldClassName =
+    "w-full rounded-md border border-slate-600 bg-white px-4 py-3 text-sm text-black placeholder:text-zinc-500 outline-none ring-0 transition-colors focus:border-[#ffa351] focus:outline-none focus:ring-0 focus-visible:outline-none dark:border-slate-300 dark:bg-[#1a1a1a] dark:text-white dark:placeholder:text-white dark:focus:border-[#ffa351]";
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -133,7 +135,7 @@ const Contact = () => {
           placeholder="Name"
           name="name"
           value={formData.name}
-          className="w-full rounded-md py-3 px-4 text-sm border border-slate-300 dark:border-slate-600 bg-white dark:bg-[#1a1a1a] text-black dark:text-white focus:border-accent dark:focus:border-accent outline-none focus:bg-transparent dark:focus:bg-transparent transition-colors"
+          className={fieldClassName}
         />
         <input
           type="email"
@@ -141,7 +143,7 @@ const Contact = () => {
           placeholder="Email"
           name="email"
           value={formData.email}
-          className="w-full rounded-md py-3 px-4 text-sm border border-slate-300 dark:border-slate-600 bg-white dark:bg-[#1a1a1a] text-black dark:text-white focus:border-accent dark:focus:border-accent outline-none focus:bg-transparent dark:focus:bg-transparent transition-colors"
+          className={fieldClassName}
         />
         <input
           type="number"
@@ -149,7 +151,7 @@ const Contact = () => {
           placeholder="Phone number..."
           name="number"
           value={formData.number}
-          className="w-full rounded-md py-3 px-4 text-sm border border-slate-300 dark:border-slate-600 bg-white dark:bg-[#1a1a1a] text-black dark:text-white focus:border-accent dark:focus:border-accent outline-none focus:bg-transparent dark:focus:bg-transparent transition-colors"
+          className={fieldClassName}
         />
         <input
           type="text"
@@ -157,7 +159,7 @@ const Contact = () => {
           name="company"
           value={formData.company}
           placeholder="Company"
-          className="w-full rounded-md py-3 px-4 text-sm border border-slate-300 dark:border-slate-600 bg-white dark:bg-[#1a1a1a] text-black dark:text-white focus:border-accent dark:focus:border-accent outline-none focus:bg-transparent dark:focus:bg-transparent transition-colors"
+          className={fieldClassName}
         />
         <textarea
           placeholder="Message"
@@ -165,7 +167,7 @@ const Contact = () => {
           rows={6}
           name="message"
           value={formData.message}
-          className="w-full rounded-md px-4 py-3 text-sm border border-slate-300 dark:border-slate-600 bg-white dark:bg-[#1a1a1a] text-black dark:text-white focus:border-accent dark:focus:border-accent outline-none focus:bg-transparent dark:focus:bg-transparent transition-colors"
+          className={fieldClassName}
         ></textarea>
         <button
           type="submit"

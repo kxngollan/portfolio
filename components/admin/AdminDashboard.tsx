@@ -55,7 +55,7 @@ const emptyBlogForm: BlogForm = {
 };
 
 const inputClass =
-  "w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-950 outline-none transition focus:border-[#ffa351] dark:border-zinc-700 dark:bg-zinc-950 dark:text-white";
+  "w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-950 outline-none ring-0 transition focus:border-[#ffa351] focus:outline-none focus:ring-0 focus-visible:outline-none dark:border-zinc-700 dark:bg-zinc-950 dark:text-white dark:focus:border-[#ffa351]";
 const labelClass =
   "block space-y-1 text-sm font-medium text-zinc-800 dark:text-zinc-200";
 const buttonClass =
