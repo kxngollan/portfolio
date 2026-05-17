@@ -1,19 +1,16 @@
 "use client";
 
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { type Theme } from "@/types/theme";
+import { type Theme, type ThemeContextValue } from "@/types/theme";
+import type { ChildrenProps } from "@/types/layout";
 
-const ThemeContext = createContext<{
-  display: Theme;
-  theme: Theme;
-  toggle: () => void;
-}>({
+const ThemeContext = createContext<ThemeContextValue>({
   theme: "light",
   display: "light",
   toggle: () => {},
 });
 
-const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
+const ThemeProvider = ({ children }: ChildrenProps) => {
   const [theme, setTheme] = useState<Theme>("light");
   const [display, setDisplay] = useState<Theme>("light");
 

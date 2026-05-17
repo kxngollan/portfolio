@@ -2,18 +2,16 @@
 
 import { useEffect, useState } from "react";
 import StackIcon from "tech-stack-icons";
-
-type TechStacks = {
-  name: string;
-  duration: number;
-  title?: string;
-};
-type Variant = "light" | "dark" | "grayscale" | undefined;
+import type {
+  ColorSchemeMediaQuery,
+  TechStack,
+  TechStackVariant,
+} from "@/types/tech-stack";
 
 const Techstacks = () => {
-  const [mode, setMode] = useState<Variant | undefined>(undefined);
+  const [mode, setMode] = useState<TechStackVariant>(undefined);
 
-  const techstack: TechStacks[] = [
+  const techstack: TechStack[] = [
     { name: "html5", title: "html", duration: 2.5 },
     { name: "css3", title: "css", duration: 2.5 },
     { name: "python", duration: 3 },
@@ -44,7 +42,7 @@ const Techstacks = () => {
 
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
-    const updateMode = (e: { matches: boolean }) => {
+    const updateMode = (e: ColorSchemeMediaQuery) => {
       setMode(e.matches ? "dark" : "light");
       localStorage.setItem("theme", e.matches ? "dark" : "light");
     };
@@ -76,7 +74,7 @@ const Techstacks = () => {
       </h4>
 
       <div className="flex flex-wrap justify-center gap-8">
-        {techstack.map((item: TechStacks, index: number) => {
+        {techstack.map((item: TechStack, index: number) => {
           return (
             <div
               key={index}

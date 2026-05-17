@@ -50,26 +50,22 @@ export default function RootLayout({
   return (
     <html lang="en">
       {/* <GoogleTagManager gtmId="GTM-T6SNKZQH" /> */}
-      <body>
+      <body className="bg-white dark:bg-[#171717]">
         <ThemeProvider>
           <Navbar />
           <StairTransition />
           <PageTransition>{children}</PageTransition>
           <Footer />
           <ThemeToggle />
-          <Script
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=G-WZPFWZB36T"
-          ></Script>
-          <script>
-            {`
+        </ThemeProvider>
+        <script>
+          {`
         window.dataLayer = window.dataLayer || [];
         function gtag(){window.dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'G-WZPFWZB36T');
         `}
-          </script>
-        </ThemeProvider>
+        </script>
       </body>
     </html>
   );

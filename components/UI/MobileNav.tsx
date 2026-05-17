@@ -1,21 +1,14 @@
 import { motion } from "framer-motion";
 import { FaTimes } from "react-icons/fa";
 import Link from "next/link";
-import { ReactElement } from "react";
+import type { MenuItem, MobileNavProps, SocialLink } from "@/types/navigation";
 
-type MenuItem = {
-  text: string;
-  href: string;
-};
-
-type socials = {
-  href: string;
-  target?: string;
-  rel?: string;
-  icon: ReactElement;
-};
-
-const MobileNav = ({ show, change, menuItems, socialLinks }:{show:boolean, change:() => void, menuItems:MenuItem[], socialLinks:socials[]}) => {
+const MobileNav = ({
+  show,
+  change,
+  menuItems,
+  socialLinks,
+}: MobileNavProps) => {
   const variants = {
     open: { opacity: 1, x: 0 },
     closed: { opacity: 0, x: "-100%" },
@@ -24,7 +17,7 @@ const MobileNav = ({ show, change, menuItems, socialLinks }:{show:boolean, chang
   return (
     <>
       <motion.div
-      initial="closed"
+        initial="closed"
         animate={show ? "open" : "closed"}
         variants={variants}
         transition={{ duration: 0.3 }}
@@ -64,10 +57,15 @@ const MobileNav = ({ show, change, menuItems, socialLinks }:{show:boolean, chang
               </Link>
             </li>
           ))}
+          <li className="list-none">
+            <Link href="/blog" onClick={change} className="text-xl">
+              Blog
+            </Link>
+          </li>
         </ul>
 
         <ul className="mt-6 flex gap-4">
-          {socialLinks.map((link: socials) => (
+          {socialLinks.map((link: SocialLink) => (
             <li key={link.href} className="list-none">
               <a
                 href={link.href}

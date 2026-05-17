@@ -2,6 +2,17 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+Create a `.env.local` file with your MongoDB connection string:
+
+```bash
+MONGODB_URI=mongodb+srv://USER:PASSWORD@HOST/DATABASE
+# Optional: override the database name from the URI
+MONGODB_DB=portfolio
+ADMIN_USERNAME=your-admin-username
+ADMIN_PASSWORD=your-admin-password
+ADMIN_SESSION_SECRET=use-a-long-random-string
+```
+
 First, run the development server:
 
 ```bash

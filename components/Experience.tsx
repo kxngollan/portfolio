@@ -1,27 +1,30 @@
 "use client";
 
-import type { StaticImageData } from "next/image";
-
 import Image from "next/image";
 import Link from "next/link";
 import { FaRegCalendar } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
+import pier from "@/public/job-logos/pier-logo.png";
 import pepsi from "@/public/job-logos/pepsi.png";
 import toru from "@/public/job-logos/toru.png";
 import asideofcode from "@/public/job-logos/asideofcode.png";
 import { useState, useMemo } from "react";
+import type { ExperienceItem } from "@/types/experience";
 
-type exp = {
-  image: StaticImageData;
-  employer: string;
-  title: string;
-  duration: string;
-  link: string;
-  location: string;
-  responsibilities?: string[];
-};
-
-const jobExp: exp[] = [
+const jobExp: ExperienceItem[] = [
+  {
+    image: pier,
+    employer: "Pier Management",
+    link: "https://www.linkedin.com/company/pier-management/",
+    title: "Full stack Engineer",
+    duration: "April 2026 - Present",
+    location: "Southend on Sea, UK",
+    responsibilities: [
+      // "Troubleshooting control systems and machine logic, debugging ladder logic and translating technical requirements into functional solutions.",
+      // "Implemented Agile methodologies, reducing project delivery time by 20%.",
+      // "Developed and maintained project plans, ensuring timely completion of milestones.",
+    ],
+  },
   {
     image: pepsi,
     employer: "PepsiCo",
@@ -63,7 +66,7 @@ const jobExp: exp[] = [
   },
 ];
 
-const Experience: React.FC = () => {
+const Experience = () => {
   const [active, setActive] = useState<number>(0);
   const [hovered, setHovered] = useState<boolean | null>(null);
   const displayedJob = useMemo(() => {
@@ -73,7 +76,7 @@ const Experience: React.FC = () => {
   return (
     <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-14">
       <aside className="h-fit cursor-pointer md:col-span-1 border-l dark:border-slate-600 pl-6 space-y-8">
-        {jobExp.map((company: exp, i: number) => {
+        {jobExp.map((company: ExperienceItem, i: number) => {
           return (
             <div
               className={`flex items-center px-2 py-4 transition-all duration-200 ${
@@ -83,12 +86,23 @@ const Experience: React.FC = () => {
               onClick={() => setActive(i)}
             >
               <div className="w-10 h-10 flex justify-center items-center rounded-full overflow-hidden">
-                <Image
-                  draggable={false}
-                  src={company.image}
-                  className={company.employer === "PepsiCo" ? "w-30" : ""}
-                  alt={`${company.employer} logo`}
-                />
+                {company.employer === "Pier Management" ? (
+                  <div className="bg-teal-300 h-full w-full flex items-center justify-center">
+                    <Image
+                      draggable={false}
+                      src={company.image}
+                      className="w-4/5"
+                      alt={`${company.employer} logo`}
+                    />
+                  </div>
+                ) : (
+                  <Image
+                    draggable={false}
+                    src={company.image}
+                    className={company.employer === "PepsiCo" ? "w-30" : ""}
+                    alt={`${company.employer} logo`}
+                  />
+                )}
               </div>
               <span
                 className={`text-lg font-semibold tracking-[0.18em] pl-2 dark:text-white ${

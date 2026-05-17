@@ -1,31 +1,19 @@
 import React from "react";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import Link from "next/link";
 import {
   FaGithub as GitHubIcon,
   FaGlobeAfrica as LaunchIcon,
 } from "react-icons/fa";
 import { IoExtensionPuzzle as ExtensionIcon } from "react-icons/io5";
+import RichText from "@/components/RichText";
 import failedImage from "@/public/no-image.png";
-
-type Project = {
-  name: string;
-  kind?: string;
-  image?: StaticImageData;
-  desc: string;
-  github?: string;
-  live?: string;
-  stack: string;
-  ext?:string;
-};
+import type { ProjectCardProps } from "@/types/project";
 
 const ProjectCard = ({
   project,
   index,
-}: {
-  project: Project;
-  index: number;
-}) => {
+}: ProjectCardProps) => {
   const isEven = index % 2 === 0;
 
   const alignSide = isEven
@@ -82,9 +70,11 @@ const ProjectCard = ({
             lg:dark:bg-[rgb(30,28,25)] lg:bg-[rgb(227,214,195)]
           md:p-5 sm:p-3 dark:text-[#ededed]"
           >
-            <p className="m-0 text-[0.9rem] md:text-base lg:text-[1.1rem] dark:text-[#ededed]">
-              {project.desc}
-            </p>
+            <RichText
+              text={project.desc}
+              className="m-0 text-[0.9rem] md:text-base lg:text-[1.1rem] dark:text-[#ededed]"
+              paragraphClassName="mb-3 last:mb-0"
+            />
           </div>
           <div className={`flex flex-col mt-4 self-center ${alignSelf}`}>
             <ul

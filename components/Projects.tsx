@@ -1,5 +1,4 @@
 "use client";
-import type { StaticImageData } from "next/image";
 import ProjectCard from "./ProjectsCard";
 import chess from "@/public/projects/chess.jpeg";
 import fake from "@/public/projects/fake-socials.jpeg";
@@ -7,20 +6,10 @@ import store from "@/public/projects/fake-store.jpeg";
 import netflix from "@/public/projects/watch-netflix.jpeg";
 import portfolio from "@/public/projects/portfolio.jpeg";
 import house from "@/public/projects/house.jpeg";
+import type { StaticProject } from "@/types/project";
 
 const Projects = () => {
-  type Project = {
-    name: string;
-    kind?: string;
-    image?: StaticImageData;
-    desc: string;
-    github?: string;
-    live?: string;
-    ext?: string;
-    stack: string;
-  };
-
-  const projects: Project[] = [
+  const projects: StaticProject[] = [
     {
       name: "Chess Experiments",
       image: chess,

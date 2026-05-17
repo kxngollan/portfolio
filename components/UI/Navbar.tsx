@@ -1,25 +1,14 @@
 "use client";
-import { FC, useEffect, useState, ReactElement } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { TiThMenu } from "react-icons/ti";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
 import MobileNav from "./MobileNav";
+import type { MenuItem, SocialLink } from "@/types/navigation";
 
-type MenuItem = {
-  text: string;
-  href: string;
-};
-
-type socials = {
-  href: string;
-  target?: string;
-  rel?: string;
-  icon: ReactElement;
-};
-
-const Header: FC = () => {
+const Header = () => {
   const [opacity, setOpacity] = useState<number>(1);
   const [lock, setLock] = useState<boolean>(false);
   const [show, setshow] = useState<boolean>(false);
@@ -73,7 +62,7 @@ const Header: FC = () => {
     { text: "contact", href: path === "/" ? "#contact" : "/#contact" },
   ];
 
-  const socialLinks: socials[] = [
+  const socialLinks: SocialLink[] = [
     {
       href: "https://github.com/kxngollan",
       target: "_blank",
@@ -149,6 +138,28 @@ const Header: FC = () => {
               {item.text}
             </Link>
           ))}
+          <Link
+            href={"/blog"}
+            className="
+          px-3
+          py-1
+          text-sm
+          cursor-pointer
+          transition
+          duration-300
+          border-b-2
+          border-transparent
+          hover:border-[#ffa351]
+          whitespace-nowrap
+          capitalize
+          text-gray-900
+          dark:text-white
+          hover:text-[#ffa351]
+          dark:hover:text-[#ffa351]
+          "
+          >
+            Blog
+          </Link>
         </div>
         <div
           className="flex justify-center items-center gap-4 md:hidden dark:text-white text-gray-900"

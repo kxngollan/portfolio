@@ -1,9 +1,8 @@
-import React from "react";
 import Link from "next/link";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { IoReaderOutline } from "react-icons/io5";
 
-const Connect: React.FC = () => {
+const Connect = () => {
   return (
     <div className="flex gap-4 items-center">
       <Link
