@@ -14,6 +14,15 @@ export type Status = {
   text: string;
 } | null;
 
+export type BusyState =
+  | "login"
+  | "project"
+  | "blog"
+  | "logout"
+  | "project-image"
+  | "blog-image"
+  | null;
+
 export type AdminDashboardProps = {
   initialAuthenticated: boolean;
   initialProjects: AdminProject[];
@@ -26,4 +35,12 @@ export type RichTextareaProps = {
   value: string;
   onChange: (value: string) => void;
   minHeightClass: string;
+};
+
+export type ImageUploadFieldProps = {
+  label: string;
+  value?: string;
+  busy: boolean;
+  onUpload: (file: File) => void;
+  onClear: () => void;
 };

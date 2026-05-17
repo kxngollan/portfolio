@@ -11,6 +11,11 @@ MONGODB_DB=portfolio
 ADMIN_USERNAME=your-admin-username
 ADMIN_PASSWORD=your-admin-password
 ADMIN_SESSION_SECRET=use-a-long-random-string
+CLOUDINARY_API_NAME=your-cloud-name
+CLOUDINARY_API_KEY=your-api-key
+CLOUDINARY_API_SECRET=your-api-secret
+# Optional: Cloudinary folder for admin uploads
+CLOUDINARY_UPLOAD_FOLDER=portfolio
 ```
 
 First, run the development server:

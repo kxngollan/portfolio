@@ -16,12 +16,15 @@ import { stripRichText } from "@/components/RichText";
 import type {
   AdminDashboardProps,
   BlogForm,
+  BusyState,
+  ImageUploadFieldProps,
   ProjectForm,
   RichTextareaProps,
   Status,
 } from "@/types/admin";
 import type { AdminBlogPost } from "@/types/blog";
 import type { AdminProject } from "@/types/project";
+import type { UploadedImage } from "@/types/cloudinary";
 
 const emptyProjectForm: ProjectForm = {
   _id: "",
@@ -105,6 +108,127 @@ async function requestJson<T>(url: string, init?: RequestInit) {
   }
 
   return data as T;
+}
+
+async function uploadImage(file: File) {
+  const formData = new FormData();
+
+  formData.append("file", file);
+
+  const response = await fetch("/api/admin/upload", {
+    method: "POST",
+    body: formData,
+  });
+
+  const data = (await response.json().catch(() => ({}))) as {
+    message?: string;
+  };
+
+  if (!response.ok) {
+    throw new Error(data.message || "Unable to upload image.");
+  }
+
+  return data as UploadedImage;
+}
+
+function ImageUploadField({
+  label,
+  value,
+  busy,
+  onUpload,
+  onClear,
+}: ImageUploadFieldProps) {
+  const [isDragging, setIsDragging] = useState(false);
+
+  const handleFiles = (files: FileList | null) => {
+    const file = files?.[0];
+
+    if (file) {
+      onUpload(file);
+    }
+  };
+
+  return (
+    <div className={`${labelClass} space-y-2`}>
+      <span>{label}</span>
+      <label
+        className={`flex min-h-32 cursor-pointer flex-col items-center justify-center rounded-md border border-dashed px-3 py-4 text-center text-sm transition ${
+          isDragging
+            ? "border-[#ffa351] bg-[#fff0dc] text-[#a84824] dark:border-[#ffa351] dark:bg-[#2b2117] dark:text-[#ffa351]"
+            : "border-zinc-300 bg-zinc-50 text-zinc-600 hover:border-[#ffa351] hover:text-[#c56b16] dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300"
+        } ${busy ? "cursor-not-allowed opacity-70" : ""}`}
+        onDragEnter={(event) => {
+          event.preventDefault();
+          event.stopPropagation();
+
+          if (!busy) {
+            setIsDragging(true);
+          }
+        }}
+        onDragOver={(event) => {
+          event.preventDefault();
+          event.stopPropagation();
+        }}
+        onDragLeave={(event) => {
+          event.preventDefault();
+          event.stopPropagation();
+
+          if (event.currentTarget.contains(event.relatedTarget as Node)) {
+            return;
+          }
+
+          setIsDragging(false);
+        }}
+        onDrop={(event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          setIsDragging(false);
+
+          if (!busy) {
+            handleFiles(event.dataTransfer.files);
+          }
+        }}
+      >
+        <span className="font-semibold">
+          {busy
+            ? "Uploading..."
+            : isDragging
+              ? "Drop image to upload"
+              : "Drop image here"}
+        </span>
+        {!busy && (
+          <span className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
+            or click to choose from your computer
+          </span>
+        )}
+        <input
+          type="file"
+          accept="image/*"
+          className="sr-only"
+          disabled={busy}
+          onChange={(event) => {
+            handleFiles(event.target.files);
+            event.target.value = "";
+          }}
+        />
+      </label>
+      {value && (
+        <div className="space-y-2">
+          <div
+            className="aspect-[16/9] rounded-md border border-zinc-200 bg-zinc-100 bg-cover bg-center dark:border-zinc-800 dark:bg-zinc-900"
+            style={{ backgroundImage: `url(${value})` }}
+          />
+          <button
+            type="button"
+            className="text-sm font-semibold text-red-600 hover:text-red-700 dark:text-red-300"
+            onClick={onClear}
+          >
+            Remove image
+          </button>
+        </div>
+      )}
+    </div>
+  );
 }
 
 function RichTextarea({
@@ -231,9 +355,7 @@ export default function AdminDashboard({
   const [status, setStatus] = useState<Status>(
     initialError ? { type: "error", text: initialError } : null,
   );
-  const [busy, setBusy] = useState<"login" | "project" | "blog" | "logout" | null>(
-    null,
-  );
+  const [busy, setBusy] = useState<BusyState>(null);
 
   const showStatus = (nextStatus: Status) => {
     setStatus(nextStatus);
@@ -343,6 +465,52 @@ export default function AdminDashboard({
         type: "error",
         text:
           error instanceof Error ? error.message : "Unable to save blog post.",
+      });
+    } finally {
+      setBusy(null);
+    }
+  };
+
+  const handleProjectImageUpload = async (file: File) => {
+    setBusy("project-image");
+    showStatus(null);
+
+    try {
+      const image = await uploadImage(file);
+
+      setProjectForm((current) => ({
+        ...current,
+        image: image.url,
+      }));
+      showStatus({ type: "success", text: "Project image uploaded." });
+    } catch (error) {
+      showStatus({
+        type: "error",
+        text:
+          error instanceof Error ? error.message : "Unable to upload image.",
+      });
+    } finally {
+      setBusy(null);
+    }
+  };
+
+  const handleBlogImageUpload = async (file: File) => {
+    setBusy("blog-image");
+    showStatus(null);
+
+    try {
+      const image = await uploadImage(file);
+
+      setBlogForm((current) => ({
+        ...current,
+        coverImage: image.url,
+      }));
+      showStatus({ type: "success", text: "Blog cover image uploaded." });
+    } catch (error) {
+      showStatus({
+        type: "error",
+        text:
+          error instanceof Error ? error.message : "Unable to upload image.",
       });
     } finally {
       setBusy(null);
@@ -590,19 +758,18 @@ export default function AdminDashboard({
                 />
               </label>
 
-              <label className={labelClass}>
-                Image URL
-                <input
-                  className={inputClass}
-                  value={projectForm.image}
-                  onChange={(event) =>
-                    setProjectForm((current) => ({
-                      ...current,
-                      image: event.target.value,
-                    }))
-                  }
-                />
-              </label>
+              <ImageUploadField
+                label="Project Image"
+                value={projectForm.image}
+                busy={busy === "project-image"}
+                onUpload={handleProjectImageUpload}
+                onClear={() =>
+                  setProjectForm((current) => ({
+                    ...current,
+                    image: "",
+                  }))
+                }
+              />
 
               <RichTextarea
                 label="Description"
@@ -846,19 +1013,18 @@ export default function AdminDashboard({
                 />
               </label>
 
-              <label className={labelClass}>
-                Cover Image URL
-                <input
-                  className={inputClass}
-                  value={blogForm.coverImage}
-                  onChange={(event) =>
-                    setBlogForm((current) => ({
-                      ...current,
-                      coverImage: event.target.value,
-                    }))
-                  }
-                />
-              </label>
+              <ImageUploadField
+                label="Cover Image"
+                value={blogForm.coverImage}
+                busy={busy === "blog-image"}
+                onUpload={handleBlogImageUpload}
+                onClear={() =>
+                  setBlogForm((current) => ({
+                    ...current,
+                    coverImage: "",
+                  }))
+                }
+              />
 
               <RichTextarea
                 label="Excerpt"
