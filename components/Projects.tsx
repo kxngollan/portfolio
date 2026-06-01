@@ -96,10 +96,10 @@ const Projects = () => {
           <ProjectCard key={index} project={project} index={index} />
         ))}
       </div>
-      <div className="w-full flex justify-center items-center ">
+      <div className="w-full flex justify-center items-center pt-5">
         <Link
           href="/projects"
-          className=" mt-2 text-md font-medium text-zinc-800 dark:text-zinc-200 hover:text-[#ffa351] transition-colors duration-200 whitespace-nowrap mb-1"
+          className="group flex items-center gap-2 px-6 py-3 rounded-full text-[13px] font-semibold uppercase tracking-[0.12em] border border-black/15 dark:border-white/10 bg-white/5 dark:bg-white/3 text-zinc-700 dark:text-white hover:border-[#ffa351]/60 hover:text-[#ffa351] hover:bg-[#ffa351]/5 transition-all duration-300 whitespace-nowrap"
         >
           See all projects →
         </Link>

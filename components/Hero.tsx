@@ -35,7 +35,7 @@ const Home = () => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ffa351] opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#ffa351]"></span>
               </span>
-              <span className="text-[11px] uppercase tracking-[0.18em] text-white/50 dark:text-white/50 font-medium">
+              <span className="text-[11px] uppercase tracking-[0.18em] text-black/50 dark:text-white/50 font-medium">
                 From United Kingdom
               </span>
             </div>
@@ -66,7 +66,7 @@ const Home = () => {
               <a href="/cv/resume.pdf" download>
                 <button
                   type="button"
-                  className="group flex items-center gap-2 px-6 py-3 rounded-full text-[13px] font-semibold uppercase tracking-[0.12em] border border-white/15 dark:border-white/10 bg-white/5 dark:bg-white/3 text-zinc-700 dark:text-white hover:border-[#ffa351]/60 hover:text-[#ffa351] hover:bg-[#ffa351]/5 transition-all duration-300 whitespace-nowrap"
+                  className="group flex items-center gap-2 px-6 py-3 rounded-full text-[13px] font-semibold uppercase tracking-[0.12em] border border-black/15 dark:border-white/10 bg-white/5 dark:bg-white/3 text-zinc-700 dark:text-white hover:border-[#ffa351]/60 hover:text-[#ffa351] hover:bg-[#ffa351]/5 transition-all duration-300 whitespace-nowrap"
                 >
                   <span>Download CV</span>
                   <FiDownload className="text-base transition-transform duration-300 group-hover:translate-y-0.5" />
@@ -80,7 +80,7 @@ const Home = () => {
                     target="_blank"
                     href={item.url}
                     aria-label={item.label}
-                    className="w-10 h-10 border border-white/10 dark:border-white/10 rounded-full flex justify-center items-center text-zinc-500 dark:text-zinc-400 text-base transition-all duration-300 hover:text-[#ffa351] hover:border-[#ffa351]/40 hover:bg-[#ffa351]/5"
+                    className="w-10 h-10 border border-black/20 dark:border-white/10 rounded-full flex justify-center items-center text-zinc-500 dark:text-zinc-400 text-base transition-all duration-300 hover:text-[#ffa351] hover:border-[#ffa351]/40 hover:bg-[#ffa351]/5"
                   >
                     {item.icon}
                   </Link>
