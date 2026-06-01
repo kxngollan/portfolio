@@ -70,7 +70,7 @@ const Techstacks = () => {
       <div className="mb-10">
         <div className="flex items-center gap-4 mb-3">
           <span className="text-xs font-medium text-[#ffa351] tracking-wider">02</span>
-          <div className="flex-1 h-px bg-white/8" />
+          <div className="flex-1 h-px bg-zinc-200 dark:bg-white/8" />
           <span className="text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-white/35">Stack</span>
         </div>
         <h2 className="text-3xl xl:text-4xl font-bold dark:text-white tracking-tight">
@@ -82,7 +82,7 @@ const Techstacks = () => {
         {techstack.map((item: TechStack, index: number) => (
           <div
             key={index}
-            className="group flex flex-col justify-center items-center w-27.5 h-27.5 border border-white/8 dark:border-white/8 bg-white/1 dark:bg-white/1 p-4 rounded-2xl transition-all duration-300 hover:-translate-y-1.5 hover:border-[#ffa351]/30 hover:bg-[#ffa351]/5 max-[600px]:w-22.5 max-[600px]:h-22.5 max-[600px]:p-3"
+            className="group flex flex-col justify-center items-center w-27.5 h-27.5 border border-zinc-200 dark:border-white/8 bg-zinc-50 dark:bg-white/1 p-4 rounded-2xl transition-all duration-300 hover:-translate-y-1.5 hover:border-[#ffa351]/30 hover:bg-[#ffa351]/5 max-[600px]:w-22.5 max-[600px]:h-22.5 max-[600px]:p-3"
           >
             <div className="w-9 h-9 flex items-center justify-center max-[600px]:w-7 max-[600px]:h-7">
               <StackIcon

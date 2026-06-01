@@ -10,30 +10,48 @@ const ThemeContext = createContext<ThemeContextValue>({
   toggle: () => {},
 });
 
+function applyTheme(resolved: "light" | "dark") {
+  document.documentElement.classList.toggle("dark", resolved === "dark");
+}
+
+function resolveDisplay(display: Theme, sysDark: boolean): "light" | "dark" {
+  if (display === "device") return sysDark ? "dark" : "light";
+  return display;
+}
+
 const ThemeProvider = ({ children }: ChildrenProps) => {
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setTheme] = useState<"light" | "dark">("light");
   const [display, setDisplay] = useState<Theme>("light");
 
   useEffect(() => {
-    let stored = localStorage.getItem("theme") as Theme | null;
-    setDisplay(stored ?? "light");
-    const sysDark = window.matchMedia("(prefers-color-scheme:dark)").matches;
-    stored = stored === "device" ? (sysDark ? "dark" : "light") : stored;
-    const inital = stored ?? (sysDark ? "dark" : "light");
-    setTheme(inital);
-    document.documentElement.classList.toggle("dark", inital === "dark");
+    const stored = (localStorage.getItem("theme") as Theme | null) ?? "device";
+    const sysDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const resolved = resolveDisplay(stored, sysDark);
+    setDisplay(stored);
+    setTheme(resolved);
+    applyTheme(resolved);
+
+    const mq = window.matchMedia("(prefers-color-scheme: dark)");
+    const onSysChange = (e: MediaQueryListEvent) => {
+      if ((localStorage.getItem("theme") as Theme) === "device") {
+        const r = e.matches ? "dark" : "light";
+        setTheme(r);
+        applyTheme(r);
+      }
+    };
+    mq.addEventListener("change", onSysChange);
+    return () => mq.removeEventListener("change", onSysChange);
   }, []);
 
   const toggle = () => {
     const next: Theme =
       display === "light" ? "dark" : display === "dark" ? "device" : "light";
+    const sysDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const resolved = resolveDisplay(next, sysDark);
     setDisplay(next);
-    localStorage.setItem("theme", next);
-
-    const sysDark = window.matchMedia("(prefers-color-scheme:dark)").matches;
-    const resolved = next === "device" ? (sysDark ? "dark" : "light") : next;
     setTheme(resolved);
-    document.documentElement.classList.toggle("dark", resolved === "dark");
+    localStorage.setItem("theme", next);
+    applyTheme(resolved);
   };
 
   return (
@@ -43,8 +61,6 @@ const ThemeProvider = ({ children }: ChildrenProps) => {
   );
 };
 
-const useTheme = () => {
-  return useContext(ThemeContext);
-};
+const useTheme = () => useContext(ThemeContext);
 
 export { useTheme, ThemeProvider };

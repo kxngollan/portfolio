@@ -57,7 +57,7 @@ const Contact = () => {
       <div className="mb-10">
         <div className="flex items-center gap-4 mb-3">
           <span className="text-xs font-medium text-[#ffa351] tracking-wider">04</span>
-          <div className="flex-1 h-px bg-white/8" />
+          <div className="flex-1 h-px bg-zinc-200 dark:bg-white/8" />
           <span className="text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-white/35">Contact</span>
         </div>
         <h2 className="text-3xl xl:text-4xl font-bold dark:text-white tracking-tight">
@@ -71,7 +71,7 @@ const Contact = () => {
       <div className="grid lg:grid-cols-2 gap-12 items-start">
         {/* Left — contact info */}
         <div>
-          <div className="border border-white/8 dark:border-white/8 rounded-2xl p-6 bg-white/1 dark:bg-white/1 space-y-6">
+          <div className="border border-zinc-200 dark:border-white/8 rounded-2xl p-6 bg-zinc-50 dark:bg-white/1 space-y-6">
             {/* Email */}
             <div>
               <p className="text-[11px] uppercase tracking-widest text-zinc-500 mb-2 font-medium">Email</p>
@@ -84,7 +84,7 @@ const Contact = () => {
             </div>
 
             {/* Divider */}
-            <div className="h-px bg-white/8 dark:bg-white/8" />
+            <div className="h-px bg-zinc-200 dark:bg-white/8" />
 
             {/* Socials */}
             <div>

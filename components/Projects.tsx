@@ -70,9 +70,13 @@ const Projects = () => {
       {/* Section header */}
       <div className="mb-10">
         <div className="flex items-center gap-4 mb-3">
-          <span className="text-xs font-medium text-[#ffa351] tracking-wider">03</span>
-          <div className="flex-1 h-px bg-white/8" />
-          <span className="text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-white/35">Portfolio</span>
+          <span className="text-xs font-medium text-[#ffa351] tracking-wider">
+            03
+          </span>
+          <div className="flex-1 h-px bg-zinc-200 dark:bg-white/8" />
+          <span className="text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-white/35">
+            Portfolio
+          </span>
         </div>
         <div className="flex items-end justify-between gap-4">
           <h2 className="text-3xl xl:text-4xl font-bold dark:text-white tracking-tight">
@@ -91,6 +95,14 @@ const Projects = () => {
         {projects.map((project, index) => (
           <ProjectCard key={index} project={project} index={index} />
         ))}
+      </div>
+      <div className="w-full flex justify-center items-center ">
+        <Link
+          href="/projects"
+          className=" mt-2 text-md font-medium text-zinc-800 dark:text-zinc-200 hover:text-[#ffa351] transition-colors duration-200 whitespace-nowrap mb-1"
+        >
+          See all projects →
+        </Link>
       </div>
     </div>
   );

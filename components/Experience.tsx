@@ -73,7 +73,7 @@ const Experience = () => {
       <div className="mb-10">
         <div className="flex items-center gap-4 mb-3">
           <span className="text-xs font-medium text-[#ffa351] tracking-wider">01</span>
-          <div className="flex-1 h-px bg-white/8" />
+          <div className="flex-1 h-px bg-zinc-200 dark:bg-white/8" />
           <span className="text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-white/35">Career</span>
         </div>
         <h2 className="text-3xl xl:text-4xl font-bold dark:text-white tracking-tight">
@@ -92,7 +92,7 @@ const Experience = () => {
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left transition-all duration-200 cursor-pointer ${
                 active === i
                   ? "bg-[#ffa351]/10 border border-[#ffa351]/30"
-                  : "border border-transparent hover:border-white/8 hover:bg-white/3"
+                  : "border border-transparent hover:border-zinc-200 dark:hover:border-white/8 hover:bg-zinc-100 dark:hover:bg-white/3"
               }`}
             >
               <div className="w-9 h-9 flex justify-center items-center rounded-lg overflow-hidden shrink-0 bg-white/5 border border-white/10">
@@ -129,7 +129,7 @@ const Experience = () => {
         </aside>
 
         {/* Details */}
-        <section className="md:col-span-2 border border-white/8 dark:border-white/8 rounded-2xl p-6 bg-white/1 dark:bg-white/1">
+        <section className="md:col-span-2 border border-zinc-200 dark:border-white/8 rounded-2xl p-6 bg-zinc-50 dark:bg-white/1">
           <Link href={displayedJob.link} target="_blank">
             <div
               className="mb-5 flex items-start justify-between gap-4"

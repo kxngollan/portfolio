@@ -2,7 +2,7 @@
 import CountUp from "react-countup";
 
 const stats = [
-  { num: 2.5, suffix: "+", text: "Years of experience" },
+  { num: 3, suffix: "+", text: "Years of experience" },
   { num: 10, suffix: "+", text: "Projects completed" },
   { num: 21, suffix: "", text: "Technologies mastered" },
   { num: 800, suffix: "", text: "Github commits" },
@@ -12,11 +12,11 @@ const Stats = () => {
   return (
     <section className="pt-8 pb-12 xl:pt-6 xl:pb-6 dark:bg-[#0a0a0a]">
       <div className="container mx-auto">
-        <div className="border border-white/8 dark:border-white/8 rounded-2xl grid grid-cols-2 xl:grid-cols-4 divide-x divide-y xl:divide-y-0 divide-white/8 dark:divide-white/8 overflow-hidden">
+        <div className="border border-zinc-200 dark:border-white/8 rounded-2xl grid grid-cols-2 xl:grid-cols-4 divide-x divide-y xl:divide-y-0 divide-zinc-200 dark:divide-white/8 overflow-hidden">
           {stats.map((item, index) => (
             <div
               key={index}
-              className="flex flex-col items-center justify-center gap-1 py-7 px-5 bg-white/1 dark:bg-white/1"
+              className="flex flex-col items-center justify-center gap-1 py-7 px-5 bg-zinc-50 dark:bg-white/1"
             >
               <div className="flex items-end gap-0.5">
                 <CountUp

@@ -5,6 +5,18 @@ import { getProjects } from "@/lib/public-content";
 
 export const dynamic = "force-dynamic";
 
+const fallbackCover = "/no-image.png";
+
+function validImageSrc(src: string | null | undefined): string {
+  if (!src) return fallbackCover;
+  try {
+    new URL(src);
+    return src;
+  } catch {
+    return src.startsWith("/") ? src : fallbackCover;
+  }
+}
+
 const ProjectsPage = async () => {
   const projects = await getProjects();
 
@@ -15,7 +27,7 @@ const ProjectsPage = async () => {
         <div className="mb-10">
           <div className="flex items-center gap-4 mb-3">
             <span className="text-xs font-medium text-[#ffa351] tracking-wider">All</span>
-            <div className="flex-1 h-px bg-white/8" />
+            <div className="flex-1 h-px bg-zinc-200 dark:bg-white/8" />
             <span className="text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-white/35">Portfolio</span>
           </div>
           <h1 className="text-3xl xl:text-4xl font-bold dark:text-white tracking-tight">
@@ -24,7 +36,7 @@ const ProjectsPage = async () => {
         </div>
 
         {projects.length === 0 ? (
-          <div className="border border-white/8 rounded-2xl p-12 text-center bg-white/1">
+          <div className="border border-zinc-200 dark:border-white/8 rounded-2xl p-12 text-center bg-zinc-50 dark:bg-white/1">
             <h2 className="text-xl font-bold dark:text-white mb-2">No projects yet.</h2>
             <p className="text-sm text-zinc-500">Published projects will appear here.</p>
           </div>
@@ -33,14 +45,14 @@ const ProjectsPage = async () => {
             {projects.map((project) => (
               <article
                 key={project._id}
-                className="group border border-white/8 dark:border-white/8 bg-white/1 dark:bg-white/1 rounded-2xl overflow-hidden transition-all duration-300 hover:border-[#ffa351]/25 hover:bg-[#ffa351]/2 flex flex-col"
+                className="group border border-zinc-200 dark:border-white/8 bg-zinc-50 dark:bg-white/1 rounded-2xl overflow-hidden transition-all duration-300 hover:border-[#ffa351]/25 hover:bg-[#ffa351]/2 flex flex-col"
               >
                 {/* Cover image */}
                 {project.image && (
                   <Link href={`/projects/${project.slug}`} className="block overflow-hidden shrink-0">
                     <div className="relative aspect-video w-full">
                       <Image
-                        src={project.image}
+                        src={validImageSrc(project.image)}
                         alt={project.name}
                         fill
                         className="object-cover brightness-75 transition-all duration-500 group-hover:scale-105 group-hover:brightness-90"
@@ -76,7 +88,7 @@ const ProjectsPage = async () => {
 
                   {/* Tech stack tags */}
                   {project.stack.length > 0 && (
-                    <div className="flex flex-wrap gap-1.5 pt-3 border-t border-white/6 dark:border-white/6">
+                    <div className="flex flex-wrap gap-1.5 pt-3 border-t border-zinc-100 dark:border-white/6">
                       {project.stack.map((tech) => (
                         <span
                           key={tech}

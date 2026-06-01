@@ -1,20 +1,16 @@
 "use client";
 
 import { useTheme } from "@/themes/ThemeProvider";
-import { FaMoon } from "react-icons/fa";
-import { MdDevicesOther, MdLightMode } from "react-icons/md";
+import { FaMoon, FaSun } from "react-icons/fa";
+import { MdDevicesOther } from "react-icons/md";
 
 const ThemeToggle = () => {
   const { display, toggle } = useTheme();
 
-  const handleClick = () => {
-    console.log("Toggle clicked, current display:", display);
-    toggle();
-  };
-
   return (
     <button
-      onClick={handleClick}
+      type="button"
+      onClick={toggle}
       title={
         display === "light"
           ? "Switch to dark"
@@ -22,14 +18,14 @@ const ThemeToggle = () => {
             ? "Switch to device"
             : "Switch to light"
       }
-      className="px-3 py-2 dark:px-3 dark:py-2 rounded-md dark:rounded-md border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-600 fixed bottom-5 right-5 z-50 opacity-50 dark:opacity-50 hover:opacity-100 dark:hover:opacity-100 text-gray-700 dark:text-white transition-all dark:transition-all duration-200 dark:duration-200"
+      className="fixed bottom-5 right-5 z-50 flex items-center justify-center w-10 h-10 rounded-full border border-white/10 bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 opacity-50 hover:opacity-100 hover:border-[#ffa351]/40 hover:text-[#ffa351] transition-all duration-200"
     >
       {display === "dark" ? (
-        <FaMoon />
+        <FaMoon className="text-sm" />
       ) : display === "device" ? (
-        <MdDevicesOther />
+        <MdDevicesOther className="text-sm" />
       ) : (
-        <MdLightMode />
+        <FaSun className="text-sm" />
       )}
     </button>
   );

@@ -34,7 +34,7 @@ const BlogPage = async () => {
         <div className="mb-10">
           <div className="flex items-center gap-4 mb-3">
             <span className="text-xs font-medium text-[#ffa351] tracking-wider">05</span>
-            <div className="flex-1 h-px bg-white/8" />
+            <div className="flex-1 h-px bg-zinc-200 dark:bg-white/8" />
             <span className="text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-white/35">Writing</span>
           </div>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3">
@@ -48,7 +48,7 @@ const BlogPage = async () => {
         </div>
 
         {posts.length === 0 ? (
-          <div className="border border-white/8 rounded-2xl p-12 text-center bg-white/1">
+          <div className="border border-zinc-200 dark:border-white/8 rounded-2xl p-12 text-center bg-zinc-50 dark:bg-white/1">
             <h2 className="text-xl font-bold dark:text-white mb-2">No posts yet.</h2>
             <p className="text-sm text-zinc-500">Published posts will appear here.</p>
           </div>
@@ -57,7 +57,7 @@ const BlogPage = async () => {
             {posts.map((post) => (
               <article
                 key={post._id}
-                className="group border border-white/8 dark:border-white/8 bg-white/1 dark:bg-white/1 rounded-2xl overflow-hidden transition-all duration-300 hover:border-[#ffa351]/25 hover:bg-[#ffa351]/2 flex flex-col"
+                className="group border border-zinc-200 dark:border-white/8 bg-zinc-50 dark:bg-white/1 rounded-2xl overflow-hidden transition-all duration-300 hover:border-[#ffa351]/25 hover:bg-[#ffa351]/2 flex flex-col"
               >
                 {/* Cover image */}
                 <Link href={`/blog/${post.slug}`} className="block overflow-hidden shrink-0">
@@ -95,7 +95,7 @@ const BlogPage = async () => {
                   </p>
 
                   {/* Metadata row */}
-                  <div className="flex items-center gap-2 text-[11px] text-zinc-600 dark:text-zinc-600 pt-3 border-t border-white/6 dark:border-white/6">
+                  <div className="flex items-center gap-2 text-[11px] text-zinc-600 dark:text-zinc-600 pt-3 border-t border-zinc-100 dark:border-white/6">
                     {post.author && (
                       <>
                         <span>{post.author}</span>

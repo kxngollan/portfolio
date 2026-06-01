@@ -14,7 +14,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
   const isEven = index % 2 === 0;
 
   return (
-    <div className="group border border-white/8 dark:border-white/8 rounded-2xl overflow-hidden bg-white/1 dark:bg-white/1 transition-all duration-300 hover:border-[#ffa351]/25 hover:bg-[#ffa351]/2">
+    <div className="group border border-zinc-200 dark:border-white/8 rounded-2xl overflow-hidden bg-zinc-50 dark:bg-white/1 transition-all duration-300 hover:border-[#ffa351]/25 hover:bg-[#ffa351]/2">
       <div
         className={`flex flex-col lg:flex-row ${!isEven ? "lg:flex-row-reverse" : ""} min-h-80`}
       >
