@@ -23,7 +23,7 @@ const MobileNav = ({
         transition={{ duration: 0.3 }}
         className="
     fixed top-0 left-0
-    h-screen w-[200px]
+    h-screen w-50
     z-1000
     flex flex-col
     pt-[20vh] pl-5
@@ -32,6 +32,7 @@ const MobileNav = ({
   "
       >
         <button
+          title="Close"
           className="
       absolute top-5 left-5
       border-0
@@ -46,7 +47,7 @@ const MobileNav = ({
         <ul
           className="
       flex flex-col justify-between
-      max-h-[200px] h-[40vh]
+      max-h-50 h-[40vh]
       space-y-2
     "
         >

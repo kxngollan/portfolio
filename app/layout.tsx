@@ -1,12 +1,18 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import Navbar from "@/components/UI/Navbar";
 import { ThemeProvider } from "@/themes/ThemeProvider";
 import Footer from "@/components/UI/Footer";
 import StairTransition from "@/components/StairTransition";
 import PageTransition from "@/components/PageTransition";
-import Script from "next/script";
 import "./globals.css";
 import ThemeToggle from "@/themes/ThemesToggle";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 const siteUrl = "https://www.ollanmuza.com";
 
@@ -48,9 +54,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      {/* <GoogleTagManager gtmId="GTM-T6SNKZQH" /> */}
-      <body className="bg-white dark:bg-[#171717]">
+    <html lang="en" className={inter.variable}>
+      <body className="bg-white dark:bg-[#0a0a0a]">
         <ThemeProvider>
           <Navbar />
           <StairTransition />

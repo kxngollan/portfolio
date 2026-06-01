@@ -1,60 +1,86 @@
+import Image from "next/image";
 import Link from "next/link";
 import RichText from "@/components/RichText";
 import { getProjects } from "@/lib/public-content";
 
 export const dynamic = "force-dynamic";
 
-const page = async () => {
+const ProjectsPage = async () => {
   const projects = await getProjects();
 
   return (
-    <main className="min-h-screen bg-zinc-50 px-4 py-28 dark:bg-[#0a0a0a]">
-      <div className="mx-auto max-w-6xl">
-        <header className="mb-10 border-b border-zinc-200 pb-6 dark:border-zinc-800">
-          <p className="text-xs uppercase tracking-[0.2em] text-[#c56b16]">
-            Work
-          </p>
-          <h1 className="mt-2 text-4xl font-bold text-zinc-950 dark:text-white">
+    <main className="min-h-screen mt-16 px-4 py-16 dark:bg-[#0a0a0a]">
+      <div className="mx-auto max-w-5xl">
+        {/* Section header */}
+        <div className="mb-10">
+          <div className="flex items-center gap-4 mb-3">
+            <span className="text-xs font-medium text-[#ffa351] tracking-wider">All</span>
+            <div className="flex-1 h-px bg-white/8" />
+            <span className="text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-white/35">Portfolio</span>
+          </div>
+          <h1 className="text-3xl xl:text-4xl font-bold dark:text-white tracking-tight">
             Projects
           </h1>
-        </header>
+        </div>
 
         {projects.length === 0 ? (
-          <p className="text-zinc-600 dark:text-zinc-300">No projects yet.</p>
+          <div className="border border-white/8 rounded-2xl p-12 text-center bg-white/1">
+            <h2 className="text-xl font-bold dark:text-white mb-2">No projects yet.</h2>
+            <p className="text-sm text-zinc-500">Published projects will appear here.</p>
+          </div>
         ) : (
-          <div className="grid gap-5 md:grid-cols-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
             {projects.map((project) => (
               <article
                 key={project._id}
-                className="overflow-hidden rounded-lg border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950"
+                className="group border border-white/8 dark:border-white/8 bg-white/1 dark:bg-white/1 rounded-2xl overflow-hidden transition-all duration-300 hover:border-[#ffa351]/25 hover:bg-[#ffa351]/2 flex flex-col"
               >
+                {/* Cover image */}
                 {project.image && (
-                  <div
-                    className="aspect-[16/9] bg-zinc-200 bg-cover bg-center dark:bg-zinc-900"
-                    style={{ backgroundImage: `url(${project.image})` }}
-                  />
+                  <Link href={`/projects/${project.slug}`} className="block overflow-hidden shrink-0">
+                    <div className="relative aspect-video w-full">
+                      <Image
+                        src={project.image}
+                        alt={project.name}
+                        fill
+                        className="object-cover brightness-75 transition-all duration-500 group-hover:scale-105 group-hover:brightness-90"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                    </div>
+                  </Link>
                 )}
-                <div className="p-5">
-                  <p className="text-xs uppercase tracking-[0.15em] text-[#c56b16]">
+
+                {/* Content */}
+                <div className="flex flex-col flex-1 p-5">
+                  {/* Kind tag */}
+                  <p className="text-[10px] font-semibold uppercase tracking-widest text-[#ffa351] mb-2">
                     {project.kind || "Personal Project"}
                   </p>
+
+                  {/* Title */}
                   <Link
                     href={`/projects/${project.slug}`}
-                    className="mt-2 block text-2xl font-bold text-zinc-950 hover:text-[#c56b16] dark:text-white dark:hover:text-[#ffa351]"
+                    className="block text-base font-bold dark:text-white text-zinc-900 tracking-tight leading-snug hover:text-[#ffa351] transition-colors duration-200 mb-3"
                   >
                     {project.name}
                   </Link>
-                  <RichText
-                    text={project.desc}
-                    className="mt-3 text-zinc-700 dark:text-zinc-200"
-                    paragraphClassName="mb-3 last:mb-0"
-                  />
+
+                  {/* Description */}
+                  <div className="text-sm leading-relaxed text-zinc-500 dark:text-zinc-500 flex-1 mb-4">
+                    <RichText
+                      text={project.desc}
+                      className="text-sm leading-relaxed"
+                      paragraphClassName="mb-2 last:mb-0 line-clamp-3"
+                    />
+                  </div>
+
+                  {/* Tech stack tags */}
                   {project.stack.length > 0 && (
-                    <div className="mt-4 flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-1.5 pt-3 border-t border-white/6 dark:border-white/6">
                       {project.stack.map((tech) => (
                         <span
                           key={tech}
-                          className="rounded-full border border-zinc-300 px-3 py-1 text-xs text-zinc-600 dark:border-zinc-700 dark:text-zinc-300"
+                          className="rounded-full border border-white/10 dark:border-white/10 px-3 py-0.5 text-[11px] font-medium text-zinc-500 dark:text-zinc-500 hover:border-[#ffa351]/40 hover:text-[#ffa351] transition-colors duration-200"
                         >
                           {tech}
                         </span>
@@ -71,4 +97,4 @@ const page = async () => {
   );
 };
 
-export default page;
+export default ProjectsPage;

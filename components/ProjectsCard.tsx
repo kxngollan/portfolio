@@ -10,111 +10,79 @@ import RichText from "@/components/RichText";
 import failedImage from "@/public/no-image.png";
 import type { ProjectCardProps } from "@/types/project";
 
-const ProjectCard = ({
-  project,
-  index,
-}: ProjectCardProps) => {
+const ProjectCard = ({ project, index }: ProjectCardProps) => {
   const isEven = index % 2 === 0;
 
-  const alignSide = isEven
-    ? "lg:items-end lg:self-end lg:text-right"
-    : "lg:items-start lg:self-start lg:text-left";
-  const alignSelf = isEven ? "lg:self-end" : "lg:self-start";
-  const linksMargin = isEven ? "lg:ml-auto" : "lg:mr-auto";
-
   return (
-    <>
+    <div className="group border border-white/8 dark:border-white/8 rounded-2xl overflow-hidden bg-white/1 dark:bg-white/1 transition-all duration-300 hover:border-[#ffa351]/25 hover:bg-[#ffa351]/2">
       <div
-        className={`group relative flex min-h-[400px] flex-col lg:flex-row ${
-          !isEven ? "lg:flex-row-reverse" : ""
-        } bg-transparent  mb-5 rounded-lg transition-all duration-300`}
+        className={`flex flex-col lg:flex-row ${!isEven ? "lg:flex-row-reverse" : ""} min-h-80`}
       >
-        <Image
-          src={project.image ?? failedImage}
-          alt={project.name}
-          onClick={() => {
-            window.open(project.live ?? project.github, "_blank");
-          }}
-          className="w-full lg:w-1/2 h-full object-cover overflow-hidden brightness-75 transition duration-300 group-hover:brightness-100 cursor-pointer"
-        />
-        <div
-          className={`
-          project-details
-          inset-0 flex flex-col justify-between p-5 rounded-lg
-          translate-y-4
-          transition-all duration-300
-          group-hover:opacity-100 group-hover:translate-y-0
-          lg:static lg:inset-auto lg:w-1/2  lg:opacity-100 lg:translate-y-0
-        `}
-        >
-          <div
-            className={`flex flex-col h-[50px] items-center mb-5 lg:mb-0 ${alignSide}`}
-          >
-            <p className="m-0 text-[0.75rem] uppercase tracking-wide dark:text-[#8892b0]">
-              {project.kind ?? "Personal Project"}
-            </p>
-            <h3 className="m-0 mt-1 mb-2 text-xl lg:text-[1.35rem] font-semibold dark:text-white">
+        {/* Image */}
+        <div className="relative w-full lg:w-[45%] overflow-hidden">
+          <Image
+            src={project.image ?? failedImage}
+            alt={project.name}
+            onClick={() => window.open(project.live ?? project.github, "_blank")}
+            className="w-full h-full object-cover brightness-75 transition-all duration-500 group-hover:brightness-90 group-hover:scale-105 cursor-pointer min-h-55 lg:min-h-0"
+          />
+          {/* Kind badge */}
+          <div className="absolute top-3 left-3">
+            <span className="text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-sm text-white/70 border border-white/10">
+              {project.kind ?? "Personal"}
+            </span>
+          </div>
+        </div>
+
+        {/* Details */}
+        <div className="flex flex-col justify-between p-6 lg:p-8 lg:w-[55%]">
+          <div>
+            <h3 className="text-xl font-bold dark:text-white text-zinc-900 mb-3 tracking-tight">
               <Link
-                href={project.github ?? ""}
+                href={project.github ?? project.live ?? ""}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="no-underline hover:underline dark:text-white hover:text-[#ffa351] dark:hover:text-[#ffa351]"
+                className="hover:text-[#ffa351] transition-colors duration-200"
               >
                 {project.name}
               </Link>
             </h3>
+            <div className="text-sm leading-relaxed dark:text-zinc-400 text-zinc-600">
+              <RichText
+                text={project.desc}
+                className="text-sm leading-relaxed"
+                paragraphClassName="mb-2 last:mb-0"
+              />
+            </div>
           </div>
-          <div
-            className="
-            flex rounded-md p-5
-            lg:dark:bg-[rgb(30,28,25)] lg:bg-[rgb(227,214,195)]
-          md:p-5 sm:p-3 dark:text-[#ededed]"
-          >
-            <RichText
-              text={project.desc}
-              className="m-0 text-[0.9rem] md:text-base lg:text-[1.1rem] dark:text-[#ededed]"
-              paragraphClassName="mb-3 last:mb-0"
-            />
-          </div>
-          <div className={`flex flex-col mt-4 self-center ${alignSelf}`}>
-            <ul
-              className="
-              list-none p-0 flex flex-wrap mt-2
-              justify-center lg:justify-end
-              gap-x-4 gap-y-1 text-white
-              lg:ml-auto
-            "
-            >
+
+          <div className="mt-6">
+            {/* Tech stack tags */}
+            <ul className="flex flex-wrap gap-1.5 mb-5">
               {project.stack
                 .trim()
                 .split(" ")
                 .map((tech: string, i: number) => (
                   <li
                     key={i}
-                    className="
-                rounded-full border border-slate-600/70 dark:border-slate-500 px-4 py-1
-                  text-[0.75rem] sm:text-[0.8rem] md:text-[0.85rem]
-                  text-[#8892b0] dark:text-[#8892b0]
-                "
+                    className="rounded-full border border-white/10 dark:border-white/10 px-3 py-0.5 text-[11px] font-medium text-zinc-500 dark:text-zinc-500 hover:border-[#ffa351]/40 hover:text-[#ffa351] transition-colors duration-200"
                   >
                     {tech}
                   </li>
                 ))}
             </ul>
-            <div
-              className={`
-              flex items-center mt-3
-              justify-center ${linksMargin}
-            `}
-            >
+
+            {/* Links */}
+            <div className="flex items-center gap-4">
               {project.github && (
                 <Link
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className=" mr-3 flex hover:text-[#ffa351] dark:hover:text-[#ffa351] items-center transition-colors dark:text-white"
+                  className="flex items-center gap-1.5 text-xs font-medium text-zinc-500 dark:text-zinc-500 hover:text-[#ffa351] transition-colors duration-200"
                 >
-                  <GitHubIcon className="text-[1.25rem] sm:text-[1.5rem]" />
+                  <GitHubIcon className="text-base" />
+                  <span>Source</span>
                 </Link>
               )}
               {project.live && (
@@ -122,9 +90,10 @@ const ProjectCard = ({
                   href={project.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center hover:text-[#ffa351] dark:hover:text-[#ffa351] transition-colors dark:text-white"
+                  className="flex items-center gap-1.5 text-xs font-medium text-zinc-500 dark:text-zinc-500 hover:text-[#ffa351] transition-colors duration-200"
                 >
-                  <LaunchIcon className="text-[1.25rem] sm:text-[1.5rem]" />
+                  <LaunchIcon className="text-base" />
+                  <span>Live</span>
                 </Link>
               )}
               {project.ext && (
@@ -132,17 +101,17 @@ const ProjectCard = ({
                   href={project.ext}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`flex items-center hover:text-[#ffa351] dark:hover:text-[#ffa351] transition-colors dark:text-white ${project.live ? "ml-3":""}`}
+                  className="flex items-center gap-1.5 text-xs font-medium text-zinc-500 dark:text-zinc-500 hover:text-[#ffa351] transition-colors duration-200"
                 >
-                  <ExtensionIcon className="text-[1.25rem] sm:text-[1.5rem]" />
+                  <ExtensionIcon className="text-base" />
+                  <span>Extension</span>
                 </Link>
               )}
             </div>
           </div>
         </div>
       </div>
-      <hr />
-    </>
+    </div>
   );
 };
 

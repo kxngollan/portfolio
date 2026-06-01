@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import ProjectCard from "./ProjectsCard";
 import chess from "@/public/projects/chess.jpeg";
 import fake from "@/public/projects/fake-socials.jpeg";
@@ -40,7 +41,7 @@ const Projects = () => {
     {
       name: "Real Estate Listing Platform",
       image: house,
-      desc: "A fullstack real estate marketplace that allows users to browse, search, and filter housing listings with an intuitive, modern UI. Built with Vue, TypeScript, Inertia, and Tailwind on a Laravel + MySQL backend, the platform includes authenticated listing management, image uploads, and real-time search filtering. With a fully containerised Docker MySQL database for seamless local development and deployment.",
+      desc: "A fullstack real estate marketplace that allows users to browse, search, and filter housing listings with an intuitive, modern UI. Built with Vue, TypeScript, Inertia, and Tailwind on a Laravel + MySQL backend, the platform includes authenticated listing management, image uploads, and real-time search filtering.",
       stack:
         "HTML CSS Vue Tailwind Node Inertia PHP Laravel MySQL Docker Composer",
       github: "https://github.com/kxngollan/housing-listing",
@@ -65,9 +66,28 @@ const Projects = () => {
   ];
 
   return (
-    <div className="w-full max-w-5xl px-4 py-3 text-center sm:px-8 dark:bg-[#0a0a0a]">
-      <div className="grid grid-cols-1 gap-8 dark:divide-slate-700">
-        <hr className="dark:border-slate-700" />
+    <div className="w-full max-w-5xl px-4 py-3">
+      {/* Section header */}
+      <div className="mb-10">
+        <div className="flex items-center gap-4 mb-3">
+          <span className="text-xs font-medium text-[#ffa351] tracking-wider">03</span>
+          <div className="flex-1 h-px bg-white/8" />
+          <span className="text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-white/35">Portfolio</span>
+        </div>
+        <div className="flex items-end justify-between gap-4">
+          <h2 className="text-3xl xl:text-4xl font-bold dark:text-white tracking-tight">
+            Selected Works
+          </h2>
+          <Link
+            href="/projects"
+            className="text-sm font-medium text-zinc-500 dark:text-zinc-500 hover:text-[#ffa351] transition-colors duration-200 whitespace-nowrap mb-1"
+          >
+            See all projects →
+          </Link>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 gap-6">
         {projects.map((project, index) => (
           <ProjectCard key={index} project={project} index={index} />
         ))}

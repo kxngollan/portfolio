@@ -65,37 +65,40 @@ const Techstacks = () => {
   }, []);
 
   return (
-    <section
-      id="technical-stack"
-      className="w-full max-w-5xl px-8 py-8 text-center max-[600px]:px-0 dark:bg-[#0a0a0a]"
-    >
-      <h4 className="text-[#64FFDB] dark:text-[#64FFDB] mb-8 flex items-center relative my-2.5 w-full whitespace-nowrap text-[clamp(1.5rem,5vw,2.5rem)] font-semibold">
-        <span className="mr-2 text-[#f6f7f8] dark:text-[#f6f7f8] font-mono text-[clamp(16px,3vw,20px)] font-normal"></span>
-      </h4>
+    <section id="technical-stack" className="w-full max-w-5xl px-4 py-3">
+      {/* Section header */}
+      <div className="mb-10">
+        <div className="flex items-center gap-4 mb-3">
+          <span className="text-xs font-medium text-[#ffa351] tracking-wider">02</span>
+          <div className="flex-1 h-px bg-white/8" />
+          <span className="text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-white/35">Stack</span>
+        </div>
+        <h2 className="text-3xl xl:text-4xl font-bold dark:text-white tracking-tight">
+          Tools & Technologies
+        </h2>
+      </div>
 
-      <div className="flex flex-wrap justify-center gap-8">
-        {techstack.map((item: TechStack, index: number) => {
-          return (
-            <div
-              key={index}
-              className="flex flex-col justify-center items-center w-[120px] h-[120px] dark:bg-[rgb(30,28,25)] bg-[rgb(227,214,195)] p-6 rounded-lg transition-transform duration-300 ease-in-out shadow-none hover:-translate-y-2 hover:shadow-[0_10px_20px_rgba(0,0,0,0.2)] max-[600px]:w-[100px] max-[600px]:h-[100px] max-[600px]:p-2"
-            >
-              <div className="w-10 h-10 flex items-center justify-center max-[600px]:w-[30px] max-[600px]:h-[30px]">
-                <StackIcon
-                  name={item.name.toLowerCase()}
-                  variant={mode}
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <div className="text-base mt-2 font-bold uppercase dark:text-white">
-                {item.title ?? item.name}
-              </div>
-              <div className="dark:text-[#ededed]">
-                {item.duration} {item.duration <= 1 ? "year" : "years"}
-              </div>
+      <div className="flex flex-wrap justify-center gap-3">
+        {techstack.map((item: TechStack, index: number) => (
+          <div
+            key={index}
+            className="group flex flex-col justify-center items-center w-27.5 h-27.5 border border-white/8 dark:border-white/8 bg-white/1 dark:bg-white/1 p-4 rounded-2xl transition-all duration-300 hover:-translate-y-1.5 hover:border-[#ffa351]/30 hover:bg-[#ffa351]/5 max-[600px]:w-22.5 max-[600px]:h-22.5 max-[600px]:p-3"
+          >
+            <div className="w-9 h-9 flex items-center justify-center max-[600px]:w-7 max-[600px]:h-7">
+              <StackIcon
+                name={item.name.toLowerCase()}
+                variant={mode}
+                className="w-full h-full object-contain"
+              />
             </div>
-          );
-        })}
+            <div className="text-[11px] mt-2 font-semibold uppercase tracking-wide dark:text-white text-zinc-800">
+              {item.title ?? item.name}
+            </div>
+            <div className="text-[10px] text-zinc-500 dark:text-zinc-500">
+              {item.duration}y
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

@@ -19,11 +19,7 @@ const jobExp: ExperienceItem[] = [
     title: "Full stack Engineer",
     duration: "April 2026 - Present",
     location: "Southend on Sea, UK",
-    responsibilities: [
-      // "Troubleshooting control systems and machine logic, debugging ladder logic and translating technical requirements into functional solutions.",
-      // "Implemented Agile methodologies, reducing project delivery time by 20%.",
-      // "Developed and maintained project plans, ensuring timely completion of milestones.",
-    ],
+    responsibilities: [],
   },
   {
     image: pepsi,
@@ -69,23 +65,37 @@ const jobExp: ExperienceItem[] = [
 const Experience = () => {
   const [active, setActive] = useState<number>(0);
   const [hovered, setHovered] = useState<boolean | null>(null);
-  const displayedJob = useMemo(() => {
-    return jobExp[active];
-  }, [active]);
+  const displayedJob = useMemo(() => jobExp[active], [active]);
 
   return (
-    <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-14">
-      <aside className="h-fit cursor-pointer md:col-span-1 border-l dark:border-slate-600 pl-6 space-y-8">
-        {jobExp.map((company: ExperienceItem, i: number) => {
-          return (
-            <div
-              className={`flex items-center px-2 py-4 transition-all duration-200 ${
-                active === i ? "bg-[#ffa351] dark:bg-[#ffa351] rounded-2xl" : ""
-              }`}
+    <div className="w-full max-w-5xl">
+      {/* Section header */}
+      <div className="mb-10">
+        <div className="flex items-center gap-4 mb-3">
+          <span className="text-xs font-medium text-[#ffa351] tracking-wider">01</span>
+          <div className="flex-1 h-px bg-white/8" />
+          <span className="text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-white/35">Career</span>
+        </div>
+        <h2 className="text-3xl xl:text-4xl font-bold dark:text-white tracking-tight">
+          Experience
+        </h2>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+        {/* Sidebar */}
+        <aside className="h-fit md:col-span-1 space-y-2">
+          {jobExp.map((company: ExperienceItem, i: number) => (
+            <button
+              type="button"
               key={i}
               onClick={() => setActive(i)}
+              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left transition-all duration-200 cursor-pointer ${
+                active === i
+                  ? "bg-[#ffa351]/10 border border-[#ffa351]/30"
+                  : "border border-transparent hover:border-white/8 hover:bg-white/3"
+              }`}
             >
-              <div className="w-10 h-10 flex justify-center items-center rounded-full overflow-hidden">
+              <div className="w-9 h-9 flex justify-center items-center rounded-lg overflow-hidden shrink-0 bg-white/5 border border-white/10">
                 {company.employer === "Pier Management" ? (
                   <div className="bg-teal-300 h-full w-full flex items-center justify-center">
                     <Image
@@ -99,71 +109,78 @@ const Experience = () => {
                   <Image
                     draggable={false}
                     src={company.image}
-                    className={company.employer === "PepsiCo" ? "w-30" : ""}
+                    className={company.employer === "PepsiCo" ? "w-full" : "w-4/5"}
                     alt={`${company.employer} logo`}
                   />
                 )}
               </div>
-              <span
-                className={`text-lg font-semibold tracking-[0.18em] pl-2 dark:text-white ${
-                  active === i
-                    ? " text-white dark:text-white"
-                    : "dark:text-[#ededed]"
-                }`}
-              >
-                {company.employer}
-              </span>
-            </div>
-          );
-        })}
-      </aside>
-      <section className="md:col-span-2">
-        <Link href={displayedJob.link} target="_blank">
-          <div
-            className="mb-6 flex items-center justify-between gap-4 "
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
-          >
-            <h1
-              className={`text-2xl md:text-3xl font-semibold dark:text-white ${hovered ? "underline" : ""}`}
+              <div className="min-w-0">
+                <span
+                  className={`text-sm font-semibold truncate block ${
+                    active === i ? "text-[#ffa351]" : "dark:text-white text-zinc-800"
+                  }`}
+                >
+                  {company.employer}
+                </span>
+                <span className="text-[11px] text-zinc-500 truncate block">{company.title}</span>
+              </div>
+            </button>
+          ))}
+        </aside>
+
+        {/* Details */}
+        <section className="md:col-span-2 border border-white/8 dark:border-white/8 rounded-2xl p-6 bg-white/1 dark:bg-white/1">
+          <Link href={displayedJob.link} target="_blank">
+            <div
+              className="mb-5 flex items-start justify-between gap-4"
+              onMouseEnter={() => setHovered(true)}
+              onMouseLeave={() => setHovered(false)}
             >
-              {displayedJob.title}{" "}
-              <span
-                className={`text-[#ffa351] dark:text-[#ffa351] ${hovered ? "underline" : ""}`}
-              >
-                @ {displayedJob.employer}
-              </span>
-            </h1>
-            <div className="w-10 h-10 flex justify-center items-center rounded-full overflow-hidden">
-              <Image
-                draggable={false}
-                src={displayedJob.image}
-                className={displayedJob.employer === "PepsiCo" ? "w-30" : ""}
-                alt={`${displayedJob.employer} logo`}
-              />
+              <div>
+                <p className="text-[11px] uppercase tracking-widest text-zinc-500 mb-1">
+                  {displayedJob.location}
+                </p>
+                <h3
+                  className={`text-xl md:text-2xl font-bold dark:text-white tracking-tight ${hovered ? "underline" : ""}`}
+                >
+                  {displayedJob.title}{" "}
+                  <span className="text-[#ffa351]">@ {displayedJob.employer}</span>
+                </h3>
+              </div>
+              <div className="w-10 h-10 flex justify-center items-center rounded-xl overflow-hidden shrink-0 bg-white/5 border border-white/10">
+                <Image
+                  draggable={false}
+                  src={displayedJob.image}
+                  className={displayedJob.employer === "PepsiCo" ? "w-full" : "w-4/5"}
+                  alt={`${displayedJob.employer} logo`}
+                />
+              </div>
+            </div>
+          </Link>
+
+          <div className="flex flex-wrap gap-4 text-xs text-zinc-500 dark:text-zinc-500 mb-5">
+            <div className="flex items-center gap-1.5">
+              <FaRegCalendar className="text-[#ffa351]" />
+              <span>{displayedJob.duration}</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <FaLocationDot className="text-[#ffa351]" />
+              <span>{displayedJob.location}</span>
             </div>
           </div>
-        </Link>
-        <div className="space-y-2 text-sm md:text-base dark:text-[#ededed]">
-          <div className="flex items-center gap-2">
-            <FaRegCalendar />
-            <span>{displayedJob.duration}</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <FaLocationDot />
-            <span>{displayedJob.location}</span>
-          </div>
-        </div>
-        {displayedJob.responsibilities ? (
-          <ul className="mt-6 space-y-3 text-sm md:text-base leading-relaxed list-disc list-outside ml-5 dark:text-[#ededed]">
-            {displayedJob.responsibilities.map((r: string, i: number) => {
-              return <li key={i}>{r}</li>;
-            })}
-          </ul>
-        ) : (
-          ""
-        )}
-      </section>
+
+          {displayedJob.responsibilities && displayedJob.responsibilities.length > 0 && (
+            <ul className="space-y-3 text-sm leading-relaxed dark:text-zinc-400 text-zinc-600">
+              {displayedJob.responsibilities.map((r: string, i: number) => (
+                <li key={i} className="flex gap-3">
+                  <span className="text-[#ffa351] mt-1 shrink-0">▸</span>
+                  <span>{r}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+      </div>
     </div>
   );
 };

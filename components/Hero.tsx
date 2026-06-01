@@ -1,22 +1,23 @@
-/* eslint-disable react/no-unescaped-entities */
 import Link from "next/link";
 import Photo from "@/components/Photo";
 import Stats from "@/components/Stats";
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
-import { FaLocationDot } from "react-icons/fa6";
 import { FiDownload } from "react-icons/fi";
 
 const socials = [
   {
     icon: <FaGithub />,
+    label: "GitHub",
     url: "https://github.com/kxngollan",
   },
   {
     icon: <FaLinkedin />,
+    label: "LinkedIn",
     url: "https://www.linkedin.com/in/ollan-m/",
   },
   {
     icon: <FaInstagram />,
+    label: "Instagram",
     url: "https://www.instagram.com/ollandagreat/",
   },
 ];
@@ -25,56 +26,71 @@ const Home = () => {
   return (
     <section className="h-full">
       <div className="container mx-auto h-full">
-        <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-0 xl:pb-16">
+        <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-0 xl:pb-16 gap-8 xl:gap-12">
           {/* Text */}
-          <div className="text-center xl:text-left order-2 xl:order-0 ">
-            <span className="text-xl text-[#ffa351] dark:text-[#ffa351]">
-              Software Engineer
-            </span>
-            <h1 className="h1 mt-1 mb-3 dark:text-white">
-              Hello I'm{" "}
-              <span className="text-accent font-black text-[#ffa351] dark:text-[#ffa351]">
-                Ollan Muza
+          <div className="text-center xl:text-left order-2 xl:order-0 max-w-xl">
+            {/* Availability badge */}
+            <div className="flex items-center justify-center xl:justify-start gap-2 mb-6">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ffa351] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#ffa351]"></span>
               </span>
+              <span className="text-[11px] uppercase tracking-[0.18em] text-white/50 dark:text-white/50 font-medium">
+                From United Kingdom
+              </span>
+            </div>
+
+            {/* Name */}
+            <h1 className="text-5xl xl:text-[64px] font-black mb-4 dark:text-white tracking-tight leading-none">
+              Ollan Muza
             </h1>
-            <h2 className="h2 mt-1 mb-3 flex gap-1 items-center text-[#ffa351] dark:text-[#ffa351] font-black">
-              <FaLocationDot /> <span>From United Kingdom</span>
-            </h2>
-            <p className="max-w-[500px] mb-5 dark:text-[#ededed]">
+
+            {/* Role divider */}
+            <div className="flex items-center justify-center xl:justify-start gap-3 mb-6">
+              <div className="h-px w-10 bg-[#ffa351]" />
+              <span className="text-[#ffa351] text-[11px] uppercase tracking-[0.2em] font-semibold">
+                Software Engineer
+              </span>
+              <div className="h-px w-10 bg-[#ffa351] xl:hidden" />
+            </div>
+
+            {/* Description */}
+            <p className="max-w-120 mb-8 text-sm leading-[1.8] text-zinc-600 dark:text-zinc-400 mx-auto xl:mx-0">
               I build modern web apps with thoughtful design, clean code, and a
-              love for solving real world problems crafting digital experiences
-              that are fast, intuitive, and built to scale. From concept to
-              deployment, I focus on creating solutions that balance strong
-              engineering with user centred design, delivering products that
-              feel seamless, reliable, and genuinely useful.
+              love for solving real world problems — crafting digital
+              experiences that are fast, intuitive, and built to scale.
             </p>
-            {/* buttons and socials */}
-            <div className="flex flex-col xl:flex-row items-center gap-4">
+
+            {/* Buttons and socials */}
+            <div className="flex flex-col xl:flex-row items-center xl:items-start gap-5">
               <a href="/cv/resume.pdf" download>
-                <button className="border border-accent bg-transparent text-accent h-[46px] px-6 uppercase tracking-[2px] flex items-center gap-2 justify-center rounded-full whitespace-nowrap text-[14px] font-semibold transition-colors cursor-pointer hover:text-[#ffa351] hover:bg-[rgb(227,214,195)] hover:border-[#ffa351] dark:hover:bg-[rgb(30,28,25)]">
+                <button
+                  type="button"
+                  className="group flex items-center gap-2 px-6 py-3 rounded-full text-[13px] font-semibold uppercase tracking-[0.12em] border border-white/15 dark:border-white/10 bg-white/5 dark:bg-white/3 text-zinc-700 dark:text-white hover:border-[#ffa351]/60 hover:text-[#ffa351] hover:bg-[#ffa351]/5 transition-all duration-300 whitespace-nowrap"
+                >
                   <span>Download CV</span>
-                  <FiDownload className="text-xl" />
+                  <FiDownload className="text-base transition-transform duration-300 group-hover:translate-y-0.5" />
                 </button>
               </a>
-              <div className="mb-8 xl:mb-0">
-                <div className="flex gap-4">
-                  {socials.map((item, index) => {
-                    return (
-                      <Link
-                        key={index}
-                        target="_blank"
-                        href={item.url}
-                        className="w-9 h-9 border border-accent rounded-full flex justify-center items-center text-accent text-base transition-all duration-500 hover:text-[#ffa351] hover:bg-[rgb(227,214,195)] hover:border-[#ffa351] dark:hover:bg-[rgb(30,28,25)]"
-                      >
-                        {item.icon}
-                      </Link>
-                    );
-                  })}
-                </div>
+
+              <div className="flex items-center gap-3">
+                {socials.map((item, index) => (
+                  <Link
+                    key={index}
+                    target="_blank"
+                    href={item.url}
+                    aria-label={item.label}
+                    className="w-10 h-10 border border-white/10 dark:border-white/10 rounded-full flex justify-center items-center text-zinc-500 dark:text-zinc-400 text-base transition-all duration-300 hover:text-[#ffa351] hover:border-[#ffa351]/40 hover:bg-[#ffa351]/5"
+                  >
+                    {item.icon}
+                  </Link>
+                ))}
               </div>
             </div>
           </div>
-          <div className="order-1 xl:order-0 mb-8 xl:mb-0">
+
+          {/* Photo */}
+          <div className="order-1 xl:order-0 mb-4 xl:mb-0 shrink-0">
             <Photo />
           </div>
         </div>

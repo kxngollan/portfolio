@@ -19,7 +19,7 @@ const Photo = () => {
             opacity: 1,
             transition: { delay: 2.4, duration: 0.4, ease: "easeInOut" },
           }}
-          className="w-[200px] h-[200px] xl:w-[380px] xl:h-[380px] flex justify-center items-center absolute"
+          className="w-50 h-50 xl:w-95 xl:h-95 flex justify-center items-center absolute"
         >
           <Image
             draggable={false}
@@ -32,7 +32,7 @@ const Photo = () => {
 
         {/* circle */}
         <motion.svg
-          className="w-[202px] xl:w-[382px] h-[202px] xl:h-[382px]"
+          className="w-50.5 xl:w-95.5 h-50.5 xl:h-95.5"
           fill="transparent"
           viewBox="0 0 506 506"
           xmlns="http://www.w3.org/2000/svg"
