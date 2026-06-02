@@ -23,7 +23,9 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
           <Image
             src={project.image ?? failedImage}
             alt={project.name}
-            onClick={() => window.open(project.live ?? project.github, "_blank")}
+            onClick={() =>
+              window.open(project.live ?? project.github, "_blank")
+            }
             className="w-full h-full object-cover brightness-75 transition-all duration-500 group-hover:brightness-90 group-hover:scale-105 cursor-pointer min-h-55 lg:min-h-0"
           />
           {/* Kind badge */}
@@ -65,7 +67,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                 .map((tech: string, i: number) => (
                   <li
                     key={i}
-                    className="rounded-full border border-white/10 dark:border-white/10 px-3 py-0.5 text-[11px] font-medium text-zinc-500 dark:text-zinc-500 hover:border-[#ffa351]/40 hover:text-[#ffa351] transition-colors duration-200"
+                    className="rounded-full border border-black/20 dark:border-white/10 px-3 py-0.5 text-[11px] font-medium text-zinc-500 dark:text-zinc-500 hover:border-[#ffa351]/40 hover:text-[#ffa351] transition-colors duration-200"
                   >
                     {tech}
                   </li>
