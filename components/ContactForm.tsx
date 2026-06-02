@@ -18,7 +18,7 @@ const Contact = () => {
   const [success, setSuccess] = useState(false);
 
   const fieldClassName =
-    "w-full rounded-xl border border-white/10 dark:border-white/10 bg-white/3 dark:bg-white/3 px-4 py-3 text-sm text-zinc-900 dark:text-white placeholder:text-zinc-500 dark:placeholder:text-zinc-600 outline-none transition-all duration-200 focus:border-[#ffa351]/50 focus:bg-white/5 dark:focus:bg-white/5 focus:outline-none";
+    "w-full rounded-xl border border-black/20 dark:border-white/10 bg-white/3 dark:bg-white/3 px-4 py-3 text-sm text-zinc-900 dark:text-white placeholder:text-zinc-500 dark:placeholder:text-zinc-600 outline-none transition-all duration-200 focus:border-[#ffa351]/50 focus:bg-white/5 dark:focus:bg-white/5 focus:outline-none";
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -34,7 +34,13 @@ const Contact = () => {
       });
 
       if (response.ok) {
-        setFormData({ name: "", company: "", number: "", email: "", message: "" });
+        setFormData({
+          name: "",
+          company: "",
+          number: "",
+          email: "",
+          message: "",
+        });
         setSuccess(true);
       } else {
         throw new Error("Submission failed");
@@ -46,7 +52,9 @@ const Contact = () => {
     setSending(false);
   };
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
@@ -56,15 +64,20 @@ const Contact = () => {
       {/* Section header */}
       <div className="mb-10">
         <div className="flex items-center gap-4 mb-3">
-          <span className="text-xs font-medium text-[#ffa351] tracking-wider">04</span>
+          <span className="text-xs font-medium text-[#ffa351] tracking-wider">
+            04
+          </span>
           <div className="flex-1 h-px bg-zinc-200 dark:bg-white/8" />
-          <span className="text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-white/35">Contact</span>
+          <span className="text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-white/35">
+            Contact
+          </span>
         </div>
         <h2 className="text-3xl xl:text-4xl font-bold dark:text-white tracking-tight">
           Let&apos;s Work Together
         </h2>
         <p className="mt-3 text-sm text-zinc-500 dark:text-zinc-500 max-w-md">
-          Have a project in mind or want to chat? I&apos;d love to hear from you.
+          Have a project in mind or want to chat? I&apos;d love to hear from
+          you.
         </p>
       </div>
 
@@ -74,7 +87,9 @@ const Contact = () => {
           <div className="border border-zinc-200 dark:border-white/8 rounded-2xl p-6 bg-zinc-50 dark:bg-white/1 space-y-6">
             {/* Email */}
             <div>
-              <p className="text-[11px] uppercase tracking-widest text-zinc-500 mb-2 font-medium">Email</p>
+              <p className="text-[11px] uppercase tracking-widest text-zinc-500 mb-2 font-medium">
+                Email
+              </p>
               <a
                 href="mailto:Ollanmuza@gmail.com"
                 className="text-sm font-semibold text-[#ffa351] hover:underline"
@@ -88,12 +103,26 @@ const Contact = () => {
 
             {/* Socials */}
             <div>
-              <p className="text-[11px] uppercase tracking-widest text-zinc-500 mb-3 font-medium">Socials</p>
+              <p className="text-[11px] uppercase tracking-widest text-zinc-500 mb-3 font-medium">
+                Socials
+              </p>
               <div className="flex gap-3">
                 {[
-                  { href: "https://www.github.com/kxngollan", icon: <FaGithub className="h-4 w-4" />, label: "GitHub" },
-                  { href: "https://www.linkedin.com/in/ollan-m", icon: <FaLinkedin className="h-4 w-4" />, label: "LinkedIn" },
-                  { href: "https://www.instagram.com/ollandagreat/", icon: <FaInstagram className="h-4 w-4" />, label: "Instagram" },
+                  {
+                    href: "https://www.github.com/kxngollan",
+                    icon: <FaGithub className="h-4 w-4" />,
+                    label: "GitHub",
+                  },
+                  {
+                    href: "https://www.linkedin.com/in/ollan-m",
+                    icon: <FaLinkedin className="h-4 w-4" />,
+                    label: "LinkedIn",
+                  },
+                  {
+                    href: "https://www.instagram.com/ollandagreat/",
+                    icon: <FaInstagram className="h-4 w-4" />,
+                    label: "Instagram",
+                  },
                 ].map((social) => (
                   <Link
                     key={social.label}
@@ -167,10 +196,14 @@ const Contact = () => {
           {(success || error) && (
             <p
               className={`flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium ${
-                success ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20" : "bg-rose-500/10 text-rose-400 border border-rose-500/20"
+                success
+                  ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
+                  : "bg-rose-500/10 text-rose-400 border border-rose-500/20"
               }`}
             >
-              {success ? "Message sent — I'll be in touch soon!" : "Something went wrong. Please try again."}
+              {success
+                ? "Message sent — I'll be in touch soon!"
+                : "Something went wrong. Please try again."}
             </p>
           )}
         </form>
