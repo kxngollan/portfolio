@@ -93,7 +93,7 @@ const Header = () => {
         items-center
         rounded-full
         border
-        border-white/10
+        border-black/10
         h-12
         md:h-16
         px-4

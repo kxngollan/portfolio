@@ -30,7 +30,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
           />
           {/* Kind badge */}
           <div className="absolute top-3 left-3">
-            <span className="text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-sm text-white/70 border border-white/10">
+            <span className="text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-sm text-white/70 border border-black/10">
               {project.kind ?? "Personal"}
             </span>
           </div>

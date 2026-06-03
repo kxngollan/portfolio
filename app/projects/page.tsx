@@ -26,9 +26,13 @@ const ProjectsPage = async () => {
         {/* Section header */}
         <div className="mb-10">
           <div className="flex items-center gap-4 mb-3">
-            <span className="text-xs font-medium text-[#ffa351] tracking-wider">All</span>
+            <span className="text-xs font-medium text-[#ffa351] tracking-wider">
+              All
+            </span>
             <div className="flex-1 h-px bg-zinc-200 dark:bg-white/8" />
-            <span className="text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-white/35">Portfolio</span>
+            <span className="text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-white/35">
+              Portfolio
+            </span>
           </div>
           <h1 className="text-3xl xl:text-4xl font-bold dark:text-white tracking-tight">
             Projects
@@ -37,8 +41,12 @@ const ProjectsPage = async () => {
 
         {projects.length === 0 ? (
           <div className="border border-zinc-200 dark:border-white/8 rounded-2xl p-12 text-center bg-zinc-50 dark:bg-white/1">
-            <h2 className="text-xl font-bold dark:text-white mb-2">No projects yet.</h2>
-            <p className="text-sm text-zinc-500">Published projects will appear here.</p>
+            <h2 className="text-xl font-bold dark:text-white mb-2">
+              No projects yet.
+            </h2>
+            <p className="text-sm text-zinc-500">
+              Published projects will appear here.
+            </p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
@@ -49,7 +57,10 @@ const ProjectsPage = async () => {
               >
                 {/* Cover image */}
                 {project.image && (
-                  <Link href={`/projects/${project.slug}`} className="block overflow-hidden shrink-0">
+                  <Link
+                    href={`/projects/${project.slug}`}
+                    className="block overflow-hidden shrink-0"
+                  >
                     <div className="relative aspect-video w-full">
                       <Image
                         src={validImageSrc(project.image)}
@@ -92,7 +103,7 @@ const ProjectsPage = async () => {
                       {project.stack.map((tech) => (
                         <span
                           key={tech}
-                          className="rounded-full border border-white/10 dark:border-white/10 px-3 py-0.5 text-[11px] font-medium text-zinc-500 dark:text-zinc-500 hover:border-[#ffa351]/40 hover:text-[#ffa351] transition-colors duration-200"
+                          className="rounded-full border border-black/10 dark:border-white/10 px-3 py-0.5 text-[11px] font-medium text-zinc-500 dark:text-zinc-500 hover:border-[#ffa351]/40 hover:text-[#ffa351] transition-colors duration-200"
                         >
                           {tech}
                         </span>

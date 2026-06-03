@@ -72,9 +72,13 @@ const Experience = () => {
       {/* Section header */}
       <div className="mb-10">
         <div className="flex items-center gap-4 mb-3">
-          <span className="text-xs font-medium text-[#ffa351] tracking-wider">01</span>
+          <span className="text-xs font-medium text-[#ffa351] tracking-wider">
+            01
+          </span>
           <div className="flex-1 h-px bg-zinc-200 dark:bg-white/8" />
-          <span className="text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-white/35">Career</span>
+          <span className="text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-white/35">
+            Career
+          </span>
         </div>
         <h2 className="text-3xl xl:text-4xl font-bold dark:text-white tracking-tight">
           Experience
@@ -95,7 +99,7 @@ const Experience = () => {
                   : "border border-transparent hover:border-zinc-200 dark:hover:border-white/8 hover:bg-zinc-100 dark:hover:bg-white/3"
               }`}
             >
-              <div className="w-9 h-9 flex justify-center items-center rounded-lg overflow-hidden shrink-0 bg-white/5 border border-white/10">
+              <div className="w-9 h-9 flex justify-center items-center rounded-lg overflow-hidden shrink-0 bg-white/5 border border-black/10">
                 {company.employer === "Pier Management" ? (
                   <div className="bg-teal-300 h-full w-full flex items-center justify-center">
                     <Image
@@ -109,7 +113,9 @@ const Experience = () => {
                   <Image
                     draggable={false}
                     src={company.image}
-                    className={company.employer === "PepsiCo" ? "w-full" : "w-4/5"}
+                    className={
+                      company.employer === "PepsiCo" ? "w-full" : "w-4/5"
+                    }
                     alt={`${company.employer} logo`}
                   />
                 )}
@@ -117,12 +123,16 @@ const Experience = () => {
               <div className="min-w-0">
                 <span
                   className={`text-sm font-semibold truncate block ${
-                    active === i ? "text-[#ffa351]" : "dark:text-white text-zinc-800"
+                    active === i
+                      ? "text-[#ffa351]"
+                      : "dark:text-white text-zinc-800"
                   }`}
                 >
                   {company.employer}
                 </span>
-                <span className="text-[11px] text-zinc-500 truncate block">{company.title}</span>
+                <span className="text-[11px] text-zinc-500 truncate block">
+                  {company.title}
+                </span>
               </div>
             </button>
           ))}
@@ -144,14 +154,18 @@ const Experience = () => {
                   className={`text-xl md:text-2xl font-bold dark:text-white tracking-tight ${hovered ? "underline" : ""}`}
                 >
                   {displayedJob.title}{" "}
-                  <span className="text-[#ffa351]">@ {displayedJob.employer}</span>
+                  <span className="text-[#ffa351]">
+                    @ {displayedJob.employer}
+                  </span>
                 </h3>
               </div>
-              <div className="w-10 h-10 flex justify-center items-center rounded-xl overflow-hidden shrink-0 bg-white/5 border border-white/10">
+              <div className="w-10 h-10 flex justify-center items-center rounded-xl overflow-hidden shrink-0 bg-white/5 border border-black/10">
                 <Image
                   draggable={false}
                   src={displayedJob.image}
-                  className={displayedJob.employer === "PepsiCo" ? "w-full" : "w-4/5"}
+                  className={
+                    displayedJob.employer === "PepsiCo" ? "w-full" : "w-4/5"
+                  }
                   alt={`${displayedJob.employer} logo`}
                 />
               </div>
@@ -169,16 +183,17 @@ const Experience = () => {
             </div>
           </div>
 
-          {displayedJob.responsibilities && displayedJob.responsibilities.length > 0 && (
-            <ul className="space-y-3 text-sm leading-relaxed dark:text-zinc-400 text-zinc-600">
-              {displayedJob.responsibilities.map((r: string, i: number) => (
-                <li key={i} className="flex gap-3">
-                  <span className="text-[#ffa351] mt-1 shrink-0">▸</span>
-                  <span>{r}</span>
-                </li>
-              ))}
-            </ul>
-          )}
+          {displayedJob.responsibilities &&
+            displayedJob.responsibilities.length > 0 && (
+              <ul className="space-y-3 text-sm leading-relaxed dark:text-zinc-400 text-zinc-600">
+                {displayedJob.responsibilities.map((r: string, i: number) => (
+                  <li key={i} className="flex gap-3">
+                    <span className="text-[#ffa351] mt-1 shrink-0">▸</span>
+                    <span>{r}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
         </section>
       </div>
     </div>

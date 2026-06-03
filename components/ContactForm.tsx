@@ -130,7 +130,7 @@ const Contact = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="w-10 h-10 rounded-xl border border-white/10 dark:border-white/10 bg-white/3 dark:bg-white/3 flex items-center justify-center text-zinc-500 dark:text-zinc-400 hover:border-[#ffa351]/40 hover:text-[#ffa351] hover:bg-[#ffa351]/5 transition-all duration-200"
+                    className="w-10 h-10 rounded-xl border border-black/10 dark:border-white/10 bg-white/3 dark:bg-white/3 flex items-center justify-center text-zinc-500 dark:text-zinc-400 hover:border-[#ffa351]/40 hover:text-[#ffa351] hover:bg-[#ffa351]/5 transition-all duration-200"
                   >
                     {social.icon}
                   </Link>
