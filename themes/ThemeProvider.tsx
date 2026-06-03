@@ -1,7 +1,18 @@
 "use client";
 
-import React, { createContext, useContext, useEffect, useState } from "react";
-import { type Theme, type ThemeContextValue } from "@/types/theme";
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useSyncExternalStore,
+} from "react";
+import {
+  type ResolvedTheme,
+  type Theme,
+  type ThemeContextValue,
+} from "@/types/theme";
 import type { ChildrenProps } from "@/types/layout";
 
 const ThemeContext = createContext<ThemeContextValue>({
@@ -10,54 +21,91 @@ const ThemeContext = createContext<ThemeContextValue>({
   toggle: () => {},
 });
 
-function applyTheme(resolved: "light" | "dark") {
+const DEFAULT_DISPLAY: Theme = "light";
+const THEME_STORAGE_KEY = "theme";
+const THEME_CHANGE_EVENT = "theme-change";
+
+function applyTheme(resolved: ResolvedTheme) {
   document.documentElement.classList.toggle("dark", resolved === "dark");
+  document.documentElement.style.colorScheme = resolved;
 }
 
-function resolveDisplay(display: Theme, sysDark: boolean): "light" | "dark" {
+function resolveTheme(display: Theme, sysDark: boolean): ResolvedTheme {
   if (display === "device") return sysDark ? "dark" : "light";
   return display;
 }
 
-const ThemeProvider = ({ children }: ChildrenProps) => {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
-  const [display, setDisplay] = useState<Theme>("light");
+function isTheme(value: string | null): value is Theme {
+  return value === "light" || value === "dark" || value === "device";
+}
 
-  useEffect(() => {
-    const stored = (localStorage.getItem("theme") as Theme | null) ?? "device";
-    const sysDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const resolved = resolveDisplay(stored, sysDark);
-    setDisplay(stored);
-    setTheme(resolved);
-    applyTheme(resolved);
+function getStoredDisplay(): Theme {
+  if (typeof window === "undefined") return DEFAULT_DISPLAY;
+  const stored = localStorage.getItem(THEME_STORAGE_KEY);
+  return isTheme(stored) ? stored : DEFAULT_DISPLAY;
+}
 
-    const mq = window.matchMedia("(prefers-color-scheme: dark)");
-    const onSysChange = (e: MediaQueryListEvent) => {
-      if ((localStorage.getItem("theme") as Theme) === "device") {
-        const r = e.matches ? "dark" : "light";
-        setTheme(r);
-        applyTheme(r);
-      }
-    };
-    mq.addEventListener("change", onSysChange);
-    return () => mq.removeEventListener("change", onSysChange);
-  }, []);
+function subscribeDisplayChange(callback: () => void) {
+  if (typeof window === "undefined") return () => {};
 
-  const toggle = () => {
-    const next: Theme =
-      display === "light" ? "dark" : display === "dark" ? "device" : "light";
-    const sysDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const resolved = resolveDisplay(next, sysDark);
-    setDisplay(next);
-    setTheme(resolved);
-    localStorage.setItem("theme", next);
-    applyTheme(resolved);
+  const onStorage = (event: StorageEvent) => {
+    if (event.key === THEME_STORAGE_KEY) callback();
   };
 
+  window.addEventListener("storage", onStorage);
+  window.addEventListener(THEME_CHANGE_EVENT, callback);
+
+  return () => {
+    window.removeEventListener("storage", onStorage);
+    window.removeEventListener(THEME_CHANGE_EVENT, callback);
+  };
+}
+
+function getSystemDark() {
+  if (typeof window === "undefined") return false;
+  return window.matchMedia("(prefers-color-scheme: dark)").matches;
+}
+
+function subscribeSystemThemeChange(callback: () => void) {
+  if (typeof window === "undefined") return () => {};
+
+  const mq = window.matchMedia("(prefers-color-scheme: dark)");
+  mq.addEventListener("change", callback);
+
+  return () => mq.removeEventListener("change", callback);
+}
+
+const ThemeProvider = ({ children }: ChildrenProps) => {
+  const display = useSyncExternalStore(
+    subscribeDisplayChange,
+    getStoredDisplay,
+    () => DEFAULT_DISPLAY,
+  );
+  const sysDark = useSyncExternalStore(
+    subscribeSystemThemeChange,
+    getSystemDark,
+    () => false,
+  );
+  const theme = resolveTheme(display, sysDark);
+
+  useEffect(() => {
+    applyTheme(theme);
+  }, [theme]);
+
+  const toggle = useCallback(() => {
+    const next: Theme =
+      display === "light" ? "dark" : display === "dark" ? "device" : "light";
+    localStorage.setItem(THEME_STORAGE_KEY, next);
+    window.dispatchEvent(new Event(THEME_CHANGE_EVENT));
+  }, [display]);
+
+  const value = useMemo(
+    () => ({ display, theme, toggle }),
+    [display, theme, toggle],
+  );
+
   return (
-    <ThemeContext.Provider value={{ display, theme, toggle }}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
   );
 };
 

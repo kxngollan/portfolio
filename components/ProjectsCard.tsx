@@ -68,7 +68,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                 .map((tech: string, i: number) => (
                   <li
                     key={i}
-                    className="rounded-full border border-black/20 dark:border-white/10 px-3 py-0.5 text-[11px] font-medium text-zinc-500 dark:text-zinc-500 hover:border-[#ffa351]/40 hover:text-[#ffa351] transition-colors duration-200"
+                    className="rounded-full border border-black/20 dark:border-white/10 px-3 py-0.5 text-[11px] font-medium text-zinc-500 dark:text-zinc-500 hover:border-[#ffa351]/40 hover:text-[#ffa351] transition-colors duration-200 cursor-default"
                   >
                     {tech}
                   </li>

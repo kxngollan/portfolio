@@ -159,7 +159,9 @@ const Experience = () => {
                   </span>
                 </h3>
               </div>
-              <div className="w-10 h-10 flex justify-center items-center rounded-xl overflow-hidden shrink-0 bg-white/5 border border-black/10">
+              <div
+                className={` w-10 h-10 flex justify-center items-center rounded-xl overflow-hidden shrink-0  border border-black/10 ${displayedJob.employer !== "Pier Management" ? "bg-white/5" : "bg-teal-300"} `}
+              >
                 <Image
                   draggable={false}
                   src={displayedJob.image}

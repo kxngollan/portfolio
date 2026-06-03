@@ -1,15 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import StackIcon from "tech-stack-icons";
-import type {
-  ColorSchemeMediaQuery,
-  TechStack,
-  TechStackVariant,
-} from "@/types/tech-stack";
+import { useTheme } from "@/themes/ThemeProvider";
+import type { TechStack } from "@/types/tech-stack";
 
 const Techstacks = () => {
-  const [mode, setMode] = useState<TechStackVariant>(undefined);
+  const { theme } = useTheme();
 
   const techstack: TechStack[] = [
     { name: "html5", title: "html", duration: 2.5 },
@@ -37,33 +33,6 @@ const Techstacks = () => {
     { name: "linux", duration: 2.5 },
   ];
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-
-    const updateMode = (e: ColorSchemeMediaQuery) => {
-      setMode(e.matches ? "dark" : "light");
-      localStorage.setItem("theme", e.matches ? "dark" : "light");
-    };
-
-    updateMode(mediaQuery);
-
-    if (mediaQuery.addEventListener) {
-      mediaQuery.addEventListener("change", updateMode);
-    } else {
-      mediaQuery.addListener(updateMode);
-    }
-
-    return () => {
-      if (mediaQuery.removeEventListener) {
-        mediaQuery.removeEventListener("change", updateMode);
-      } else {
-        mediaQuery.removeListener(updateMode);
-      }
-    };
-  }, []);
-
   return (
     <section id="technical-stack" className="w-full max-w-5xl px-4 py-3">
       {/* Section header */}
@@ -87,7 +56,7 @@ const Techstacks = () => {
             <div className="w-9 h-9 flex items-center justify-center max-[600px]:w-7 max-[600px]:h-7">
               <StackIcon
                 name={item.name.toLowerCase()}
-                variant={mode}
+                variant={theme}
                 className="w-full h-full object-contain"
               />
             </div>

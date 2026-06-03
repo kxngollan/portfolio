@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
-
+/* 
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -11,46 +11,16 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family:
-    var(--font-inter),
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
-}
-
-html.dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
-  background: #0a0a0a;
-  color: #ededed;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not(.dark):not(.light) {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+} */
 
 .font-playfair {
   font-family: var(--font-playfair), Georgia, serif;
 }
 
 /* Scrollbar styling */
+html {
+  scroll-behavior: smooth;
+}
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
