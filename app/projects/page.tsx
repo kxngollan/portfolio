@@ -1,24 +1,48 @@
-import Image from "next/image";
-import Link from "next/link";
-import RichText from "@/components/RichText";
-import { getProjects } from "@/lib/public-content";
-
-export const dynamic = "force-dynamic";
-
-const fallbackCover = "/no-image.png";
-
-function validImageSrc(src: string | null | undefined): string {
-  if (!src) return fallbackCover;
-  try {
-    new URL(src);
-    return src;
-  } catch {
-    return src.startsWith("/") ? src : fallbackCover;
-  }
-}
+import type { StaticProject } from "@/types/project";
+import chess from "@/public/projects/chess.jpeg";
+import fake from "@/public/projects/fake-socials.jpeg";
+import house from "@/public/projects/house.jpeg";
+import store from "@/public/projects/fake-store.jpeg";
+import ProjectCard from "@/components/ProjectsCard";
 
 const ProjectsPage = async () => {
-  const projects = await getProjects();
+  const projects: StaticProject[] = [
+    {
+      name: "Fake Store",
+      image: store,
+      desc: "A fake e-commerce store app that fetches live product data from a postgres database. Users can browse, view product details, and simulate purchases via stripe, built to demonstrate my fullstack capabilities for working with API, databases and dynamic rendering.",
+      github: "https://github.com/kxngollan/fake-store",
+      live: "https://fake-store-alpha-ten.vercel.app/",
+      stack:
+        "HTML CSS Tailwind Typescript Docker React Next Next-Auth Vercel APIs Postgres Stripe",
+    },
+    {
+      name: "Chess Experiments",
+      image: chess,
+      desc: "An interactive chess platform that lets users test different strategies and analyze moves using the Stockfish engine. Includes real time feedback and a Chrome extension for in-browser play and analysis.",
+      live: "https://www.chessexperiments.com",
+      stack:
+        "HTML CSS React Typescript NodeJs Stockfish Docker Chrome-Extension ChromeAPI",
+      ext: "https://chromewebstore.google.com/detail/chess-experiments/dhmflbggejcdphfndmomdnmikdngakce",
+    },
+    {
+      name: "Real Estate Listing Platform",
+      image: house,
+      desc: "A fullstack real estate marketplace that allows users to browse, search, and filter housing listings with an intuitive, modern UI. Built with Vue, TypeScript, Inertia, and Tailwind on a Laravel + MySQL backend, the platform includes authenticated listing management, image uploads, and real-time search filtering.",
+      stack:
+        "HTML CSS Vue Tailwind Node Inertia PHP Laravel MySQL Docker Composer",
+      github: "https://github.com/kxngollan/housing-listing",
+    },
+    {
+      name: "Fake Socials",
+      image: fake,
+      desc: "A mock social media platform where users can post, like, and interact in a simulated environment. Designed to mimic real-world social networks for UI/UX experimentation and backend testing.",
+      github: "https://github.com/kxngollan/fake-socials-front",
+      live: "www.fakesocials.com",
+      stack:
+        "HTML CSS React Next Typescript Express O-Auth AWS Socket-IO PostgresSQL Docker",
+    },
+  ];
 
   return (
     <main className="min-h-screen mt-16 px-4 py-16 dark:bg-[#0a0a0a]">
@@ -49,69 +73,9 @@ const ProjectsPage = async () => {
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
-            {projects.map((project) => (
-              <article
-                key={project._id}
-                className="group border border-zinc-200 dark:border-white/8 bg-zinc-50 dark:bg-white/1 rounded-2xl overflow-hidden transition-all duration-300 hover:border-[#ffa351]/25 hover:bg-[#ffa351]/2 flex flex-col"
-              >
-                {/* Cover image */}
-                {project.image && (
-                  <Link
-                    href={`/projects/${project.slug}`}
-                    className="block overflow-hidden shrink-0"
-                  >
-                    <div className="relative aspect-video w-full">
-                      <Image
-                        src={validImageSrc(project.image)}
-                        alt={project.name}
-                        fill
-                        className="object-cover brightness-75 transition-all duration-500 group-hover:scale-105 group-hover:brightness-90"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      />
-                    </div>
-                  </Link>
-                )}
-
-                {/* Content */}
-                <div className="flex flex-col flex-1 p-5">
-                  {/* Kind tag */}
-                  <p className="text-[10px] font-semibold uppercase tracking-widest text-[#ffa351] mb-2">
-                    {project.kind || "Personal Project"}
-                  </p>
-
-                  {/* Title */}
-                  <Link
-                    href={`/projects/${project.slug}`}
-                    className="block text-base font-bold dark:text-white text-zinc-900 tracking-tight leading-snug hover:text-[#ffa351] transition-colors duration-200 mb-3"
-                  >
-                    {project.name}
-                  </Link>
-
-                  {/* Description */}
-                  <div className="text-sm leading-relaxed text-zinc-500 dark:text-zinc-500 flex-1 mb-4">
-                    <RichText
-                      text={project.desc}
-                      className="text-sm leading-relaxed"
-                      paragraphClassName="mb-2 last:mb-0 line-clamp-3"
-                    />
-                  </div>
-
-                  {/* Tech stack tags */}
-                  {project.stack.length > 0 && (
-                    <div className="flex flex-wrap gap-1.5 pt-3 border-t border-zinc-100 dark:border-white/6">
-                      {project.stack.map((tech) => (
-                        <span
-                          key={tech}
-                          className="rounded-full border border-black/10 dark:border-white/10 px-3 py-0.5 text-[11px] font-medium text-zinc-500 dark:text-zinc-500 hover:border-[#ffa351]/40 hover:text-[#ffa351] transition-colors duration-200"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </article>
+          <div className="grid grid-cols-1 gap-6">
+            {projects.map((project, index) => (
+              <ProjectCard key={index} project={project} index={index} />
             ))}
           </div>
         )}

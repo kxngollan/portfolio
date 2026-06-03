@@ -1,67 +1,41 @@
 "use client";
 import Link from "next/link";
 import ProjectCard from "./ProjectsCard";
-import chess from "@/public/projects/chess.jpeg";
-import fake from "@/public/projects/fake-socials.jpeg";
-import store from "@/public/projects/fake-store.jpeg";
+import shona from "@/public/projects/shona-dictionary.png";
 import netflix from "@/public/projects/watch-netflix.jpeg";
 import portfolio from "@/public/projects/portfolio.jpeg";
-import house from "@/public/projects/house.jpeg";
 import type { StaticProject } from "@/types/project";
 
 const Projects = () => {
   const projects: StaticProject[] = [
     {
-      name: "Chess Experiments",
-      image: chess,
-      desc: "An interactive chess platform that lets users test different strategies and analyze moves using the Stockfish engine. Includes real time feedback and a Chrome extension for in-browser play and analysis.",
-      live: "https://www.chessexperiments.com",
+      name: "Shona Dictionary",
+      image: shona,
+      desc: "Developed a full-stack language learning platform that enables users to search Shona word meanings, discover English to Shona translations, and participate in daily vocabulary challenges. With over 10 thousands monthly users. The application was designed to support language preservation through a scalable, community-focused dictionary system, providing an accessible digital resource for Shona speakers and learners worldwide.",
       stack:
-        "HTML CSS React Typescript NodeJs Stockfish Docker Chrome-Extension ChromeAPI",
-      ext: "https://chromewebstore.google.com/detail/chess-experiments/dhmflbggejcdphfndmomdnmikdngakce",
+        "HTML CSS TailwindCSS Javascript TypeScript React NextJS NodeJs Docker MongoDB Vercel Github ",
+      kind: "Open Source",
+      github: "https://github.com/asideofcode/duramazwi",
+      live: "https://shonadictionary.com/",
     },
     {
       name: "Watch Netflix Together",
       image: netflix,
       desc: "A synchronized streaming app that allows multiple users to watch Netflix shows together in real time with over 70,000 downloads. Built with WebSockets for live chat and playback sync, ensuring a seamless shared viewing experience.",
-      stack: "HTML CSS React Express AWS ChromeAPI",
+      stack:
+        "HTML CSS TailwindCSS JavaScript TypeScript React Express NodeJs Docker Github AWS ChromeAPI",
       kind: "Company",
       live: "https://watchnetflixtogether.com/",
       ext: "https://chromewebstore.google.com/detail/watch-netflix-together/fdjglnlhapkoahdmanogpccpmmpnakje",
     },
-    {
-      name: "Fake Store",
-      image: store,
-      desc: "A fake e-commerce store app that fetches live product data from a postgres database. Users can browse, view product details, and simulate purchases via stripe, built to demonstrate my fullstack capabilities for working with API, databases and dynamic rendering.",
-      github: "https://github.com/kxngollan/fake-store",
-      live: "https://fake-store-alpha-ten.vercel.app/",
-      stack:
-        "HTML CSS Tailwind Typescript Docker React Next Next-Auth Vercel APIs Postgres Stripe",
-    },
-    {
-      name: "Real Estate Listing Platform",
-      image: house,
-      desc: "A fullstack real estate marketplace that allows users to browse, search, and filter housing listings with an intuitive, modern UI. Built with Vue, TypeScript, Inertia, and Tailwind on a Laravel + MySQL backend, the platform includes authenticated listing management, image uploads, and real-time search filtering.",
-      stack:
-        "HTML CSS Vue Tailwind Node Inertia PHP Laravel MySQL Docker Composer",
-      github: "https://github.com/kxngollan/housing-listing",
-    },
+
     {
       name: "Portfolio",
       image: portfolio,
-      desc: "My personal developer portfolio showcasing projects, skills, and experience. Built for performance and design clarity using React and Tailwind, and fully containerized with Docker for easy deployment.",
+      desc: "A high-performance personal portfolio built to highlight projects, skills, and experience. Developed with Next.js and TypeScript, featuring responsive UI, server-side rendering, SEO optimization.",
       github: "https://github.com/kxngollan/portfolio",
       live: "https://ollanmuza.com/",
-      stack: "HTML Tailwind ReactJS Typescript Docker",
-    },
-    {
-      name: "Fake Socials",
-      image: fake,
-      desc: "A mock social media platform where users can post, like, and interact in a simulated environment. Designed to mimic real-world social networks for UI/UX experimentation and backend testing.",
-      github: "https://github.com/kxngollan/fake-socials-front",
-      live: "www.fakesocials.com",
-      stack:
-        "HTML CSS React Next Typescript Express O-Auth AWS Socket-IO PostgresSQL Docker",
+      stack: "HTML CSS TypeScript React Next.js TailwindCSS Docker Vercel",
     },
   ];
 
